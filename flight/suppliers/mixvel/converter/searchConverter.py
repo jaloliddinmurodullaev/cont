@@ -325,9 +325,7 @@ async def search_converter(offers, guid, name, currency, route_count, request_id
             #         'offerItemList': offerItemList,
             #         'price': offer['TotalPrice']['TotalAmount']['#text'],
             #         'currency': offer['TotalPrice']['TotalAmount']['CurCode']
-            #     },
-            #     gds_id=0,
-            #     sp_name=name
+            #     }
             # )
             full_offers.append(offerTmp)
     else:
@@ -635,9 +633,7 @@ async def search_converter(offers, guid, name, currency, route_count, request_id
             #         'offerItemList': offerItemList,
             #         'price': offer['TotalPrice']['TotalAmount']['#text'],
             #         'currency': offer['TotalPrice']['TotalAmount']['CurCode']
-            #     },
-            #     gds_id=0,
-            #     sp_name=name
+            #     }
             # )
             full_offers.append(offerTmp)
     return full_offers

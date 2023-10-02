@@ -64,6 +64,9 @@ class Validator:
 
         return (request_id != None and next_token != 0) 
 
+    async def upsell_request_validator(data: dict) -> bool:
+        return True
+
     async def booking_request_validator(data: dict) -> bool:
         pass
     
@@ -105,10 +108,10 @@ class Helper:
             return False
 
 class AdditionsTicket:
-
-    def __init__(self, ticket, offer_id, other, gds_id, sp_name) -> None:
+    def __init__(self, ticket, offer_id, other) -> None:
         self.ticket   = ticket
         self.offer_id = offer_id
         self.other    = other
-        self.gds_id   = gds_id
-        self.sp_name  = sp_name
+
+async def filter_tickets(offers):
+    pass

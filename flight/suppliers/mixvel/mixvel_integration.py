@@ -21,13 +21,13 @@ TEST_GATEWAY = 'https://api-test.mixvel.com'
 TTL = 3 * 60
 
 CABIN_TYPES = {
-    'economy': 'Economy',
+    'economy' : 'Economy',
     'business': 'Business'
 }
 
 class MixvelIntegration:
 
-############################################ DEFAULT #################################################
+########################################### DEFAULT ############################################
 
     def __init__(self, auth_data, data, verify_ssl=True):
         self.login = auth_data.get('login', None)
@@ -67,7 +67,7 @@ class MixvelIntegration:
         self.sent = data
         self.recv = None
 
-        r = await asyncio.create_task(self._send(url, headers, data))
+        r = await asyncio.create_task(self.__send(url, headers, data))
 
         if r[0] in [200, 201]:
             response = xmltodict.parse(r[1], encoding='utf-8', attr_prefix='', dict_constructor=dict)
@@ -93,14 +93,14 @@ class MixvelIntegration:
             }
             return result
     
-    async def _send(self, url, headers, data):
+    async def __send(self, url, headers, data):
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=data, headers=headers, ssl=self.verify_ssl) as response:
                 status_code = response.status
                 result = await response.text()
                 return [status_code, result]
 
-############################################ AUTH #################################################
+########################################### AUTH ###############################################
 
     async def auth(self):
         context = {
@@ -116,8 +116,9 @@ class MixvelIntegration:
             self.token = token
         return token 
 
-########################################### SEARCH ################################################
+########################################### SEARCH #############################################
 
+    # method name 
     async def search(self, system_id, provider_id, provider_name, request_id):
         data = await asyncio.create_task(self.search_request_maker())
         itinerary = data['itinerary']
@@ -133,10 +134,10 @@ class MixvelIntegration:
             res = await asyncio.create_task(self.__request("/api/Order/airshopping", context))
 
             if res['status'] == 'success':
-                await set_status(request_id=request_id)
+                asyncio.create_task(set_status(request_id=request_id))
                 result = {
                     'status' : res['status'], 
-                    'massage': res['message'],
+                    'message': res['message'],
                     'data'   : await search_converter(res['data'], provider_id, provider_name, currency, len(itinerary) == 1, request_id)
                 }
 
@@ -147,20 +148,20 @@ class MixvelIntegration:
                 asyncio.create_task(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))
                 
                 return json.dumps(result)
-            else:
-                result = {
-                    'status' : res['status'], 
-                    'massage': res['message'],
-                    'data'   : res['data']
-                }
-                return result
-        else:
-            result = {
-                'status' : 'error', 
-                'massage': 'inaccurate data provided',
-                'data'   : []
-            }
-            return result
+        #     else:
+        #         result = {
+        #             'status' : res['status'], 
+        #             'message': res['message'],
+        #             'data'   : res['data']
+        #         }
+        #         return result
+        # else:
+        #     result = {
+        #         'status' : 'error', 
+        #         'massage': 'inaccurate data provided',
+        #         'data'   : []
+        #     }
+        #     return result
  
     async def search_request_maker(self):
         data = self.data
@@ -212,28 +213,30 @@ class MixvelIntegration:
         
         return body
 
-########################################### UPSELL ################################################
+########################################### UPSELL #############################################
 
     async def upsell(self):
         pass
 
-########################################### RULES ################################################
+########################################### RULES ##############################################
 
     async def rules(self):
         pass
 
-########################################## BOOKING ################################################
+########################################### BOOKING ############################################
 
     async def booking(self):
         pass
 
-########################################### CANCEL ################################################
+########################################### CANCEL #############################################
 
     async def cancel(self):
         pass
 
-########################################### TICKET ################################################
+########################################### TICKET #############################################
 
     async def ticketing(self):
         pass
+
+###################################### ADDITIONAL METHODS ######################################
 

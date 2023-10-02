@@ -7,6 +7,7 @@ from flight.models import insert_system
 from flight.additions.additions import Validator
 from flight.controllers.search_controller import SearchController
 from flight.controllers.offer_controller import OfferController
+from flight.controllers.upsell_controller import UpsellController
 
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
 
@@ -48,7 +49,21 @@ class OfferHandler(tornado.web.RequestHandler):
 
 class UpsellHandler(tornado.web.RequestHandler):
     async def post(self):
-        pass
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.upsell_request_validator(data)):
+            # start_time = time.time()
+            controller = UpsellController(data)
+            response = await asyncio.gather(controller.controller())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0])
 
 class RulesHandler(tornado.web.RequestHandler):
     async def post(self):

@@ -37,5 +37,4 @@ def main():
         parser.print_help()
 
 if __name__ == '__main__':
-    # create_database()
     main()

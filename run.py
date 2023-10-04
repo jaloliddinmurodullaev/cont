@@ -26,7 +26,7 @@ def main():
     runserver_parser = subparsers.add_parser('runserver', help='Run the server')
     runserver_parser.set_defaults(func=runserver)
 
-    runmigrations_parser = subparsers.add_parser('migrate', help='Run Django migrations')
+    runmigrations_parser = subparsers.add_parser('migrate', help='Run migrations')
     runmigrations_parser.set_defaults(func=migrate)
 
     args = parser.parse_args()

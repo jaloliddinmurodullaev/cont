@@ -5,9 +5,9 @@ import tornado.web
 from flight.models import insert_system
 
 from flight.additions.additions import Validator
-from flight.controllers.search_controller import SearchController
-from flight.controllers.offer_controller import OfferController
-from flight.controllers.upsell_controller import UpsellController
+from flight.collectors.search_collector import SearchCollector
+from flight.collectors.offer_collector import OfferCollector
+from flight.collectors.upsell_collector import UpsellCollector
 
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
 
@@ -17,7 +17,7 @@ class SearchHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.search_request_valiadator(data)):
             # start_time = time.time()
-            controller = SearchController(data)
+            controller = SearchCollector(data)
             response = await asyncio.gather(controller.controller())
             # end_time = time.time()
         else:
@@ -35,7 +35,7 @@ class OfferHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.offers_request_valiadator(data)):
             # start_time = time.time()
-            controller = OfferController(data)
+            controller = OfferCollector(data)
             response = await asyncio.gather(controller.controller())
             # end_time = time.time()
         else:
@@ -53,7 +53,7 @@ class UpsellHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.upsell_request_validator(data)):
             # start_time = time.time()
-            controller = UpsellController(data)
+            controller = UpsellCollector(data)
             response = await asyncio.gather(controller.controller())
             # end_time = time.time()
         else:
@@ -76,7 +76,6 @@ class BookingHandler(tornado.web.RequestHandler):
 class TicketingHandler(tornado.web.RequestHandler):
     async def post(self):
         pass
-
 
 # SYSTEM HANDLERS. DO NOT TRY TO CHANGE THEM.
 

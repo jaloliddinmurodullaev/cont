@@ -10,7 +10,7 @@ load_dotenv()
 HOST = os.environ.get('DB_HOST')
 PORT = os.environ.get('DB_PORT')
 USER = os.environ.get('DB_USER')
-PASS = os.environ.get('DB_PASS')
+PASS = os.environ.get('DB_PASS') 
 
 DEFAULT_DB_NAME = os.environ.get('DEFAULT_DB_NAME')
 

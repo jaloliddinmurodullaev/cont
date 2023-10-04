@@ -4,7 +4,7 @@ import asyncio
 from flight.additions.cache_operations import check_status
 from flight.additions.cache_operations import check_offers_existance, get_search_data
 
-class OfferController:
+class OfferCollector:
     
     def __init__(self, data: dict) -> None: # Constructor
         self.request_id = data.get('request_id', None)

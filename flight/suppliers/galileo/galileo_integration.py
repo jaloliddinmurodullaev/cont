@@ -7,14 +7,12 @@ import json
 import xmltodict
 from jinja2 import Environment, FileSystemLoader
 
-from .converter.searchConverter import search_converter
 from flight.models import insert_data
 from flight.additions.cache_operations import set_status, set_provider_response_to_cache
-from .endpoint import is_login_endpoint, request_template
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-TEST_GATEWAY = 'https://api-test.mixvel.com'
+TEST_GATEWAY = 'api-url'
 
 TTL = 3 * 60
 
@@ -23,7 +21,7 @@ CABIN_TYPES = {
     'business': 'Business'
 }
 
-class MixvelIntegration:
+class GalileoIntegration:
 
 ########################################### DEFAULT ############################################
 
@@ -46,50 +44,7 @@ class MixvelIntegration:
         return request_template.render(context)
 
     async def __request(self, endpoint, context):
-        url = "{gateway}{endpoint}".format(gateway=self.gateway, endpoint=endpoint)
-        headers = {
-            "Content-Type": "application/xml",
-        }
-
-        if not await asyncio.create_task(is_login_endpoint(endpoint)):
-            if not self.token:
-                await asyncio.create_task(self.auth())
-            headers["Authorization"] = "Bearer {token}".format(token=self.token)
-
-        template = await asyncio.create_task(request_template(endpoint))
-
-        if template is None:
-            raise ValueError("Unknown endpoint: {}".format(endpoint))
-        
-        data = await asyncio.create_task(self.__prepare_request(template, context))
-        self.sent = data
-        self.recv = None
-
-        r = await asyncio.create_task(self.__send(url, headers, data))
-
-        if r[0] in [200, 201]:
-            response = xmltodict.parse(r[1], encoding='utf-8', attr_prefix='', dict_constructor=dict)
-            if 'AppData' in response['MixEnv:Envelope']['Body']:
-                result = {
-                    'status': 'success',
-                    'message': 'successful operation performed',
-                    'data': response['MixEnv:Envelope']
-                }
-                return result
-            else:
-                result = {
-                    'status': 'error',
-                    'message': 'Unknown error occured during operation',
-                    'data': r[1]
-                }
-            return result
-        else:
-            result = {
-                'status': 'error',
-                'message': 'Unknown error occured during operation',
-                'data': r[1]
-            }
-            return result
+        return self.gateway
     
     async def __send(self, url, headers, data):
         async with aiohttp.ClientSession() as session:
@@ -135,7 +90,7 @@ class MixvelIntegration:
             result = {
                 'status' : res['status'], 
                 'message': res['message'],
-                'data'   : await search_converter(res['data'], provider_id, provider_name, currency, len(itinerary) == 1, request_id)
+                'data'   : (res['data'], provider_id, provider_name, currency, len(itinerary) == 1, request_id)
             }
 
             # inserting data to cache

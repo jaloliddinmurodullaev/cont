@@ -7,7 +7,7 @@ INTEGRATIONS = {
     'mixvel'   : MixvelIntegration,
 }
 
-class UpsellController:
+class UpsellCollector:
 
     ''' A class that routes search request according to provider id '''
 

@@ -7,25 +7,15 @@ from flight.additions.cache_operations import set_search_data
 from flight.additions.cache_operations import check_if_direction_was_searched
 from flight.models import get_system_name
 
-############################## INTEGRATIONS ####################################
+from flight.integrations import INTEGRATIONS
 
-from flight.suppliers.mixvel.mixvel_integration import MixvelIntegration
-
-INTEGRATIONS = {
-    'aerticket': MixvelIntegration,
-    'amadeus'  : MixvelIntegration,
-    'centrum'  : MixvelIntegration,
-    'mixvel'   : MixvelIntegration,
-}
-
-################################################################################
 
 CABIN_TYPES = {
     'economy' : 'Economy',
     'business': 'Business'
 }
 
-class SearchController:
+class SearchCollector:
 
     ''' A class that routes search request according to provider id '''
 

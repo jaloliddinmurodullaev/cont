@@ -655,10 +655,6 @@ async def sort_offers(offers):
 
 async def get_unique_offers(offers, journeyIdList):
     new_offers = []
-    template = {
-        'offer': 'offer',
-        'fare_families': []
-    }
     for uniqueId in journeyIdList:
         offerListTmp = []
         for offer in offers:

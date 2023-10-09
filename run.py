@@ -8,7 +8,7 @@ import flight.urls as application
 def runserver(args):
     print('Starting server...')
     app = application.make_app()
-    app.listen(8000)
+    app.listen(8000, '0.0.0.0')
     try:
         tornado.ioloop.IOLoop.current().start()
     except KeyboardInterrupt:

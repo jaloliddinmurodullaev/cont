@@ -24,7 +24,6 @@ CABIN_TYPES = {
 }
 
 class MixvelIntegration:
-
 ########################################### DEFAULT ############################################
 
     def __init__(self, auth_data, data, verify_ssl=True):
@@ -116,7 +115,6 @@ class MixvelIntegration:
 
 ########################################### SEARCH #############################################
 
-    # method name 
     async def search(self, system_id, provider_id, provider_name, request_id):
         data = await asyncio.create_task(self.search_request_maker())
         itinerary = data['itinerary']

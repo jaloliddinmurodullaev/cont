@@ -7,7 +7,7 @@ import json
 import xmltodict
 from jinja2 import Environment, FileSystemLoader
 
-from .converter.searchConverter import search_converter
+from .converter.search_converter import search_converter
 from flight.models import insert_data
 from flight.additions.cache_operations import set_status, set_provider_response_to_cache
 from .endpoint import is_login_endpoint, request_template

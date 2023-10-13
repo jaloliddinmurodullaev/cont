@@ -4,7 +4,6 @@ import aiohttp
 import datetime
 import uuid
 import json
-import xmltodict
 from jinja2 import Environment, FileSystemLoader
 
 from flight.models import insert_data
@@ -12,7 +11,9 @@ from flight.additions.cache_operations import set_status, set_provider_response_
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-TEST_GATEWAY = 'api-url'
+TEST_GATEWAY = os.environ.get("TEST_GATEWAY_TRAVELPORT")
+USERNAME = os.environ.get("USERNAME_TRAVELPORT")
+PASSWORD = os.environ.get("USERNAME_PASSWORD")
 
 TTL = 3 * 60
 
@@ -25,23 +26,11 @@ class GalileoIntegration:
 
 ########################################### DEFAULT ############################################
 
-    def __init__(self, auth_data, data, verify_ssl=True):
+    def __init__(self, auth_data, data):
         self.login = auth_data.get('login', None)
         self.password = auth_data.get('password', None)
-        self.structure_unit_id = auth_data.get('structure_unit_id', None)
-        self.token = ""
         self.gateway = TEST_GATEWAY
-        self.verify_ssl = verify_ssl
         self.data = data
-
-    async def __prepare_request(self, template, context):
-        context["message_id"] = str(uuid.uuid4())
-        strftime = datetime.datetime.utcnow()
-        strftime = f"{strftime.year}-{strftime.month if len(str(strftime.month)) == 2 else f'0{strftime.month}'}-{strftime.day if len(str(strftime.day)) == 2 else f'0{strftime.day}'}T{strftime.hour if len(str(strftime.hour)) == 2 else f'0{strftime.hour}'}:{strftime.minute if len(str(strftime.minute)) == 2 else f'0{strftime.minute}'}:{strftime.second if len(str(strftime.second)) == 2 else f'0{strftime.second}'}Z"
-        context["time_sent"] = strftime
-        template_env = Environment(loader=FileSystemLoader(os.path.join(HERE, 'templates')))
-        request_template = template_env.get_template(template)
-        return request_template.render(context)
 
     async def __request(self, endpoint, context):
         return self.gateway
@@ -61,7 +50,7 @@ class GalileoIntegration:
             "password": self.password,
             "structure_unit_id": self.structure_unit_id,
         }
-        res = await asyncio.create_task(self.__request("/api/Accounts/login", context))
+        res = await asyncio.create_task(self.__request("catalog/search/catalogproductofferings", context))
 
         token = None
         if res['status'] == 'success' and 'Token' in res['data']['Body']['AppData']['Auth:AuthResponse']:
@@ -83,7 +72,7 @@ class GalileoIntegration:
         }
 
         context = data
-        res = await asyncio.create_task(self.__request("/api/Order/airshopping", context))
+        res = await asyncio.create_task(self.__request("catalog/search/catalogproductofferings", context))
 
         if res['status'] == 'success':
             asyncio.create_task(set_status(request_id=request_id))

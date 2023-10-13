@@ -1,0 +1,70 @@
+{
+    "CatalogProductOfferingsQueryRequest": {
+        "@type": "CatalogProductOfferingsQueryRequest",
+        "CatalogProductOfferingsRequest": {
+            "@type": "CatalogProductOfferingsRequestAir",
+            "contentSourceList": [
+                "GDS",
+                "NDC"
+            ],
+            "PassengerCriteria": [
+                {
+                    "@type": "PassengerCriteria",
+                    "number": 1,
+                    "passengerTypeCode": "ADT"
+                },
+                {
+                    "@type": "PassengerCriteria",
+                    "number": 1,
+                    "passengerTypeCode": "CHD"
+                },
+                {
+                    "@type": "PassengerCriteria",
+                    "number": 1,
+                    "passengerTypeCode": "INF"
+                },
+                {
+                    "@type": "PassengerCriteria",
+                    "number": 1,
+                    "passengerTypeCode": "INS"
+                }
+            ],
+            "SearchCriteriaFlight": [
+                {
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2023-01-18",
+                    "From": {
+                        "value": "ORD"
+                    },
+                    "To": {
+                        "value": "DEN"
+                    }
+                },
+                {
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2023-01-29",
+                    "From": {
+                        "value": "DEN"
+                    },
+                    "To": {
+                        "value": "ORD"
+                    }
+                }
+            ],
+            "CustomResponseModifiersAir": {
+                "@type": "CustomResponseModifiersAir",
+                "SearchRepresentation": "Journey",
+                "includeFareCalculationInd": true
+            },
+            "SearchModifiersAir": {
+                "CabinPreference": [
+                    {
+                        "@type": "CabinPreference",
+                        "preferenceType": "Preferred",
+                        "cabins": ["Economy", "Business"]
+                    }
+                ]
+            }
+        }
+    }
+}

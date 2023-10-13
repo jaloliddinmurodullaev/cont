@@ -13,7 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 TEST_GATEWAY = os.environ.get("TEST_GATEWAY_TRAVELPORT")
 USERNAME = os.environ.get("USERNAME_TRAVELPORT")
-PASSWORD = os.environ.get("USERNAME_PASSWORD")
+PASSWORD = os.environ.get("PASSWORD_TRAVELPORT")
 
 TTL = 3 * 60
 
@@ -72,6 +72,7 @@ class GalileoIntegration:
         }
 
         context = data
+        print(context)
         res = await asyncio.create_task(self.__request("catalog/search/catalogproductofferings", context))
 
         if res['status'] == 'success':
@@ -105,44 +106,80 @@ class GalileoIntegration:
         for dir in data['directions']:
             directions.append(
                 {
-                    "origin": dir['departure_airport'],
-                    "destination": dir['arrival_airport'],
-                    "departure": dir['departure_date'],
-                    "cabin": CABIN_TYPES[data['class']]
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": dir['departure_date'],
+                    "From": {
+                        "value": dir['departure_airport']
+                    },
+                    "To": {
+                        "value": dir['arrival_airport']
+                    }
                 }
             )
-        pax = 0
-        for _ in range(data['adt']):
-            paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "ADT"
-            })
-            pax += 1
+        
+        if data['adt'] > 0:
+            paxes.append(
+                {
+                    "@type": "PassengerCriteria",
+                    "number": data['adt'],
+                    "passengerTypeCode": "ADT"
+                }
+            )
 
-        for _ in range(data['chd']):
-            paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "CNN"
-            })
-            pax += 1
+        if data['chd'] > 0:
+            paxes.append(
+                {
+                    "@type": "PassengerCriteria",
+                    "number": data['chd'],
+                    "passengerTypeCode": "CNN"
+                }
+            )
 
-        for _ in range(data['inf']):
-            paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "INF"
-            })
-            pax += 1
+        if data['inf'] > 0:
+            paxes.append(
+                {
+                    "@type": "PassengerCriteria",
+                    "number": data['inf'],
+                    "passengerTypeCode": "INF"
+                }
+            )
 
-        for _ in range(data['ins']):
-            paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "INS"
-            })
-            pax += 1
+        if data['ins'] > 0:
+            paxes.append(
+                {
+                    "@type": "PassengerCriteria",
+                    "number": data['ins'],
+                    "passengerTypeCode": "INS"
+                }
+            )
         
         body = {
-            'itinerary': directions,
-            'paxes': paxes
+            'CatalogProductOfferingsQueryRequest': {
+                "@type": "CatalogProductOfferingsQueryRequest",
+                "CatalogProductOfferingsRequest": {
+                    "@type": "CatalogProductOfferingsRequestAir",
+                    "contentSourceList": [
+                        "GDS",
+                        "NDC"
+                    ],
+                    "PassengerCriteria": paxes,
+                    "SearchCriteriaFlight": directions,
+                    "CustomResponseModifiersAir": {
+                        "@type": "CustomResponseModifiersAir",
+                        "SearchRepresentation": "Journey",
+                        "includeFareCalculationInd": True
+                    },
+                    "SearchModifiersAir": {
+                        "CabinPreference": [
+                            {
+                                "@type": "CabinPreference",
+                                "preferenceType": "Preferred",
+                                "cabins": [CABIN_TYPES[data['class']]]
+                            }
+                        ]
+                    }
+                }
+            }
         }
         
         return body

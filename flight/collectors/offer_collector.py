@@ -10,7 +10,7 @@ class OfferCollector:
         self.request_id = data.get('request_id', None)
         self.next_token = data.get('next_token', None)
 
-    async def controller(self): # Router
+    async def collector(self): # Router
         result = {
             "request_id": None,
             "status": None,

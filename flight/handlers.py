@@ -17,8 +17,8 @@ class SearchHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.search_request_valiadator(data)):
             # start_time = time.time()
-            controller = SearchCollector(data)
-            response = await asyncio.gather(controller.controller())
+            collector = SearchCollector(data)
+            response = await asyncio.gather(collector.collector())
             # end_time = time.time()
         else:
             response = [{
@@ -35,8 +35,8 @@ class OfferHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.offers_request_valiadator(data)):
             # start_time = time.time()
-            controller = OfferCollector(data)
-            response = await asyncio.gather(controller.controller())
+            collector = OfferCollector(data)
+            response = await asyncio.gather(collector.collector())
             # end_time = time.time()
         else:
             response = [{
@@ -53,8 +53,8 @@ class UpsellHandler(tornado.web.RequestHandler):
 
         if await asyncio.create_task(Validator.upsell_request_validator(data)):
             # start_time = time.time()
-            controller = UpsellCollector(data)
-            response = await asyncio.gather(controller.controller())
+            collector = UpsellCollector(data)
+            response = await asyncio.gather(collector.collector())
             # end_time = time.time()
         else:
             response = [{

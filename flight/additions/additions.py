@@ -113,5 +113,10 @@ class AdditionsTicket:
         self.offer_id = offer_id
         self.other    = other
 
-async def filter_tickets(offers):
-    pass
+async def filter_tickets(offers: AdditionsTicket) -> dict:
+    filtered_tickets = {
+        "ticket"   : offers.ticket,
+        "offer_id" : offers.offer_id,
+        "other"    : offers.other 
+    }
+    return filtered_tickets

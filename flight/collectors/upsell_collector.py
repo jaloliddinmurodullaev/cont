@@ -14,6 +14,6 @@ class UpsellCollector:
     def __init__(self, data) -> None: # Constructor
         pass
 
-    async def controller(self): # Router
+    async def collector(self): # Router
         pass
 

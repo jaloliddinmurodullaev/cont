@@ -1,18 +1,16 @@
 import asyncio
 import os
 import aiohttp
-import datetime
-import uuid
 import json
-import xmltodict
-from jinja2 import Environment, FileSystemLoader
+
 
 from flight.models import insert_data
 from flight.additions.cache_operations import set_status, set_provider_response_to_cache
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-TEST_GATEWAY = 'api-url'
+GATEWAY = os.environ.get('TRAVELPORT_TEST_GATEWAY')
+AUTH_GATEWAY = os.environ.get('TRAVELPORT_TEST_AUTH_GATEWAY')
 
 TTL = 3 * 60
 
@@ -23,59 +21,64 @@ CABIN_TYPES = {
 
 class GalileoIntegration:
 
-########################################### DEFAULT ############################################
+########################################### CONFIG ############################################
 
-    def __init__(self, auth_data, data, verify_ssl=True):
-        self.login = auth_data.get('login', None)
-        self.password = auth_data.get('password', None)
-        self.structure_unit_id = auth_data.get('structure_unit_id', None)
-        self.token = ""
-        self.gateway = TEST_GATEWAY
-        self.verify_ssl = verify_ssl
-        self.data = data
+    def __init__(self, auth_data, data):
+        self.username      = auth_data.get('login', None)
+        self.password      = auth_data.get('password', None)
+        self.client_id     = auth_data.get('client_id', None)
+        self.client_secret = auth_data.get('client_secret', None)
+        self.token         = ""
+        self.gateway       = GATEWAY
+        self.auth_gateway  = AUTH_GATEWAY
+        self.data          = data
 
-    async def __prepare_request(self, template, context):
-        context["message_id"] = str(uuid.uuid4())
-        strftime = datetime.datetime.utcnow()
-        strftime = f"{strftime.year}-{strftime.month if len(str(strftime.month)) == 2 else f'0{strftime.month}'}-{strftime.day if len(str(strftime.day)) == 2 else f'0{strftime.day}'}T{strftime.hour if len(str(strftime.hour)) == 2 else f'0{strftime.hour}'}:{strftime.minute if len(str(strftime.minute)) == 2 else f'0{strftime.minute}'}:{strftime.second if len(str(strftime.second)) == 2 else f'0{strftime.second}'}Z"
-        context["time_sent"] = strftime
-        template_env = Environment(loader=FileSystemLoader(os.path.join(HERE, 'templates')))
-        request_template = template_env.get_template(template)
-        return request_template.render(context)
+    async def __request(self, endpoint, context, is_auth=False):
+        response = {}
 
-    async def __request(self, endpoint, context):
-        return self.gateway
+        if is_auth:
+            res = self.__send(self.auth_gateway, None, context)
+            if res[0] in [200, 201]:
+                response['status'] = 'success'
+                response['data']   = res[1]
+            else:
+                response['status'] = 'error'
+                response['data']   = res[1]
+        else:
+            pass
+
+        return response
     
     async def __send(self, url, headers, data):
         async with aiohttp.ClientSession() as session:
-            async with session.post(url, data=data, headers=headers, ssl=self.verify_ssl) as response:
+            async with session.post(url, data=data, headers=headers) as response:
                 status_code = response.status
-                result = await response.text()
+                result = await response.json()
                 return [status_code, result]
 
-########################################### AUTH ###############################################
+########################################### AUTH ##############################################
 
     async def auth(self):
         context = {
-            "login": self.login,
+            "username": self.username,
             "password": self.password,
-            "structure_unit_id": self.structure_unit_id,
+            "client_id": self.client_id,
+            "client_secret": self.client_secret
         }
-        res = await asyncio.create_task(self.__request("/api/Accounts/login", context))
+        res = await asyncio.create_task(self.__request(endpoint="", context=context, is_auth=True))
 
         token = None
         if res['status'] == 'success' and 'Token' in res['data']['Body']['AppData']['Auth:AuthResponse']:
             token = res['data']['Body']['AppData']['Auth:AuthResponse']['Token']
             self.token = token
-        return token 
+        return token
 
 ########################################### SEARCH #############################################
 
     # method name 
     async def search(self, system_id, provider_id, provider_name, request_id):
         data = await asyncio.create_task(self.search_request_maker())
-        itinerary = data['itinerary']
-        paxes     = data['paxes']
+        itinerary = data['CatalogProductOfferingsQueryRequest']['CatalogProductOfferingsRequest']['SearchCriteriaFlight']
 
         currency = {
             'curFrom': 'UZS',
@@ -116,44 +119,72 @@ class GalileoIntegration:
         for dir in data['directions']:
             directions.append(
                 {
-                    "origin": dir['departure_airport'],
-                    "destination": dir['arrival_airport'],
-                    "departure": dir['departure_date'],
-                    "cabin": CABIN_TYPES[data['class']]
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": dir['departure_date'],
+                    "From": {
+                        "value": dir['departure_airport'],
+                    },
+                    "To": {
+                        "value": dir['arrival_airport']
+                    }
                 }
             )
-        pax = 0
-        for _ in range(data['adt']):
+        
+        if data['adt'] > 0:
             paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "ADT"
+                "@type": "PassengerCriteria",
+                "number": data['adt'],
+                "passengerTypeCode": "ADT"
             })
-            pax += 1
 
-        for _ in range(data['chd']):
+        if data['chd'] > 0:
             paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "CNN"
+                "@type": "PassengerCriteria",
+                "number": data['chd'],
+                "passengerTypeCode": "CNN"
             })
-            pax += 1
 
-        for _ in range(data['inf']):
+        if data['inf'] > 0:
             paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "INF"
+                "@type": "PassengerCriteria",
+                "number": data['inf'],
+                "passengerTypeCode": "INF"
             })
-            pax += 1
 
-        for _ in range(data['ins']):
+        if data['ins'] > 0:
             paxes.append({
-                "pax_id": f"PAX-{pax+1}",
-                "ptc": "INS"
+                "@type": "PassengerCriteria",
+                "number": data['ins'],
+                "passengerTypeCode": "INS"
             })
-            pax += 1
         
         body = {
-            'itinerary': directions,
-            'paxes': paxes
+            'CatalogProductOfferingsQueryRequest': {
+                "@type": "CatalogProductOfferingsQueryRequest",
+                "CatalogProductOfferingsRequest": {
+                    "@type": "CatalogProductOfferingsRequestAir",
+                    "contentSourceList": [
+                        "GDS",
+                        "NDC"
+                    ],
+                    "PassengerCriteria": paxes,
+                    "SearchCriteriaFlight": directions,
+                    "CustomResponseModifiersAir": {
+                        "@type": "CustomResponseModifiersAir",
+                        "SearchRepresentation": "Journey",
+                        "includeFareCalculationInd": True,
+                    },
+                    "SearchModifiersAir" : {
+                        "CabinPreference" : [ 
+                            {
+                                "@type" : "CabinPreference",
+                                "preferenceType": "Preferred",
+                                "cabins" : [CABIN_TYPES[data['class']]], 
+                            }
+                        ]
+                    }
+                }
+            }
         }
         
         return body
@@ -163,7 +194,7 @@ class GalileoIntegration:
     async def upsell(self):
         pass
 
-########################################### RULES ##############################################
+############################################ RULES #############################################
 
     async def rules(self):
         pass
@@ -173,12 +204,12 @@ class GalileoIntegration:
     async def booking(self):
         pass
 
-########################################### CANCEL #############################################
+############################################ CANCEL ############################################
 
     async def cancel(self):
         pass
 
-########################################### TICKET #############################################
+############################################ TICKET ############################################
 
     async def ticketing(self):
         pass

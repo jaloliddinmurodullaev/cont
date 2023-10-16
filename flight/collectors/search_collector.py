@@ -23,7 +23,7 @@ class SearchCollector:
         self.request_id = "%0.10d" % random.randint(0, 2147483647)
         self.data = data
 
-    async def controller(self): # Router
+    async def collector(self): # Router
         trip_type = "RT" if len(self.data.get('directions')) == 2 else ("OW" if len(self.data.get('directions')) == 1 else "MC")
 
         result = {

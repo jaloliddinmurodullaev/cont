@@ -22,125 +22,125 @@
                     "ProductBrandOptions": [
                         {
                             "ProductBrandOffering": [
-                            {
-                                "@type": "ProductBrandOffering",
-                                "Price": {
-                                "@type": "PriceDetail",
-                                "CurrencyCode": {
-                                    "decimalPlace": 0,
-                                    "value": "HKD"
-                                },
-                                "Base": 470,
-                                "TotalTaxes": 148,
-                                "TotalFees": 0,
-                                "TotalPrice": 618,
-                                "PriceBreakdown": [
-                                    {
-                                    "@type": "PriceBreakdownAir",
-                                    "quantity": 1,
-                                    "requestedPassengerType": "ADT",
-                                    "Amount": {
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Price": {
+                                        "@type": "PriceDetail",
                                         "CurrencyCode": {
-                                        "decimalPlace": 0,
-                                        "value": "HKD"
+                                            "decimalPlace": 0,
+                                            "value": "HKD"
                                         },
                                         "Base": 470,
-                                        "Taxes": {
-                                        "@type": "TaxesDetail",
                                         "TotalTaxes": 148,
-                                        "Tax": [
+                                        "TotalFees": 0,
+                                        "TotalPrice": 618,
+                                        "PriceBreakdown": [
                                             {
-                                            "taxCode": "AY",
-                                            "value": 44
-                                            },
-                                            {
-                                            "taxCode": "US",
-                                            "value": 35
-                                            },
-                                            {
-                                            "taxCode": "XF",
-                                            "value": 35
-                                            },
-                                            {
-                                            "taxCode": "ZP",
-                                            "value": 34
+                                                "@type": "PriceBreakdownAir",
+                                                "quantity": 1,
+                                                "requestedPassengerType": "ADT",
+                                                "Amount": {
+                                                    "CurrencyCode": {
+                                                        "decimalPlace": 0,
+                                                        "value": "HKD"
+                                                    },
+                                                    "Base": 470,
+                                                    "Taxes": {
+                                                        "@type": "TaxesDetail",
+                                                        "TotalTaxes": 148,
+                                                        "Tax": [
+                                                            {
+                                                                "taxCode": "AY",
+                                                                "value": 44
+                                                            },
+                                                            {
+                                                                "taxCode": "US",
+                                                                "value": 35
+                                                            },
+                                                            {
+                                                                "taxCode": "XF",
+                                                                "value": 35
+                                                            },
+                                                            {
+                                                                "taxCode": "ZP",
+                                                                "value": 34
+                                                            }
+                                                        ]
+                                                    },
+                                                    "Fees": {
+                                                        "@type": "FeesDetail",
+                                                        "TotalFees": 0
+                                                    },
+                                                    "Total": 618
+                                                }
                                             }
                                         ]
-                                        },
-                                        "Fees": {
-                                        "@type": "FeesDetail",
-                                        "TotalFees": 0
-                                        },
-                                        "Total": 618
-                                    }
-                                    }
-                                ]
-                                },
-                                "Brand": {
-                                "@type": "Brand",
-                                "BrandRef": "b0"
-                                },
-                                "Product": [
-                                {
-                                    "@type": "Product",
-                                    "productRef": "p0"
-                                }
-                                ],
-                                "TermsAndConditions": {
-                                "@type": "TermsAndConditionsAir",
-                                "termsAndConditionsRef": "T0"
-                                },
-                                "CombinabilityCode": [
-                                "j1"
-                                ],
-                                "BestCombinablePrice": {
-                                "@type": "BestCombinablePriceDetail",
-                                "CurrencyCode": {
-                                    "decimalPlace": 0,
-                                    "value": "HKD"
-                                },
-                                "Base": 930,
-                                "TotalTaxes": 296,
-                                "TotalPrice": 1226,
-                                "PriceBreakdown": [
-                                    {
-                                    "@type": "PriceBreakdownAir",
-                                    "quantity": 1,
-                                    "requestedPassengerType": "ADT",
-                                    "Amount": {
+                                    },
+                                    "Brand": {
+                                        "@type": "Brand",
+                                        "BrandRef": "b0"
+                                    },
+                                    "Product": [
+                                        {
+                                            "@type": "Product",
+                                            "productRef": "p0"
+                                        }
+                                    ],
+                                    "TermsAndConditions": {
+                                        "@type": "TermsAndConditionsAir",
+                                        "termsAndConditionsRef": "T0"
+                                    },
+                                    "CombinabilityCode": [
+                                        "j1"
+                                    ],
+                                    "BestCombinablePrice": {
+                                        "@type": "BestCombinablePriceDetail",
                                         "CurrencyCode": {
-                                        "decimalPlace": 0,
-                                        "value": "HKD"
+                                            "decimalPlace": 0,
+                                            "value": "HKD"
                                         },
                                         "Base": 930,
-                                        "Taxes": {
-                                        "@type": "TaxesDetail",
                                         "TotalTaxes": 296,
-                                        "Tax": [
+                                        "TotalPrice": 1226,
+                                        "PriceBreakdown": [
                                             {
-                                            "taxCode": "AY",
-                                            "value": 88
-                                            },
-                                            {
-                                            "taxCode": "US",
-                                            "value": 70
-                                            },
-                                            {
-                                            "taxCode": "XF",
-                                            "value": 70
-                                            },
-                                            {
-                                            "taxCode": "ZP",
-                                            "value": 68
+                                                "@type": "PriceBreakdownAir",
+                                                "quantity": 1,
+                                                "requestedPassengerType": "ADT",
+                                                "Amount": {
+                                                    "CurrencyCode": {
+                                                        "decimalPlace": 0,
+                                                        "value": "HKD"
+                                                    },
+                                                    "Base": 930,
+                                                    "Taxes": {
+                                                        "@type": "TaxesDetail",
+                                                        "TotalTaxes": 296,
+                                                        "Tax": [
+                                                            {
+                                                                "taxCode": "AY",
+                                                                "value": 88
+                                                            },
+                                                            {
+                                                                "taxCode": "US",
+                                                                "value": 70
+                                                            },
+                                                            {
+                                                                "taxCode": "XF",
+                                                                "value": 70
+                                                            },
+                                                            {
+                                                                "taxCode": "ZP",
+                                                                "value": 68
+                                                            }
+                                                        ]
+                                                    },
+                                                    "Total": 1226
+                                                }
                                             }
                                         ]
-                                        },
-                                        "Total": 1226
                                     }
-                                    }
-                                ]
                                 }
-                            }
                             ]
                         },
                         {

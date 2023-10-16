@@ -1,91 +1,45 @@
 {
-    "data": [
-        {
-            "CatalogProductOfferingsQueryRequest": {
-                "@type": "CatalogProductOfferingsQueryRequest",
-                "CatalogProductOfferingsRequest": {
-                    "@type": "CatalogProductOfferingsRequestAir",
-                    "contentSourceList": [
-                        "GDS",
-                        "NDC"
-                    ],
-                    "PassengerCriteria": [
-                        {
-                            "@type": "PassengerCriteria",
-                            "number": 1,
-                            "passengerTypeCode": "ADT"
-                        }
-                    ],
-                    "SearchCriteriaFlight": [
-                        {
-                            "@type": "SearchCriteriaFlight",
-                            "departureDate": "2023-01-18",
-                            "From": {
-                                "value": "ORD"
-                            },
-                            "To": {
-                                "value": "DEN"
-                            }
-                        }
-                    ],
-                    "CustomResponseModifiersAir": {
-                        "@type": "CustomResponseModifiersAir",
-                        "SearchRepresentation": "Journey",
-                        "includeFareCalculationInd": true
+    "CatalogProductOfferingsQueryRequest": {
+        "@type": "CatalogProductOfferingsQueryRequest",
+        "CatalogProductOfferingsRequest": {
+            "@type": "CatalogProductOfferingsRequestAir",
+            "contentSourceList": [
+                "GDS",
+                "NDC"
+            ],
+            "PassengerCriteria": [
+                {
+                    "@type": "PassengerCriteria",
+                    "number": 1,
+                    "passengerTypeCode": "ADT"
+                }
+            ],
+            "SearchCriteriaFlight": [
+                {
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2023-01-18",
+                    "From": {
+                        "value": "ORD"
                     },
-                    "SearchModifiersAir": {
-                        "CabinPreference": [
-                            {
-                                "@type": "CabinPreference",
-                                "preferenceType": "Preferred",
-                                "cabins": ["Economy"]
-                            }
-                        ]
+                    "To": {
+                        "value": "DEN"
+                    }
+                },
+                {
+                    "@type": "SearchCriteriaFlight",
+                    "departureDate": "2023-01-29",
+                    "From": {
+                        "value": "DEN"
+                    },
+                    "To": {
+                        "value": "ORD"
                     }
                 }
-            }
-        },
-        {
-            "CatalogProductOfferingsQueryRequest": {
-                "@type": "CatalogProductOfferingsQueryRequest", 
-                "CatalogProductOfferingsRequest": {
-                    "@type": "CatalogProductOfferingsRequestAir", 
-                    "contentSourceList": ["GDS", "NDC"], 
-                    "PassengerCriteria": [
-                        {
-                            "@type": "PassengerCriteria", 
-                            "number": 1, 
-                            "passengerTypeCode": "ADT"
-                        }
-                    ], 
-                    "SearchCriteriaFlight": [
-                        {
-                            "@type": "SearchCriteriaFlight", 
-                            "departureDate": "2023-10-15", 
-                            "From": {
-                                "value": "MOW"
-                            }, 
-                            "To": {
-                                "value": "TAS"
-                            }
-                        }
-                    ], 
-                    "CustomResponseModifiersAir": {
-                        "@type": "CustomResponseModifiersAir", 
-                        "SearchRepresentation": "Journey", 
-                        "includeFareCalculationInd": true
-                    }, 
-                    "SearchModifiersAir": {
-                        "CabinPreference": [
-                            {
-                                "@type": "CabinPreference", 
-                                "preferenceType": "Preferred", 
-                                "cabins": ["Economy"]
-                            }
-                        ]
-                    }
-                }
+            ],
+            "CustomResponseModifiersAir": {
+                "@type": "CustomResponseModifiersAir",
+                "SearchRepresentation": "Journey"
             }
         }
-    ]
+    }
 }

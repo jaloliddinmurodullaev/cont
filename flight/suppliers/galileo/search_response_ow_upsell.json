@@ -1,0 +1,337 @@
+{
+    "CatalogProductOfferingsResponse": {
+        "transactionId": "0a95280d-8248-4bb1-8d88-92d3a69ac548:ppnd1001",
+        "traceId": "0a95280d-8248-4bb1-8d88-92d3a69ac548",
+        "CatalogProductOfferings": {
+            "@type": "CatalogProductOfferings",
+            "Identifier": {
+                "value": "dbbf8d3e-4a90-4ab1-bdbf-5e89e937cd2b"
+            },
+            "CatalogProductOffering": [
+                {
+                    "@type": "CatalogProductOffering",
+                    "sequence": 1,
+                    "id": "QF_CPO0",
+                    "Identifier": {
+                    "authority": "QF",
+                    "value": "WERDMDEwRTA5LTU0LTRENTMtQjkxRXxRRl9DUE8w"
+                    },
+                    "Departure": "MEL",
+                    "Arrival": "SYD",
+                    "Brand": [
+                        {
+                            "@type": "Brand",
+                            "BrandRef": "QFb0"
+                        },
+                        {
+                            "@type": "Brand",
+                            "BrandRef": "QFb1"
+                        },
+                        {
+                            "@type": "Brand",
+                            "BrandRef": "QFb2"
+                        },
+                        {
+                            "@type": "Brand",
+                            "BrandRef": "QFb3"
+                        }
+                    ],
+                    "ProductBrandOptions": [
+                        {
+                            "ProductBrandOffering": [
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Identifier": {
+                                        "authority": "QF",
+                                        "value": "WERDMDEwRTA5LTU0LTRENTMtQjkxRTEtMXxYREMwMTBFMDktNTQtNEQ1My1COTFFfDIwMjEtMDctMzBUMjM6MTc6MTV8QURUOlhEQzAxMEUwOS01NC00RDUzLUI5MUUxLTEtMXxRRg=="
+                                    },
+                                    "Price": {
+                                        "@type": "PriceDetail",
+                                        "CurrencyCode": {
+                                            "decimalPlace": 2,
+                                            "value": "HKD"
+                                        },
+                                        "Base": 1200,
+                                        "TotalTaxes": 183,
+                                        "TotalFees": 0,
+                                        "TotalPrice": 1383,
+                                        "PriceBreakdown": [
+                                            {
+                                                "@type": "PriceBreakdownAir",
+                                                "quantity": 1,
+                                                "requestedPassengerType": "ADT",
+                                                "Amount": {
+                                                    "CurrencyCode": {
+                                                        "decimalPlace": 2,
+                                                        "value": "HKD"
+                                                    },
+                                                    "Base": 1200,
+                                                    "Taxes": {
+                                                        "@type": "TaxesDetail",
+                                                        "TotalTaxes": 183,
+                                                        "Tax": [
+                                                            {
+                                                                "taxCode": "YR",
+                                                                "description": "YRI QF CARRIER IMPOSED MISC FEE",
+                                                                "value": 100
+                                                            },
+                                                            {
+                                                                "taxCode": "QR",
+                                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                                                                "value": 28
+                                                            },
+                                                            {
+                                                                "taxCode": "QR",
+                                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                                                                "value": 55
+                                                            }
+                                                        ]
+                                                    },
+                                                    "Fees": {
+                                                        "@type": "FeesDetail",
+                                                        "TotalFees": 0
+                                                    },
+                                                    "Total": 1383
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Brand": {
+                                        "@type": "Brand",
+                                        "BrandRef": "QFb0"
+                                    },
+                                    "Product": [
+                                        {
+                                            "@type": "ProductAir",
+                                            "productRef": "QFp0"
+                                        }
+                                    ],
+                                    "TermsAndConditions": {
+                                        "@type": "TermsAndConditionsAir",
+                                        "termsAndConditionsRef": "QFt0"
+                                    }
+                                },
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Identifier": {
+                                    "authority": "QF",
+                                    "value": "WERDMDEwRTA5LTU0LTRENTMtQjkxRTEtMnxYREMwMTBFMDktNTQtNEQ1My1COTFFfDIwMjEtMDctMzBUMjM6MTc6MTV8QURUOlhEQzAxMEUwOS01NC00RDUzLUI5MUUxLTItMXxRRg=="
+                                    },
+                                    "Price": {
+                                    "@type": "PriceDetail",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "HKD"
+                                    },
+                                    "Base": 3310,
+                                    "TotalTaxes": 183,
+                                    "TotalFees": 0,
+                                    "TotalPrice": 3493,
+                                    "PriceBreakdown": [
+                                        {
+                                        "@type": "PriceBreakdownAir",
+                                        "quantity": 1,
+                                        "requestedPassengerType": "ADT",
+                                        "Amount": {
+                                            "CurrencyCode": {
+                                            "decimalPlace": 2,
+                                            "value": "HKD"
+                                            },
+                                            "Base": 3310,
+                                            "Taxes": {
+                                            "@type": "TaxesDetail",
+                                            "TotalTaxes": 183,
+                                            "Tax": [
+                                                {
+                                                "taxCode": "YR",
+                                                "description": "YRI QF CARRIER IMPOSED MISC FEE",
+                                                "value": 100
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                                                "value": 28
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                                                "value": 55
+                                                }
+                                            ]
+                                            },
+                                            "Fees": {
+                                            "@type": "FeesDetail",
+                                            "TotalFees": 0
+                                            },
+                                            "Total": 3493
+                                        }
+                                        }
+                                    ]
+                                    },
+                                    "Brand": {
+                                    "@type": "Brand",
+                                    "BrandRef": "QFb1"
+                                    },
+                                    "Product": [
+                                    {
+                                        "@type": "ProductAir",
+                                        "productRef": "QFp1"
+                                    }
+                                    ],
+                                    "TermsAndConditions": {
+                                    "@type": "TermsAndConditionsAir",
+                                    "termsAndConditionsRef": "QFt0"
+                                    }
+                                },
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Identifier": {
+                                    "authority": "QF",
+                                    "value": "WERDMDEwRTA5LTU0LTRENTMtQjkxRTEtM3xYREMwMTBFMDktNTQtNEQ1My1COTFFfDIwMjEtMDctMzBUMjM6MTc6MTV8QURUOlhEQzAxMEUwOS01NC00RDUzLUI5MUUxLTMtMXxRRg=="
+                                    },
+                                    "Price": {
+                                    "@type": "PriceDetail",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "HKD"
+                                    },
+                                    "Base": 5210,
+                                    "TotalTaxes": 183,
+                                    "TotalFees": 0,
+                                    "TotalPrice": 5393,
+                                    "PriceBreakdown": [
+                                        {
+                                        "@type": "PriceBreakdownAir",
+                                        "quantity": 1,
+                                        "requestedPassengerType": "ADT",
+                                        "Amount": {
+                                            "CurrencyCode": {
+                                            "decimalPlace": 2,
+                                            "value": "HKD"
+                                            },
+                                            "Base": 5210,
+                                            "Taxes": {
+                                            "@type": "TaxesDetail",
+                                            "TotalTaxes": 183,
+                                            "Tax": [
+                                                {
+                                                "taxCode": "YR",
+                                                "description": "YRI QF CARRIER IMPOSED MISC FEE",
+                                                "value": 100
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                                                "value": 28
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                                                "value": 55
+                                                }
+                                            ]
+                                            },
+                                            "Fees": {
+                                            "@type": "FeesDetail",
+                                            "TotalFees": 0
+                                            },
+                                            "Total": 5393
+                                        }
+                                        }
+                                    ]
+                                    },
+                                    "Brand": {
+                                    "@type": "Brand",
+                                    "BrandRef": "QFb2"
+                                    },
+                                    "Product": [
+                                    {
+                                        "@type": "ProductAir",
+                                        "productRef": "QFp2"
+                                    }
+                                    ],
+                                    "TermsAndConditions": {
+                                    "@type": "TermsAndConditionsAir",
+                                    "termsAndConditionsRef": "QFt0"
+                                    }
+                                },
+                                {
+                                    "@type": "ProductBrandOffering",
+                                    "Identifier": {
+                                    "authority": "QF",
+                                    "value": "WERDMDEwRTA5LTU0LTRENTMtQjkxRTEtNHxYREMwMTBFMDktNTQtNEQ1My1COTFFfDIwMjEtMDctMzBUMjM6MTc6MTV8QURUOlhEQzAxMEUwOS01NC00RDUzLUI5MUUxLTQtMXxRRg=="
+                                    },
+                                    "Price": {
+                                    "@type": "PriceDetail",
+                                    "CurrencyCode": {
+                                        "decimalPlace": 2,
+                                        "value": "HKD"
+                                    },
+                                    "Base": 6490,
+                                    "TotalTaxes": 183,
+                                    "TotalFees": 0,
+                                    "TotalPrice": 6673,
+                                    "PriceBreakdown": [
+                                        {
+                                        "@type": "PriceBreakdownAir",
+                                        "quantity": 1,
+                                        "requestedPassengerType": "ADT",
+                                        "Amount": {
+                                            "CurrencyCode": {
+                                            "decimalPlace": 2,
+                                            "value": "HKD"
+                                            },
+                                            "Base": 6490,
+                                            "Taxes": {
+                                            "@type": "TaxesDetail",
+                                            "TotalTaxes": 183,
+                                            "Tax": [
+                                                {
+                                                "taxCode": "YR",
+                                                "description": "YRI QF CARRIER IMPOSED MISC FEE",
+                                                "value": 100
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                                                "value": 28
+                                                },
+                                                {
+                                                "taxCode": "QR",
+                                                "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                                                "value": 55
+                                                }
+                                            ]
+                                            },
+                                            "Fees": {
+                                            "@type": "FeesDetail",
+                                            "TotalFees": 0
+                                            },
+                                            "Total": 6673
+                                        }
+                                        }
+                                    ]
+                                    },
+                                    "Brand": {
+                                    "@type": "Brand",
+                                    "BrandRef": "QFb3"
+                                    },
+                                    "Product": [
+                                    {
+                                        "@type": "ProductAir",
+                                        "productRef": "QFp3"
+                                    }
+                                    ],
+                                    "TermsAndConditions": {
+                                    "@type": "TermsAndConditionsAir",
+                                    "termsAndConditionsRef": "QFt0"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

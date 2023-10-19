@@ -137,7 +137,7 @@ async def check_status(request_id):
     return ans
 
 async def set_provider_response_to_cache(data, provider_id, offer, request_id):
-    # here all rules should be applied
+    # here is where all rules should be applied
     ''' A function that saves provider search response in cache for 3 minutes '''
 
     directions = ""

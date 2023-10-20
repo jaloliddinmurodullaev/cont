@@ -1,0 +1,155 @@
+{
+    "offers": [
+        {
+            "offer_id": "",
+            "price_info": {
+                "price": 420.51,
+                "fee_amount": 0,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "base_amount": 339.26,
+                    "tax_amount": 81.25,
+                    "tax_details": [
+                        {
+                            "code": "QR",
+                            "total": 30.02,
+                            "currency": "AUD",
+                            "description": ""
+                        },
+                        {
+                            "code": "WG",
+                            "total": 13,
+                            "currency": "AUD",
+                            "description": ""
+                        },
+                        {
+                            "code": "UO",
+                            "total": 38.23,
+                            "currency": "AUD",
+                            "description": ""
+                        }
+                    ],
+                    "fee_amount": 0,
+                    "commission_amount": 0,
+                    "total_amount": 420.51,
+                    "payable_amount": 420.51
+                }
+            ],
+            "baggages_info": [],
+            "fares_info": [],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "SYD-MEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "SYD-MEL",
+                            "carrier_code": "QF",
+                            "carrier_name": "Qantas Airways",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                            "flight_number": "401",
+                            "departure_airport": "SYD",
+                            "departure_date": "2022-05-26",
+                            "departure_time": "06:00:00",
+                            "departure_timezone": "",
+                            "arrival_airport": "MEL",
+                            "arrival_date": "2022-05-26",
+                            "arrival_time": "07:35:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 95,
+                            "seatmap_availability": null,
+                            "services_availability": null,
+                            "flights_info": {
+                                "airplane_info": {
+                                    "airplane_code": "SYD",
+                                    "airplane_name": "SYD",
+                                    "seat_distance": "",
+                                    "seat_width": "",
+                                    "seat_angle": "",
+                                    "has_wifi": null
+                                },
+                                "departure_country": "SYD",
+                                "departure_city": "SYD",
+                                "departure_city_code": "SYD",
+                                "departure_terminal": "",
+                                "arrival_country": "MEL",
+                                "arrival_city": "MEL",
+                                "arrival_city_code": "MEL",
+                                "arrival_terminal": "",
+                                "stop_time_minutes": 0,
+                                "marketing_airline_code": "QF",
+                                "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                                "marketing_airline_name": "Qantas Airways",
+                                "operating_airline_code": "QF",
+                                "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                                "operating_airline_name": "Qantas Airways"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "MEL-SYD",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 2,
+                            "leg": "MEL-SYD",
+                            "carrier_code": "QF",
+                            "carrier_name": "Qantas Airways",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                            "flight_number": "406",
+                            "departure_airport": "MEL",
+                            "departure_date": "2022-06-02",
+                            "departure_time": "06:30:00",
+                            "departure_timezone": "",
+                            "arrival_airport": "SYD",
+                            "arrival_date": "2022-06-02",
+                            "arrival_time": "07:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 85,
+                            "seatmap_availability": null,
+                            "services_availability": null,
+                            "flights_info": {
+                                "airplane_info": {
+                                    "airplane_code": "MEL",
+                                    "airplane_name": "MEL",
+                                    "seat_distance": "",
+                                    "seat_width": "",
+                                    "seat_angle": "",
+                                    "has_wifi": null
+                                },
+                                "departure_country": "MEL",
+                                "departure_city": "MEL",
+                                "departure_city_code": "MEL",
+                                "departure_terminal": "",
+                                "arrival_country": "SYD",
+                                "arrival_city": "SYD",
+                                "arrival_city_code": "SYD",
+                                "arrival_terminal": "",
+                                "stop_time_minutes": 0,
+                                "marketing_airline_code": "QF",
+                                "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                                "marketing_airline_name": "Qantas Airways",
+                                "operating_airline_code": "QF",
+                                "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/QF.svg",
+                                "operating_airline_name": "Qantas Airways"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "1233-12323-1122-12233334",
+                "name": "provider name is provided in request"
+            }
+        }
+    ]
+}

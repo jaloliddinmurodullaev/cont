@@ -1,0 +1,369 @@
+{
+    "request_id": "0242874150",
+    "status": "success",
+    "message": "",
+    "trip_type": "RT",
+    "sort_type": "airline",
+    "currency": "USD",
+    "next_token": null,
+    "offers": [
+        {
+            "offer_id": "4b739ef16ee7af525f7381b2ba7ce661",
+            "price_info": {
+                "price": 252.00,
+                "fee_amount": 1.02,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "base_amount": 91.13,
+                    "tax_amount": 32.25,
+                    "tax_details": [
+                        {
+                            "code": "YQ",
+                            "total": 1200,
+                            "currency": "RUB",
+                            "description": "Additional fee added to the base fare of an airline ticket"
+                        }
+                    ],
+                    "fee_amount": 1.04,
+                    "commission_amount": 0,
+                    "total_amount": 124.42,
+                    "payable_amount": 124.42
+                },
+                {
+                    "passenger_type": "CHD",
+                    "base_amount": 81.97,
+                    "tax_amount": 32.25,
+                    "tax_details": [
+                        {
+                            "code": "YQ",
+                            "total": 1200,
+                            "currency": "USD",
+                            "description": "Additional fee added to the base fare of an airline ticket"
+                        }
+                    ],
+                    "fee_amount": 1.04,
+                    "commission_amount": 0,
+                    "total_amount": 115.25999999999999,
+                    "payable_amount": 124.42
+                },
+                {
+                    "passenger_type": "INF",
+                    "base_amount": 12.36,
+                    "tax_amount": 0,
+                    "tax_details": [
+                        {
+                            "code": "YQ",
+                            "total": 1200,
+                            "currency": "USD",
+                            "description": "QQS"
+                        }
+                    ],
+                    "fee_amount": 1.04,
+                    "commission_amount": 0,
+                    "total_amount": 12.36,
+                    "payable_amount": 124.42
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "IST-ESB",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size":{
+                            "height": 129,
+                            "width": 236,
+                            "length": 112,
+                            "unit": "cm"
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size":{
+                            "height": 29,
+                            "width" : 23,
+                            "length": 17,
+                            "unit"  : "cm"
+                        }
+                    },
+                    "description": " "
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "IST-ESB",
+                    "passenger_type": "ADT",
+                    "seats": 12,
+                    "upsell": {
+                        "name": "Lite",
+                        "services": [
+                            {
+                                "status": true,
+                                "code": "AKN",
+                                "name": "Bonus meal"
+                            }
+                        ]
+                    },
+                    "fare_code": "QEF",
+                    "service_class": "economy",
+                    "booking_class": "L",
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                        
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "IST-ESB",
+                    "passenger_type": "CHD",
+                    "seats": 12,
+                    "upsell": {
+                        "name": "Lite",
+                        "services": [
+                            {
+                                "status": true,
+                                "code": "AKN",
+                                "name": "Bonus meal"
+                            }
+                        ]
+                    },
+                    "fare_code": "QEF/CHD11",
+                    "service_class": "economy",
+                    "booking_class": "L",
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                        
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "IST-ESB",
+                    "passenger_type": "INF",
+                    "seats": 12,
+                    "upsell": {
+                        "name": "Lite",
+                        "services": [
+                            {
+                                "status": true,
+                                "code": "AKN",
+                                "name": "Bonus meal"
+                            }
+                        ]
+                    },
+                    "fare_code": "QEF/INF02",
+                    "service_class": "economy",
+                    "booking_class": "L",
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                        
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "IST-ESB",
+                    "passenger_type": "INS",
+                    "seats": 12,
+                    "upsell": {
+                        "name": "Lite",
+                        "services": [
+                            {
+                                "status": true,
+                                "code": "AKN",
+                                "name": "Bonus meal"
+                            }
+                        ]
+                    },
+                    "fare_code": "QEF/INS91",
+                    "service_class": "economy",
+                    "booking_class": "L",
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                        
+                    },
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "IST-AYT",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "IST-ESB",
+                            "carrier_code": "TK",
+                            "carrier_name": "Turkish Airlines",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                            "flight_number": "2150",
+                            "departure_airport": "IST",
+                            "departure_date": "2023-04-04",
+                            "departure_time": "13:00:00",
+                            "departure_timezone": "GMT+5:00",
+                            "arrival_airport": "ESB",
+                            "arrival_date": "2023-04-04",
+                            "arrival_time": "14:05:00",
+                            "arrival_timezone": "GMT+5:00",
+                            "duration_minutes": 65,
+                            "seatmap_availability": true,
+                            "services_availability": true,
+                            "flights_info": {
+                                "airplane_info": {
+                                    "airplane_code": "78D",
+                                    "airplane_name": "78D BOEING B737-800",
+                                    "seat_distance": "70cm",
+                                    "seat_width": "43cm",
+                                    "seat_angle": "10cm",
+                                    "has_wifi": true
+                                },
+                                "departure_country": "Turkey",
+                                "departure_city": "Istanbul",
+                                "departure_city_code": "IST",
+                                "departure_terminal": "",
+                                "arrival_country": "Turkey",
+                                "arrival_city": "Ankara",
+                                "arrival_city_code": "ESB",
+                                "arrival_terminal": "",
+                                "stop_time_minutes": 150,
+                                "marketing_airline_code": "TK",
+                                "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                                "marketing_airline_name": "TK",
+                                "operating_airline_code": "TK",
+                                "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                                "operating_airline_name": "Turkish Airlines"
+                            }
+                        },
+                        {
+                            "dir_number": 2,
+                            "carrier_code": "AJ",
+                            "carrier_name": "AnadoluJet",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/AJ.svg",
+                            "flight_number": "7030",
+                            "departure_airport": "ESB",
+                            "departure_date": "04-04-2023",
+                            "departure_time": "04-04-2023 16:35:00",
+                            "arrival_airport": "AYT",
+                            "arrival_date": "04-04-2023",
+                            "arrival_time": "04-04-2023 17:40:00",
+                            "duration_minutes": 65,
+                            "gds": null,
+                            "discount_attention": 0,
+                            "seats": 10,
+                            "tariff": "QEF",
+                            "ff_name": "",
+                            "flights_info": {
+                                "airplane_code": "74D",
+                                "airplane_name": "74D UNKNOWN_PLANE",
+                                "departure_date": "04-04-2023",
+                                "departure_country": "Turkey",
+                                "departure_city": "Ankara",
+                                "departure_city_code": "ESB",
+                                "departure_airport": "ESB",
+                                "departure_terminal": "",
+                                "departure_local_time": "04-04-2023 16:35:00",
+                                "arrival_date": "04-04-2023",
+                                "arrival_country": "Turkey",
+                                "arrival_city": "Antalya",
+                                "arrival_city_code": "AYT",
+                                "arrival_airport": "AYT",
+                                "arrival_terminal": "",
+                                "arrival_local_time": "04-04-2023 17:40:00",
+                                "flight_number": "7030",
+                                "duration_minutes": 65,
+                                "stop_time_minutes": 0,
+                                "marketing_airline_code": "TK",
+                                "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                                "marketing_airline_name": "TK",
+                                "operating_airline_code": "AJ",
+                                "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AJ.svg",
+                                "operating_airline_name": "AnadoluJet",
+                                "service_class": "economy",
+                                "booking_class": "Q",
+                                "baggage": "15KG",
+                                "hand_baggage": null
+                            },
+                            "fare_messages": {
+                                "LTD": "",
+                                "PEN": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "segments": [
+                        {
+                            "dir_number": 1,
+                            "carrier_code": "TK",
+                            "carrier_name": "Turkish Airlines",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                            "flight_number": "2435",
+                            "departure_airport": "AYT",
+                            "departure_date": "05-04-2023",
+                            "departure_time": "05-04-2023 07:00:00",
+                            "arrival_airport": "IST",
+                            "arrival_date": "05-04-2023",
+                            "arrival_time": "05-04-2023 08:30:00",
+                            "duration_minutes": 90,
+                            "gds": null,
+                            "discount_attention": 0,
+                            "seats": 14,
+                            "tariff": "OEF",
+                            "ff_name": "",
+                            "flights_info": {
+                                "airplane_code": "R32",
+                                "airplane_name": "R32 UNKNOWN_PLANE",
+                                "departure_date": "05-04-2023",
+                                "departure_country": "Turkey",
+                                "departure_city": "Antalya",
+                                "departure_city_code": "AYT",
+                                "departure_airport": "AYT",
+                                "departure_terminal": "",
+                                "departure_local_time": "05-04-2023 07:00:00",
+                                "arrival_date": "05-04-2023",
+                                "arrival_country": "Turkey",
+                                "arrival_city": "Istanbul",
+                                "arrival_city_code": "IST",
+                                "arrival_airport": "IST",
+                                "arrival_terminal": "",
+                                "arrival_local_time": "05-04-2023 08:30:00",
+                                "flight_number": "2435",
+                                "duration_minutes": 90,
+                                "stop_time_minutes": 0,
+                                "marketing_airline_code": "TK",
+                                "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                                "marketing_airline_name": "TK",
+                                "operating_airline_code": "TK",
+                                "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                                "operating_airline_name": "Turkish Airlines",
+                                "service_class": "economy",
+                                "booking_class": "O",
+                                "baggage": "15KG",
+                                "hand_baggage": null
+                            },
+                            "fare_messages": {
+                                "LTD": "",
+                                "PEN": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "1233-12323-1122-12233334",
+                "name": "AerTicket"
+            }
+        }
+    ]
+}

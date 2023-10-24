@@ -14,5 +14,16 @@ PORT = os.environ.get('CACHE_PORT')
 
 redis_client = redis.Redis(host=HOST, port=PORT)
 
-async def search_converter(offers, guid, name, currency, route_count, request_id):
-    pass
+async def search_converter(offers, provider_uid, name, currency, route_count, request_id):
+    offer_id = str(uuid.uuid4())
+    ticket = offers
+    other = {
+        "ticket_id": "kkakkka",
+        "impportants": "nasmjaas"
+    }
+    obj = AdditionsTicket(
+        ticket=ticket,
+        offer_id=offer_id,
+        other=other
+    )
+    return obj

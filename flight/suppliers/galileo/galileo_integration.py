@@ -4,7 +4,10 @@ import aiohttp
 import json
 
 from flight.models import insert_data
+from flight.additions.additions import filter_tickets
 from flight.additions.cache_operations import set_status, set_provider_response_to_cache
+
+from .converters.search_converter import search_converter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -93,9 +96,10 @@ class GalileoIntegration:
             result = {
                 'status' : res['status'], 
                 'message': res['message'],
-                'data'   : (res['data'], provider_id, provider_name, currency, len(itinerary) == 1, request_id)
+                'data'   : asyncio.create_task(search_converter(res['data'], provider_id, provider_name, currency, len(itinerary), request_id))
             }
-
+            result['data'] = asyncio.create_task(filter_tickets(result['data']))
+            
             # inserting data to cache
             asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
 

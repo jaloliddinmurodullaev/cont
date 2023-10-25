@@ -7,10 +7,12 @@ import json
 import xmltodict
 from jinja2 import Environment, FileSystemLoader
 
-from .converter.search_converter import search_converter
+
 from flight.models import insert_data
 from flight.additions.cache_operations import set_status, set_provider_response_to_cache
+from flight.additions.integration import BaseIntegration
 from .endpoint import is_login_endpoint, request_template
+from .converter.search_converter import search_converter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -23,7 +25,7 @@ CABIN_TYPES = {
     'business': 'Business'
 }
 
-class MixvelIntegration:
+class MixvelIntegration(BaseIntegration):
 ########################################### DEFAULT ############################################
 
     def __init__(self, auth_data, data, verify_ssl=True):
@@ -117,6 +119,11 @@ class MixvelIntegration:
 
     async def search(self, system_id, provider_id, provider_name, request_id):
         data = await asyncio.create_task(self.search_request_maker())
+        # Alternative for above
+        # loop = asyncio.get_event_loop()
+        # data = loop.run_until_complete(self.search_request_maker())
+        # loop.close()
+        
         itinerary = data['itinerary']
         paxes     = data['paxes']
 
@@ -130,6 +137,10 @@ class MixvelIntegration:
 
         if res['status'] == 'success':
             asyncio.create_task(set_status(request_id=request_id))
+            # Alternative for above
+            # loop = asyncio.get_event_loop()
+            # loop.run_until_complete(set_status(request_id=request_id))
+            # loop.close()
             result = {
                 'status' : res['status'], 
                 'message': res['message'],
@@ -138,10 +149,19 @@ class MixvelIntegration:
 
             # inserting data to cache
             asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
+            # Alternative for above
+            # loop = asyncio.get_event_loop()
+            # loop.run_until_complete(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
+            # loop.close()
+
 
             # inserting data to a database for Business Intelligence
             asyncio.create_task(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))
-            
+            # Alternative for above
+            # loop = asyncio.get_event_loop()
+            # loop.run_until_complete(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))
+            # loop.close()
+
             return json.dumps(result)
         else:
             result = {
@@ -211,6 +231,16 @@ class MixvelIntegration:
     async def rules(self):
         pass
 
+########################################### SEATMAP ############################################
+
+    async def seatmap(self):
+        return await super().seatmap()
+    
+######################################### SEATASSIGN ###########################################
+
+    async def seatassign(self):
+        return await super().seatassign()
+    
 ########################################### BOOKING ############################################
 
     async def booking(self):

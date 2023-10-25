@@ -5,7 +5,9 @@ import json
 
 from flight.models import insert_data
 from flight.additions.additions import filter_tickets
-from flight.additions.cache_operations import set_status, set_provider_response_to_cache
+from flight.additions.cache_operations import set_status
+from flight.additions.cache_operations import set_provider_response_to_cache
+from flight.additions.integration import BaseIntegration
 
 from .converters.search_converter import search_converter
 
@@ -21,9 +23,9 @@ CABIN_TYPES = {
     'business': 'Business'
 }
 
-class GalileoIntegration:
+class GalileoIntegration(BaseIntegration):
 
-########################################### CONFIG ############################################
+########################################### CONFIG #############################################
 
     def __init__(self, auth_data, data):
         self.username      = auth_data.get('login', None)
@@ -58,7 +60,7 @@ class GalileoIntegration:
                 result = await response.json()
                 return [status_code, result]
 
-########################################### AUTH ##############################################
+########################################### AUTH ###############################################
 
     async def auth(self):
         context = {

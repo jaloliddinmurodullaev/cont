@@ -680,12 +680,13 @@ async def get_unique_offers(offers, journeyIdList):
 async def make_segment(data, fareCode, segmentClass, bookingClass, holdBaggage, carryOn):
     depAir = await getAirport(data['Dep']['IATA_LocationCode'])
     arrAir = await getAirport(data['Arrival']['IATA_LocationCode'])
+    oper_carr_info = data['OperatingCarrierInfo']['CarrierDesigCode'] if "OperatingCarrierInfo" in data else data['MarketingCarrierInfo']['CarrierDesigCode']
     segTmp = {
         "segment_index": 0,
         "leg": f"{data['Dep']['IATA_LocationCode']}-{data['Arrival']['IATA_LocationCode']}",
         "carrier_code": data['DatedOperatingLeg']['CarrierAircraftType']['CarrierAircraftTypeCode'],
-        "carrier_name": data['OperatingCarrierInfo']['CarrierDesigCode'],
-        "carrier_logo": 'https://b2b.easybooking.uz/images/airline/'+ data['OperatingCarrierInfo']['CarrierDesigCode'] + '.svg',
+        "carrier_name": oper_carr_info,
+        "carrier_logo": 'https://b2b.easybooking.uz/images/airline/'+ oper_carr_info + '.svg',
         "flight_number": data['OperatingCarrierInfo'].get('OperatingCarrierFlightNumberText', None),
         "departure_airport": data['Dep']['IATA_LocationCode'],
         "departure_date": await date_formater(data['Dep']['AircraftScheduledDateTime']),
@@ -701,7 +702,7 @@ async def make_segment(data, fareCode, segmentClass, bookingClass, holdBaggage, 
         "flights_info": {
             "airplane_info": {
                 "airplane_code": data['DatedOperatingLeg']['CarrierAircraftType']['CarrierAircraftTypeCode'],
-                "airplane_name": data['OperatingCarrierInfo']['CarrierDesigCode'],
+                "airplane_name": oper_carr_info,
                 "seat_distance": "",
                 "seat_width": "",
                 "seat_angle": "",
@@ -721,9 +722,9 @@ async def make_segment(data, fareCode, segmentClass, bookingClass, holdBaggage, 
             "marketing_airline_code": data['MarketingCarrierInfo']['CarrierDesigCode'],
             "marketing_airline_logo": 'https://b2b.easybooking.uz/images/airline/'+ data['MarketingCarrierInfo']['CarrierDesigCode'] +'.svg',
             "marketing_airline_name": data['MarketingCarrierInfo']['CarrierDesigCode'],
-            "operating_airline_code": data['OperatingCarrierInfo']['CarrierDesigCode'],
-            "operating_airline_logo": 'https://b2b.easybooking.uz/images/airline/'+ data['OperatingCarrierInfo']['CarrierDesigCode'] +'.svg',
-            "operating_airline_name": data['OperatingCarrierInfo']['CarrierDesigCode'],
+            "operating_airline_code": oper_carr_info,
+            "operating_airline_logo": 'https://b2b.easybooking.uz/images/airline/'+ oper_carr_info +'.svg',
+            "operating_airline_name": oper_carr_info,
         }
     }
     return segTmp

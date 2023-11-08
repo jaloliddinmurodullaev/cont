@@ -1,0 +1,25 @@
+Request:
+
+{
+    "Auth": {
+      "Key": "588576c3b0aeceeeb2912c6ab433240e"
+    },
+    "Method": "void",
+    "RecordNumber": "VJ4UXQ",
+    "TicketNumbers": [
+      "250-2106367412",
+      "250-2106367411"
+    ]
+}
+
+Reponse 1:
+{
+    "status": "success",
+    "message": "TICKET(s) REMOVED"
+}
+
+Response 2:
+{
+    "status": "success",
+    "message": "TICKET(s) REMOVED"
+}

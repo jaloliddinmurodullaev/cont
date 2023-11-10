@@ -6,7 +6,7 @@ services:
     build:
       context: .
     ports:
-      - 80:8000
+      - 8085:8000
     command:
       sh -c "python run.py migrate && python run.py runserver"
     depends_on:

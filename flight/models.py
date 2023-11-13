@@ -15,6 +15,7 @@ PASS = os.environ.get('DB_PASS')
 DEFAULT_DB_NAME = os.environ.get('DEFAULT_DB_NAME')
 
 def create_database(db_name=DEFAULT_DB_NAME):
+    print(db_name)
     conn = psycopg2.connect(
         host     = HOST,
         port     = PORT,
@@ -63,14 +64,57 @@ def create_database(db_name=DEFAULT_DB_NAME):
             )
         '''
 
+        create_table_query_integrations = f'''
+            CREATE TABLE IF NOT EXISTS integrations (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(255),
+                integration_class VARCHAR(255),
+                system_id UUID NOT NULL UNIQUE
+            )
+        '''
+
+        create_table_query_admins = f'''
+            CREATE TABLE IF NOT EXISTS admins (
+                id SERIAL PRIMARY KEY,
+                username VARCHAR(255) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL
+            )
+        '''
+
         cursor_s.execute(create_table_query_offers)
         cursor_s.execute(create_table_query_systems)
+        cursor_s.execute(create_table_query_integrations)
+        cursor_s.execute(create_table_query_admins)
 
         cursor_s.close()
         conn_s.close()
 
     cursor.close()
     conn.close()
+
+def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
+    conn = psycopg2.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+    
+    conn.autocommit = True
+    cursor = conn.cursor()
+
+    try:
+        insert_query = "INSERT INTO admins (username, password) VALUES ($1, $2)"
+        cursor.execute(insert_query, username, password)
+    except Exception as e:
+        print(e)
+
+    cursor.close()
+    conn.close()
+
+def change_admin_username_and_password(username, password, db_name=DEFAULT_DB_NAME):
+    pass # yet to update
 
 async def insert_data(system_id, provider_id, provider_name, offers, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
@@ -131,6 +175,35 @@ async def get_system_name(system_id, db_name=DEFAULT_DB_NAME):
     await conn.close()
     
     return system_name if system_name else None
+
+def login(username, password, db_name=DEFAULT_DB_NAME):
+    conn = psycopg2.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+    
+    conn.autocommit = True
+    cursor = conn.cursor()
+    response = {
+        'status': 'success',
+        'message': 'username and password are correct'
+    }
+
+    try:
+        select_query = f"SELECT username, password FROM admins WHERE username = $1 and password = $2"
+        cursor.execute(select_query, username, password)
+    except Exception as e:
+        response['status'] = 'error',
+        response['message'] = 'username and password are not correct'
+        print(e)
+
+    cursor.close()
+    conn.close()
+
+    return response
 
 
 

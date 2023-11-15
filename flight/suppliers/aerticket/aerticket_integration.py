@@ -11,38 +11,41 @@ from flight.additions.integration import BaseIntegration
 
 from .converters.search_converter import search_converter
 
-GATEWAY = os.environ.get('TRAVELPORT_TEST_GATEWAY')
-AUTH_GATEWAY = os.environ.get('TRAVELPORT_TEST_AUTH_GATEWAY')
+GATEWAY = os.environ.get('AerTicket_Base_URL')
 
 TTL = 3 * 60
 
 CABIN_TYPES = {
-    'economy' : 'Economy',
-    'business': 'Business'
+    'economy' : 'ECONOMY',
+    'business': 'BUSINESS'
 }
 
 class AerticketIntegration(BaseIntegration):
+
+#################################### INIT ######################################
+
     def __init__(self, auth_data, data):
-        self.username      = auth_data.get('login', None)
-        self.password      = auth_data.get('password', None)
-        self.client_id     = auth_data.get('client_id', None)
-        self.client_secret = auth_data.get('client_secret', None)
-        self.token         = ""
+        self.loginkey      = auth_data.get('loginKey', None)
+        self.passwordkey   = auth_data.get('passwordKey', None)
         self.gateway       = GATEWAY
-        self.auth_gateway  = AUTH_GATEWAY
         self.data          = data
 
-    async def __request(self, endpoint, context, is_auth=False):
+    async def __request(self, endpoint, context, is_auth=True):
         response = {}
-
+        header = {
+            'login'   : self.loginkey,
+            'password': self.passwordkey
+        }
         if is_auth:
-            res = self.__send(self.auth_gateway, None, context)
+            res = await self.__send(self.gateway + endpoint, header, context)
             if res[0] in [200, 201]:
-                response['status'] = 'success'
-                response['data']   = res[1]
+                response['status']  = 'success'
+                response['message'] = 'could not get response from supplier'
+                response['data']    = res[1]
             else:
-                response['status'] = 'error'
-                response['data']   = res[1]
+                response['status']  = 'error'
+                response['message'] = 'could not get response from supplier'
+                response['data']    = res[1]
         else:
             pass
 
@@ -55,41 +58,30 @@ class AerticketIntegration(BaseIntegration):
                 result = await response.json()
                 return [status_code, result]
             
-    async def auth(self):
-        context = {
-            "username": self.username,
-            "password": self.password,
-            "client_id": self.client_id,
-            "client_secret": self.client_secret
-        }
-        res = await asyncio.create_task(self.__request(endpoint="", context=context, is_auth=True))
-
-        token = None
-        if res['status'] == 'success' and 'Token' in res['data']['Body']['AppData']['Auth:AuthResponse']:
-            token = res['data']['Body']['AppData']['Auth:AuthResponse']['Token']
-            self.token = token
-        return token
+#################################### SEARCH ######################################
     
     async def search(self, system_id, provider_id, provider_name, request_id):
-        # data = await asyncio.create_task(self.search_request_maker())
+        data = await asyncio.create_task(self.search_request_maker())
 
         currency = {
-            'curFrom': 'UZS',
+            'curFrom': 'EUR',
             'curTo'  : 'USD'
         }
 
-        res = json.load(open('/home/jalol/Code/responses/ow_adt1.json'))
+        context = json.dumps(data)
 
-        print(res)
+        res = await asyncio.create_task(self.__request("/api/v1/search", context))
+
+        # res = json.load(open('/home/jalol/Code/responses/ow_adt1.json'))
 
         if res['status'] == 'success':
             asyncio.create_task(set_status(request_id=request_id))
             result = {
-                'status' : res['status'], 
+                'status' : res['status'],
                 'message': res['message'],
-                'data'   : asyncio.create_task(search_converter(res, provider_id, provider_name, currency, 1, request_id))
+                'data'   : await search_converter(res, provider_id, provider_name, currency, len(data['segmentList']), request_id)
             }
-            result['data'] = asyncio.create_task(filter_tickets(result['data']))
+            result['data'] = await filter_tickets(result['data'])
             
             # inserting data to cache
             asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
@@ -97,7 +89,7 @@ class AerticketIntegration(BaseIntegration):
             # inserting data to a database for Business Intelligence
             asyncio.create_task(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))
             
-            return json.dumps(result)
+            return result
         else:
             result = {
                 'status' : res['status'], 
@@ -112,73 +104,56 @@ class AerticketIntegration(BaseIntegration):
         paxes = []
 
         for dir in data['directions']:
+            dep_date = dir['departure_date'].split('-')
             directions.append(
                 {
-                    "@type": "SearchCriteriaFlight",
-                    "departureDate": dir['departure_date'],
-                    "From": {
-                        "value": dir['departure_airport'],
+                    "departure": {
+                        "iata": dir['departure'],
+                        "geoObjectType": "AIRPORT"
                     },
-                    "To": {
-                        "value": dir['arrival_airport']
+                    "destination": {
+                        "iata": dir['arrival'],
+                        "geoObjectType": "AIRPORT"
+                    },
+                    "departureDate": {
+                        "year": int(dep_date[0]),
+                        "month": int(dep_date[1]),
+                        "day": int(dep_date[2])
                     }
                 }
             )
         
         if data['adt'] > 0:
             paxes.append({
-                "@type": "PassengerCriteria",
-                "number": data['adt'],
-                "passengerTypeCode": "ADT"
+                "passengerTypeCode": "ADT",
+			    "count": data['adt']
             })
 
         if data['chd'] > 0:
             paxes.append({
-                "@type": "PassengerCriteria",
-                "number": data['chd'],
-                "passengerTypeCode": "CNN"
+                "passengerTypeCode": "CHD",
+			    "count": data['chd']
             })
 
         if data['inf'] > 0:
             paxes.append({
-                "@type": "PassengerCriteria",
-                "number": data['inf'],
-                "passengerTypeCode": "INF"
+                "passengerTypeCode": "INF",
+			    "count": data['inf']
             })
 
         if data['ins'] > 0:
             paxes.append({
-                "@type": "PassengerCriteria",
-                "number": data['ins'],
-                "passengerTypeCode": "INS"
+                "passengerTypeCode": "INS",
+			    "count": data['ins']
             })
         
         body = {
-            'CatalogProductOfferingsQueryRequest': {
-                "@type": "CatalogProductOfferingsQueryRequest",
-                "CatalogProductOfferingsRequest": {
-                    "@type": "CatalogProductOfferingsRequestAir",
-                    "contentSourceList": [
-                        "GDS",
-                        "NDC"
-                    ],
-                    "PassengerCriteria": paxes,
-                    "SearchCriteriaFlight": directions,
-                    "CustomResponseModifiersAir": {
-                        "@type": "CustomResponseModifiersAir",
-                        "SearchRepresentation": "Journey",
-                        "includeFareCalculationInd": True,
-                    },
-                    "SearchModifiersAir" : {
-                        "CabinPreference" : [ 
-                            {
-                                "@type" : "CabinPreference",
-                                "preferenceType": "Preferred",
-                                "cabins" : [CABIN_TYPES[data['class']]], 
-                            }
-                        ]
-                    }
-                }
+            "segmentList": directions,
+            "requestPassengerTypeList": paxes,
+            "searchOptions": {
+                "cabinClassList": [
+                    CABIN_TYPES[data['class']]
+                ]
             }
         }
         

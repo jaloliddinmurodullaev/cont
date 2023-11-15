@@ -1,5 +1,6 @@
 import random
 import asyncio
+import uuid
 
 from flight.additions.cache_operations import check_status
 from flight.additions.cache_operations import check_search_existance
@@ -20,16 +21,16 @@ class SearchCollector:
     ''' A class that routes search request according to provider id '''
 
     def __init__(self, data) -> None: # Constructor
-        self.request_id = "%0.10d" % random.randint(0, 2147483647)
+        self.request_id = str(uuid.uuid1())
         self.data = data
 
     async def collector(self): # Router
         trip_type = "RT" if len(self.data.get('directions')) == 2 else ("OW" if len(self.data.get('directions')) == 1 else "MC")
 
         result = {
-            "request_id": None,
+            "code": "100",
             "status": None,
-            "message": []
+            "request_id": None,
         }
 
         request_check = await asyncio.create_task(check_if_direction_was_searched(data=self.data, request_id=self.request_id))
@@ -40,11 +41,7 @@ class SearchCollector:
             for provider in self.data.get('providers'):
                 offers = await asyncio.create_task(check_search_existance(provider_id=provider['provider_id'], data=self.data, request_id=request_check['request_id']))
                 if offers:
-                    data = {
-                        'message': 'success',
-                        'data': 'found data'
-                    }
-                    result['message'].append(data)
+                    result['code'] = "404"
             
             return result
         
@@ -68,17 +65,7 @@ class SearchCollector:
                     }
                     providerList.append(data)
                 else:
-                    data = {
-                        'message': 'error',
-                        'data': 'Integration not found. system_id seems to be wrong!'
-                    }
-                    result['message'].append(data)
-            else:
-                data = {
-                    'message': 'success',
-                    'data': 'found data'
-                }
-                result['message'].append(data) 
+                    result['code'] = "404"
             
         try:
             await asyncio.gather(*[task['integration'].search(task['system_id'], task['provider_id'], task['provider_name'], self.request_id) for task in providerList])

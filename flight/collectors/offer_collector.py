@@ -14,7 +14,7 @@ class OfferCollector:
         result = {
             "request_id": None,
             "status": None,
-            "message": [],
+            "message": "",
             "trip_type": "",
             "sort_type": "",
             "currency": "USD",
@@ -34,19 +34,11 @@ class OfferCollector:
 
             offers = await asyncio.create_task(check_offers_existance(request_id=self.request_id))
             if offers: 
-                data = {
-                    'message': 'success',
-                    'data': 'found data'
-                }
                 result['offers'] = offers
-                result['message'].append(data) 
+                result['message'] = 'ok'
             else:
                 result['status'] = 'error'
-                data = {
-                    'message': 'error',
-                    'data': 'data not found!'
-                }
-                result['message'].append(data)            
+                result['message'] = 'not ok :('            
         else:
             result['status'] = 'error'
             data = {

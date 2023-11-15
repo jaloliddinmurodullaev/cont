@@ -1,0 +1,157 @@
+{
+    "request_id": "7d3d3e78-d2d2-40a6-abd8-91c34bf8cb0d",
+    "status": "success",
+    "message": "",
+    "sort_type": "price",
+    "currency": "USD",
+    "next_token": null,
+    "offers": [
+        {
+            "offer_id": "7d3d3e78-d2d2-40a6-abd8-91c34bf8cb0d",
+            "price_info": {
+                "price": 252.0,
+                "currency": "USD",
+                "fee_amount": 1.02,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "USD",
+                    "quantity": 2,
+                    "single_fare_amount": 126.0,
+                    "single_tax_amount": 126.0,
+                    "single_tax_details": [
+                        {
+                            "code": "YQ",
+                            "total": 1200,
+                            "currency": "RUB",
+                            "description": "Additional fee added to the base fare of an airline ticket"
+                        }
+                    ],
+                    "fee_amount": 0,
+                    "commission_amount": 0,
+                    "single_total_amount": 25612800,
+                    "base_total_amount": 26592000,
+                    "tax_total_amount": 24633600,
+                    "total_amount": 51225600,
+                    "payable_amount": 51225600
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "SVO-TAS",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": "cm"
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 10,
+                        "unit": "KG",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": "cm"
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "SVO-TAS",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECONOMY LITE",
+                        "services": [
+                            {
+                                "status": true,
+                                "code": "NB",
+                                "name": "ОТ 75 ДО 125 ПРЦН ЗАРАБОТ МИЛ (ME1)"
+                            },
+                            {
+                                "status": true,
+                                "code": "NB",
+                                "name": "CARRY10KG 22LBUPTO 55X40X25CM (0MJ)"
+                            },
+                            {
+                                "status": true,
+                                "code": "NB",
+                                "name": "ОСТАНОВКА (STO)"
+                            }
+                        ]
+                    },
+                    "fare_code": "RNO",
+                    "service_class": "Economy",
+                    "booking_class": "R",
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                    },
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 0,
+                    "direction": "SVO-TAS",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "leg": "IST-ESB",
+                            "departure_city": "Istanbul",
+                            "departure_date": "2023-04-04",
+                            "departure_time": "13:00:00",
+                            "departure_airport": "IST",
+                            "departure_country": "Turkey",
+                            "departure_terminal": "",
+                            "departure_timezone": "GMT+3:00",
+                            "arrival_city": "Ankara",
+                            "arrival_date": "2023-04-04",
+                            "arrival_time": "14:05:00",
+                            "arrival_airport": "ESB",
+                            "arrival_country": "Turkey",
+                            "arrival_terminal": "",
+                            "arrival_timezone": "GMT+3:00",
+                            "carrier_code": "TK",
+                            "carrier_name": "Turkish Airlines",
+                            "carrier_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                            "duration_minutes": 65,
+                            "stop_time_minutes": 150,
+                            "marketing_airline_code": "TK",
+                            "marketing_airline_name": "Turkish Airlines",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                            "operating_airline_code": "TK",
+                            "operating_airline_name": "Turkish Airlines",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
+                            "airplane_info": {
+                                "has_wifi": true,
+                                "airplane_code": "78D",
+                                "airplane_name": "78D BOEING B737-800",
+                                "seat_angle": "10cm",
+                                "seat_width": "43cm",
+                                "seat_distance": "70cm",
+                                "seat_scheme": "3-3"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "3a579708-c7dc-4ad6-9749-c5b84900ee15",
+                "name": "Shahzod Services"
+            }
+        }
+    ]
+}

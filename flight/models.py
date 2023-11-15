@@ -116,6 +116,35 @@ def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
 def change_admin_username_and_password(username, password, db_name=DEFAULT_DB_NAME):
     pass # yet to update
 
+def get_admin(username, password, db_name=DEFAULT_DB_NAME):
+    conn = psycopg2.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+    
+    conn.autocommit = True
+    cursor = conn.cursor()
+    response = {
+        'status': 'success',
+        'message': 'username and password are correct'
+    }
+
+    try:
+        select_query = f"SELECT username, password FROM admins WHERE username = $1 and password = $2"
+        cursor.execute(select_query, username, password)
+    except Exception as e:
+        response['status'] = 'error',
+        response['message'] = 'username and password are not correct'
+        print(e)
+
+    cursor.close()
+    conn.close()
+
+    return response
+
 async def insert_data(system_id, provider_id, provider_name, offers, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
         host     = HOST,
@@ -176,34 +205,6 @@ async def get_system_name(system_id, db_name=DEFAULT_DB_NAME):
     
     return system_name if system_name else None
 
-def login(username, password, db_name=DEFAULT_DB_NAME):
-    conn = psycopg2.connect(
-        host     = HOST,
-        port     = PORT,
-        user     = USER,
-        password = PASS,
-        database = db_name
-    )
-    
-    conn.autocommit = True
-    cursor = conn.cursor()
-    response = {
-        'status': 'success',
-        'message': 'username and password are correct'
-    }
-
-    try:
-        select_query = f"SELECT username, password FROM admins WHERE username = $1 and password = $2"
-        cursor.execute(select_query, username, password)
-    except Exception as e:
-        response['status'] = 'error',
-        response['message'] = 'username and password are not correct'
-        print(e)
-
-    cursor.close()
-    conn.close()
-
-    return response
 
 
 

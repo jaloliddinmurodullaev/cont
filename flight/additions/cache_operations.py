@@ -41,7 +41,7 @@ async def check_search_existance(data, provider_id, request_id): # Cache operati
         directions = ""
 
         for direction in data['directions']:
-            directions = directions + f"{direction['departure_airport']}{direction['arrival_airport']}_{direction['departure_date']}_"
+            directions = directions + f"{direction['departure']}{direction['arrival']}_{direction['departure_date']}_"
 
         key = f"{provider_id}_{directions}ADT{data.get('adt')}_CHD{data.get('chd')}_INF{data.get('inf')}_INS{data.get('ins')}_FLEX{data.get('flexible')}_{data.get('class')}_{request_id}"
         
@@ -76,7 +76,7 @@ async def set_search_data(data, request_id, trip_type, currency, sort_type): # C
 async def check_if_direction_was_searched(data, request_id): # Cache operation
         key = ""
         for direc in data['directions']:
-            key += f"{direc['departure_airport']}{direc['arrival_airport']}{direc['departure_date']}"
+            key += f"{direc['departure']}{direc['arrival']}{direc['departure_date']}"
         key += f"{data['adt']}{data['chd']}{data['inf']}{data['ins']}{data['class']}{data['flexible']}{data['direct']}"
         for provider in data['providers']:
             key += f"{provider['provider_id']}_{provider['system_id']}"
@@ -139,11 +139,10 @@ async def check_status(request_id):
 async def set_provider_response_to_cache(data, provider_id, offer, request_id):
     # here is where all rules should be applied
     ''' A function that saves provider search response in cache for 3 minutes '''
-
     directions = ""
 
     for direction in data['directions']:
-        directions = directions + f"{direction['departure_airport']}{direction['arrival_airport']}_{direction['departure_date']}_"
+        directions = directions + f"{direction['departure']}{direction['arrival']}_{direction['departure_date']}_"
 
     key = f"{provider_id}_{directions}ADT{data.get('adt')}_CHD{data.get('chd')}_INF{data.get('inf')}_INS{data.get('ins')}_FLEX{data.get('flexible')}_{data.get('class')}_{request_id}"
 

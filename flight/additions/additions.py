@@ -21,10 +21,10 @@ class Validator:
         are_dirs_correct = True
         if directions != None and isinstance(directions, list):
             for dir in directions:
-                if not dir.get('departure_airport', False):
+                if not dir.get('departure', False):
                     are_dirs_correct = False
                     break
-                if not dir.get('arrival_airport', False):
+                if not dir.get('arrival', False):
                     are_dirs_correct = False
                     break
                 if not dir.get('departure_date', False):
@@ -113,10 +113,13 @@ class AdditionsTicket:
         self.offer_id = offer_id
         self.other    = other
 
-async def filter_tickets(offers: AdditionsTicket) -> dict:
-    filtered_tickets = {
-        "ticket"   : offers.ticket,
-        "offer_id" : offers.offer_id,
-        "other"    : offers.other 
-    }
+async def filter_tickets(offers) -> dict:
+    filtered_tickets = []
+    for offer in offers:
+        filtered_ticket = {
+            "ticket"   : offer.ticket,
+            "offer_id" : offer.offer_id,
+            "other"    : offer.other 
+        }
+        filtered_tickets.append(offer.ticket)
     return filtered_tickets

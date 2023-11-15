@@ -1,406 +1,154 @@
 {
-    "OfferListResponse": {
-        "transactionId": "ab883deb-cbdd-40b0-ac91-6000ecdb5a32:p",
-        "OfferID": [
-            {
-                "@type": "Offer",
-                "id": "o0",
-                "Product": [
-                    {
-                        "@type": "ProductAir",
-                        "totalDuration": "PT1H35M",
-                        "id": "p0",
-                        "FlightSegment": [
-                            {
-                                "@type": "FlightSegment",
-                                "id": "s1",
-                                "sequence": 1,
-                                "Flight": {
-                                    "@type": "FlightDetail",
-                                    "distance": 456,
-                                    "duration": "PT1H35M",
-                                    "carrier": "QF",
-                                    "number": "401",
-                                    "operatingCarrier": "QF",
-                                    "operatingCarrierName": "Qantas Airways",
-                                    "equipment": "SYD",
-                                    "id": "f1",
-                                    "Departure": {
-                                        "@type": "Departure",
-                                        "location": "SYD",
-                                        "date": "2022-05-26",
-                                        "time": "06:00:00"
-                                    },
-                                    "Arrival": {
-                                        "@type": "Arrival",
-                                        "location": "MEL",
-                                        "date": "2022-05-26",
-                                        "time": "07:35:00"
-                                    },
-                                    "AvailabilitySourceCode": "S"
-                                }
-                            }
-                        ],
-                        "PassengerFlight": [
-                            {
-                                "@type": "PassengerFlight",
-                                "passengerQuantity": 1,
-                                "passengerTypeCode": "ADT",
-                                "FlightProduct": [
-                                    {
-                                        "@type": "FlightProduct",
-                                        "segmentSequence": [
-                                            1
-                                        ],
-                                        "classOfService": "Q",
-                                        "cabin": "Economy",
-                                        "fareBasisCode": "QDQW",
-                                        "fareType": "PublicFare",
-                                        "Brand": {
-                                            "@type": "Brand",
-                                            "BrandRef": "b1"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "@type": "ProductAir",
-                        "totalDuration": "PT1H25M",
-                        "id": "p1",
-                        "FlightSegment": [
-                            {
-                                "@type": "FlightSegment",
-                                "id": "s2",
-                                "sequence": 1,
-                                "Flight": {
-                                    "@type": "FlightDetail",
-                                    "distance": 456,
-                                    "duration": "PT1H25M",
-                                    "carrier": "QF",
-                                    "number": "406",
-                                    "operatingCarrier": "QF",
-                                    "operatingCarrierName": "Qantas Airways",
-                                    "equipment": "MEL",
-                                    "id": "f2",
-                                    "Departure": {
-                                        "@type": "Departure",
-                                        "location": "MEL",
-                                        "date": "2022-06-02",
-                                        "time": "06:30:00"
-                                    },
-                                    "Arrival": {
-                                        "@type": "Arrival",
-                                        "location": "SYD",
-                                        "date": "2022-06-02",
-                                        "time": "07:55:00"
-                                    },
-                                    "AvailabilitySourceCode": "S"
-                                }
-                            }
-                        ],
-                        "PassengerFlight": [
-                            {
-                                "@type": "PassengerFlight",
-                                "passengerQuantity": 1,
-                                "passengerTypeCode": "ADT",
-                                "FlightProduct": [
-                                    {
-                                        "@type": "FlightProduct",
-                                        "segmentSequence": [
-                                            1
-                                        ],
-                                        "classOfService": "Q",
-                                        "cabin": "Economy",
-                                        "fareBasisCode": "QDQW",
-                                        "fareType": "PublicFare",
-                                        "Brand": {
-                                            "@type": "Brand",
-                                            "BrandRef": "b1"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
+    "offer_id": "c4566bb8-f88d-4a28-a526-861a229c346f",
+    "price_info": {
+        "price": 1246.6,
+        "currency": "EUR",
+        "fee_amount": 16.5,
+        "commission_amount": 0
+    },
+    "upsell": true,
+    "booking": true,
+    "price_details": [
+        {
+            "passenger_type": "ADT",
+            "currency": "EUR",
+            "quantity": 1,
+            "single_fare_amount": 261.0,
+            "single_tax_amount": 351.12,
+            "single_tax_details": [],
+            "fee_amount": 5.5,
+            "commission_amount": 0,
+            "single_total_amount": 617.62,
+            "base_total_amount": 617.62,
+            "tax_total_amount": 351.12,
+            "total_amount": 617.62,
+            "payable_amount": 617.62
+        },
+        {
+            "passenger_type": "CHD",
+            "currency": "EUR",
+            "quantity": 1,
+            "single_fare_amount": 196.0,
+            "single_tax_amount": 351.12,
+            "single_tax_details": [],
+            "fee_amount": 5.5,
+            "commission_amount": 0,
+            "single_total_amount": 552.62,
+            "base_total_amount": 552.62,
+            "tax_total_amount": 351.12,
+            "total_amount": 552.62,
+            "payable_amount": 552.62
+        },
+        {
+            "passenger_type": "INF",
+            "currency": "EUR",
+            "quantity": 1,
+            "single_fare_amount": 26.0,
+            "single_tax_amount": 61.36,
+            "single_tax_details": [],
+            "fee_amount": 5.5,
+            "commission_amount": 0,
+            "single_total_amount": 92.86,
+            "base_total_amount": 92.86,
+            "tax_total_amount": 61.36,
+            "total_amount": 92.86,
+            "payable_amount": 92.86
+        }
+    ],
+    "baggages_info": [],
+    "fares_info": [],
+    "routes": [
+        {
+            "route_index": 1,
+            "direction": "FRA-EWR",
+            "stops": 0,
+            "segments": [
+                {
+                    "leg": "FRA-EWR",
+                    "departure_city": "FRA",
+                    "departure_date": "2023-12-21",
+                    "departure_time": "17:15:00",
+                    "departure_airport": "FRA",
+                    "departure_country": "FRA",
+                    "departure_terminal": "",
+                    "departure_timezone": "",
+                    "arrival_city": "EWR",
+                    "arrival_date": "2023-12-21",
+                    "arrival_time": "20:25:00",
+                    "arrival_airport": "EWR",
+                    "arrival_country": "EWR",
+                    "arrival_terminal": "",
+                    "arrival_timezone": "",
+                    "carrier_code": "UA",
+                    "carrier_name": "United Airlines",
+                    "carrier_logo": "https://b2b.easybooking.uz/images/airline/UA.svg",
+                    "duration_minutes": 100,
+                    "stop_time_minutes": "",
+                    "marketing_airline_code": "UA",
+                    "marketing_airline_name": "United Airlines",
+                    "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/UA.svg",
+                    "operating_airline_code": "UA",
+                    "operating_airline_name": "United Airlines",
+                    "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/UA.svg",
+                    "airplane_info": {
+                        "has_wifi": false,
+                        "airplane_code": "763",
+                        "airplane_name": "763",
+                        "seat_angle": "",
+                        "seat_width": "",
+                        "seat_distance": "",
+                        "seat_scheme": ""
                     }
-                ],
-                "Price": {
-                    "@type": "PriceDetail",
-                    "id": "price0",
-                    "CurrencyCode": {
-                        "value": "AUD"
-                    },
-                    "Base": 339.26,
-                    "TotalTaxes": 81.25,
-                    "TotalFees": 0,
-                    "TotalPrice": 420.51,
-                    "PriceBreakdown": [
-                        {
-                            "@type": "PriceBreakdownAir",
-                            "quantity": 1,
-                            "requestedPassengerType": "ADT",
-                            "Amount": {
-                                "@type": "Amount",
-                                "Base": 339.26,
-                                "Taxes": {
-                                    "@type": "TaxesDetail",
-                                    "TotalTaxes": 81.25,
-                                    "Tax": [
-                                        {
-                                            "taxCode": "QR",
-                                            "value": 30.02
-                                        },
-                                        {
-                                            "taxCode": "WG",
-                                            "value": 13
-                                        },
-                                        {
-                                            "taxCode": "UO",
-                                            "value": 38.23
-                                        }
-                                    ]
-                                },
-                                "Fees": {
-                                    "@type": "FeesDetail",
-                                    "TotalFees": 0
-                                },
-                                "Total": 420.51
-                            },
-                            "FareCalculation": "SYD QF MEL 169.63QDQW QF SYD 169.63QDQW AUD339.26END"
-                        }
-                    ]
-                },
-                "TermsAndConditionsFull": [
-                    {
-                        "@type": "TermsAndConditionsFullAir",
-                        "ExpiryDate": "2022-04-27T23:59:00Z",
-                        "BaggageAllowance": [
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "FirstCheckedBag",
-                                    "ProductRef": [
-                                        "p0"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "UPTO50LB/23KG AND UPTO55LI/140LCM"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "1P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "SecondCheckedBag",
-                                    "ProductRef": [
-                                        "p0"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "Text": "BAGGAGE CHARGES DATA NOT AVAILABLE"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "1P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "FirstCheckedBag",
-                                    "ProductRef": [
-                                        "p1"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "UPTO50LB/23KG AND UPTO55LI/140LCM"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "1P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "SecondCheckedBag",
-                                    "ProductRef": [
-                                        "p1"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "Text": "BAGGAGE CHARGES DATA NOT AVAILABLE"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "1P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "CarryOn",
-                                    "ProductRef": [
-                                        "p0"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
-                                        },
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "2P",
-                                        "2P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "CarryOn",
-                                    "ProductRef": [
-                                        "p1"
-                                    ],
-                                    "BaggageItem": [
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
-                                        },
-                                        {
-                                            "@type": "BaggageItem",
-                                            "quantity": 1,
-                                            "BaggageFee": {
-                                                "code": "AUD",
-                                                "approximateInd": true,
-                                                "value": 0
-                                            },
-                                            "Text": "CARRYON HAND BAGGAGE ALLOWANCE"
-                                        }
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ],
-                                    "Text": [
-                                        "2P",
-                                        "2P"
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "BaggageEmbargo",
-                                    "ProductRef": [
-                                        "p0"
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ]
-                                },
-                                {
-                                    "@type": "BaggageAllowanceDetail",
-                                    "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/QF",
-                                    "passengerTypeCodes": [
-                                        "ADT"
-                                    ],
-                                    "baggageType": "BaggageEmbargo",
-                                    "ProductRef": [
-                                        "p1"
-                                    ],
-                                    "SegmentSequenceList": [
-                                        1
-                                    ]
-                                }
-                        ],
-                        "Restriction": [ 
-                            {
-                                "value": "NON-REF/NON-END"
-                            },
-                            {
-                                "value": "SPECIAL FARE CONDITIONS"
-                            }
-                        ],
-                        "PaymentTimeLimit": "2022-04-27T23:59:00Z"
+                }
+            ]
+        },
+        {
+            "route_index": 2,
+            "direction": "JFK-FRA",
+            "stops": 0,
+            "segments": [
+                {
+                    "leg": "JFK-FRA",
+                    "departure_city": "JFK",
+                    "departure_date": "2023-12-27",
+                    "departure_time": "18:00:00",
+                    "departure_airport": "JFK",
+                    "departure_country": "JFK",
+                    "departure_terminal": "",
+                    "departure_timezone": "",
+                    "arrival_city": "FRA",
+                    "arrival_date": "2023-12-28",
+                    "arrival_time": "01:00:00",
+                    "arrival_airport": "FRA",
+                    "arrival_country": "FRA",
+                    "arrival_terminal": "",
+                    "arrival_timezone": "",
+                    "carrier_code": "LH",
+                    "carrier_name": "Lufthansa",
+                    "carrier_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                    "duration_minutes": 100,
+                    "stop_time_minutes": "",
+                    "marketing_airline_code": "LH",
+                    "marketing_airline_name": "Lufthansa",
+                    "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                    "operating_airline_code": "LH",
+                    "operating_airline_name": "Lufthansa",
+                    "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                    "airplane_info": {
+                        "has_wifi": false,
+                        "airplane_code": "744",
+                        "airplane_name": "744",
+                        "seat_angle": "",
+                        "seat_width": "",
+                        "seat_distance": "",
+                        "seat_scheme": ""
                     }
-                ]
-            }
-        ]
+                }
+            ]
+        }
+    ],
+    "provider": {
+        "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+        "name": "Jaloliddin Services"
     }
 }

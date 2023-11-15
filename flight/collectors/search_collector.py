@@ -21,12 +21,13 @@ class SearchCollector:
     ''' A class that routes search request according to provider id '''
 
     def __init__(self, data) -> None: # Constructor
-        self.request_id = str(uuid.uuid1())
+        self.request_id = None
         self.data = data
 
     async def collector(self): # Router
         trip_type = "RT" if len(self.data.get('directions')) == 2 else ("OW" if len(self.data.get('directions')) == 1 else "MC")
-
+        self.request_id = str(uuid.uuid1())
+        
         result = {
             "code": "100",
             "status": None,

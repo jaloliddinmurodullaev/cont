@@ -53,7 +53,8 @@ class OfferCollector:
         result['count'] = len(result['offers'])
 
         if self.limit != None:
-            result['offers'] = result['offers'][:10]
+            print(len(result['offers']))
+            result['offers'] = result['offers'][:self.limit]
         
         if self.currency != None:
             pass

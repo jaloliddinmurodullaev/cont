@@ -45,7 +45,7 @@ class SearchCollector:
             
             return result
         
-        await asyncio.create_task(set_search_data(data=self.data, request_id=self.request_id, trip_type=trip_type, currency="USD", sort_type=self.data['sort_type']))
+        await asyncio.create_task(set_search_data(data=self.data, request_id=self.request_id, trip_type=trip_type, currency="USD"))
         
         result['request_id'] = self.request_id
 

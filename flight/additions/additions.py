@@ -14,8 +14,9 @@ class Validator:
         clas = data.get('class', None)
         flexible = data.get('flexible', None)
         direct = data.get('direct', None)
+        airlines = data.get('direct', None)
 
-        if directions == None or providers == None or adt == False or chd == None or inf == None or ins == None or clas == None or flexible == None or direct == None:
+        if directions == None or providers == None or adt == False or chd == None or inf == None or ins == None or clas == None or flexible == None or direct == None or airlines == None:
             return False
 
         are_dirs_correct = True

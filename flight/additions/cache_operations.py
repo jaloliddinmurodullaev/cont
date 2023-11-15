@@ -50,7 +50,7 @@ async def check_search_existance(data, provider_id, request_id): # Cache operati
         redis_client.close()
         return offers
 
-async def set_search_data(data, request_id, trip_type, currency, sort_type): # Cache operation
+async def set_search_data(data, request_id, trip_type, currency): # Cache operation
         data = data
         redis_client = redis.Redis(host=HOST, port=PORT)
         redis_client.set(
@@ -66,7 +66,6 @@ async def set_search_data(data, request_id, trip_type, currency, sort_type): # C
                 "flexible"  : data.get('flexible'),
                 "trip_type" : trip_type,
                 "currency"  : currency,
-                "sort_type" : sort_type,
                 "directions": json.dumps(data.get('directions')),
             }),
             1200

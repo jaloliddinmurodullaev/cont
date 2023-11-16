@@ -79,7 +79,7 @@ class AerticketIntegration(BaseIntegration):
             result = {
                 'status' : res['status'],
                 'message': res['message'],
-                'data'   : await search_converter(res, provider_id, provider_name, currency, len(data['segmentList']), request_id)
+                'data'   : await search_converter(res, provider_id, provider_name, currency, len(data['segmentList']))
             }
             result['data'] = await filter_tickets(result['data'])
             

@@ -1,11 +1,28 @@
-import json
 import uuid
+import copy
 
 from flight.additions.additions import AdditionsTicket
 
-async def search_converter(data, provider_id, provider_name, currency, trip_routes_cnt, request_id):
+async def search_converter(data, provider_id, provider_name, currency, trip_routes_cnt):
     offers = data['data']
     results = []
+    _has_adt = True
+    _has_chd = False
+    _has_inf = False
+
+    for passens in offers['availableFareList'][0]['passengerTypeFareList']:
+        if passens['passengerTypeCode'] == 'ADT':
+            _has_adt = True
+        if passens['passengerTypeCode'] == 'CHD':
+            _has_chd = True
+        if passens['passengerTypeCode'] == 'INF':
+            _has_inf = True
+
+    passengers_info = {
+        'adt': _has_adt,
+        'chd': _has_chd,
+        'inf': _has_inf
+    }
     
     if trip_routes_cnt == 1: # one way
         for _offers in offers['availableFareList']:
@@ -13,8 +30,8 @@ async def search_converter(data, provider_id, provider_name, currency, trip_rout
 
             price_info = await get_price_info(_offers, currency_type)
             price_details = await get_price_details(_offers, currency_type)
-            baggage_info = await get_baggage_info()
-            fare_info = await get_fare_info()
+            baggage_info = await get_baggage_info(_offers, passengers_info)
+            fare_info = await get_fare_info(_offers, passengers_info)
 
             for offer in _offers['legList']:
                 for off in offer['itineraryList']:
@@ -56,20 +73,18 @@ async def search_converter(data, provider_id, provider_name, currency, trip_rout
 
             price_info = await get_price_info(_offers, currency_type)
             price_details = await get_price_details(_offers, currency_type)
-            baggage_info = await get_baggage_info()
-            fare_info = await get_fare_info()
 
-            offers = await round_trip(_offers, price_info, price_details, baggage_info, 
-                                       fare_info, provider_id, provider_name)
+            offers = await round_trip(_offers, price_info, price_details, 
+                                       passengers_info, provider_id, provider_name)
             for off in offers:
                 results.append(off)
-            # results.append(result)
+
     else: # multi city
         pass 
 
     return results
 
-async def round_trip(offers, price_info, price_details, baggage_info, fare_info, provider_id, provider_name):
+async def round_trip(offers, price_info, price_details, passengers_info, provider_id, provider_name):
     results = []
     # for offer in offers['legList']:
     for off_from in offers['legList'][0]['itineraryList']:
@@ -79,7 +94,14 @@ async def round_trip(offers, price_info, price_details, baggage_info, fare_info,
             "stops": len(off_from['segmentList']) - 1,
             "segments": await segment_maker(off_from['segmentList'], 100)
         }
+        baggage_info_from = await get_baggage_info(off_from, passengers_info)
+        fare_info_from = await get_fare_info(off_from, passengers_info)
         for off_to in offers['legList'][1]['itineraryList']:
+            baggage_info_to = await get_baggage_info(off_to, passengers_info)
+            fare_info_to = await get_fare_info(off_to, passengers_info)
+
+            baggage_info = baggage_info_from + baggage_info_to
+            fare_info = fare_info_from + fare_info_to
             offer_id = uuid.uuid4()
             offer_tmp = {
                 'offer_id': str(offer_id),
@@ -117,7 +139,6 @@ async def round_trip(offers, price_info, price_details, baggage_info, fare_info,
             results.append(complete_offer) 
 
     return results
-
 
 async def segment_maker(segments, duration_minutes):
     result_segments = []
@@ -227,11 +248,79 @@ async def get_price_details(_offers, currency_type):
     
     return price_details
 
-async def get_baggage_info():
-    return []
+async def get_baggage_info(route, passengers_info):
+    baggages_info = []
 
-async def get_fare_info():
-    return []
+    for segment in route['segmentList']:
+        baggage_info_tmp = {
+            "leg": f"{segment['departure']['iata']}-{segment['destination']['iata']}",
+            "passenger_type": "ADT",
+            "baggage": {
+                "value": segment['baggageAllowance']['quantity'],
+                "unit": segment['baggageAllowance']['unit'],
+                "size": {
+                    "height": None,
+                    "width": None,
+                    "length": None,
+                    "unit": ""
+                }
+            },
+            "hand_baggage": {
+                "value": 0,
+                "unit": segment['baggageAllowance']['unit'],
+                "size": {
+                    "height": None,
+                    "width": None,
+                    "length": None,
+                    "unit": ""
+                }
+            },
+            "description": ""
+        }
+
+        if passengers_info['adt'] == True:
+            baggages_info.append(copy.deepcopy(baggage_info_tmp))
+        if passengers_info['chd'] == True:
+            baggage_info_tmp['passenger_type'] = "CHD"
+            baggages_info.append(copy.deepcopy(baggage_info_tmp))
+        if passengers_info['inf'] == True:
+            baggage_info_tmp['passenger_type'] = "INF"
+            baggages_info.append(copy.deepcopy(baggage_info_tmp))
+
+    return baggages_info
+
+async def get_fare_info(route, passengers_info):
+    fares_info = []
+
+    for segment in route['segmentList']:
+                fare_info_tmp = {
+                    "leg": f"{segment['departure']['iata']}-{segment['destination']['iata']}",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": segment.get('airlineFareFamily', ''),
+                        "services": []
+                    },
+                    "fare_code": segment['fareBase'],
+                    "service_class": segment['cabinClass'],
+                    "booking_class": segment['bookingClassCode'],
+                    "fare_messages": {
+                        "LTD": "",
+                        "PEN": ""
+                    },
+                    "description": ""
+                }
+
+                if passengers_info['adt'] == True:
+                    fares_info.append(copy.deepcopy(fare_info_tmp))
+                if passengers_info['chd'] == True:
+                    fare_info_tmp['passenger_type'] = "CHD"
+                    fares_info.append(copy.deepcopy(fare_info_tmp))
+                if passengers_info['inf'] == True:
+                    fare_info_tmp['passenger_type'] = "INF"
+                    fares_info.append(copy.deepcopy(fare_info_tmp))
+
+    return fares_info
 
 
 

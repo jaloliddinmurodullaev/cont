@@ -54,7 +54,10 @@ class OfferCollector:
 
         if self.limit != None:
             print(len(result['offers']))
-            result['offers'] = result['offers'][:self.limit]
+            if self.limit == 1:
+                result['offers'] = [result['offers'][0]]
+            else:
+                result['offers'] = result['offers'][:self.limit]
         
         if self.currency != None:
             pass

@@ -194,19 +194,15 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                             'name': provider_name
                         }
                     }
-
                     offer_tmp['routes'].append(route_1_tmp)
                     offer_tmp['routes'].append(route_2_tmp)
-
                     route_3_tmp = {
                         "route_index": 3,
                         "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
                         "stops": len(off_3['segmentList']) - 1,
                         "segments": await segment_maker(off_3['segmentList'], 100)
                     }
-
                     offer_tmp['routes'].append(route_3_tmp)
-
                     complete_offer = AdditionsTicket(
                         ticket=offer_tmp,
                         offer_id=offer_tmp['offer_id'],
@@ -216,12 +212,243 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                     )
                     results.append(complete_offer)
     elif trip_routes_cnt == 4:
-        pass
-    elif trip_routes_cnt == 5:
-        pass
-    elif trip_routes_cnt == 6:
-        pass
+        for off_1 in offers['legList'][0]['itineraryList']:
+            route_1_tmp = {
+                "route_index": 1,
+                "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
+                "stops": len(off_1['segmentList']) - 1,
+                "segments": await segment_maker(off_1['segmentList'], 100)
+            }
+            baggage_info_1 = await get_baggage_info(off_1, passengers_info)
+            fare_info_1 = await get_fare_info(off_1, passengers_info)
+            for off_2 in offers['legList'][1]['itineraryList']:
+                route_2_tmp = {
+                    "route_index": 2,
+                    "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
+                    "stops": len(off_2['segmentList']) - 1,
+                    "segments": await segment_maker(off_2['segmentList'], 100)
+                }
+                baggage_info_2 = await get_baggage_info(off_2, passengers_info)
+                fare_info_2 = await get_fare_info(off_2, passengers_info)
 
+                for off_3 in offers['legList'][2]['itineraryList']:
+                    route_3_tmp = {
+                        "route_index": 3,
+                        "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
+                        "stops": len(off_3['segmentList']) - 1,
+                        "segments": await segment_maker(off_3['segmentList'], 100)
+                    }
+                    baggage_info_3 = await get_baggage_info(off_3, passengers_info)
+                    fare_info_3 = await get_fare_info(off_3, passengers_info)
+                    for off_4 in offers['legList'][3]['itineraryList']:
+                    
+                        baggage_info_4 = await get_baggage_info(off_4, passengers_info)
+                        fare_info_4 = await get_fare_info(off_4, passengers_info)
+
+                        baggage_info = baggage_info_1 + baggage_info_2 + baggage_info_3 + baggage_info_4
+                        fare_info = fare_info_1 + fare_info_2 + fare_info_3 + fare_info_4
+                    
+                        offer_id = uuid.uuid4()
+                        offer_tmp = {
+                            'offer_id': str(offer_id),
+                            'price_info': price_info,
+                            'upsell': True,
+                            'booking': True,
+                            'price_details': price_details,
+                            'baggages_info': baggage_info,
+                            'fares_info': fare_info,
+                            'routes': [],
+                            'provider': {
+                                'provider_id': provider_id,
+                                'name': provider_name
+                            }
+                        }
+                        offer_tmp['routes'].append(route_1_tmp)
+                        offer_tmp['routes'].append(route_2_tmp)
+                        offer_tmp['routes'].append(route_3_tmp)
+                        route_4_tmp = {
+                            "route_index": 4,
+                            "direction": f"{off_4['segmentList'][0]['departure']['iata']}-{off_4['segmentList'][-1]['destination']['iata']}",
+                            "stops": len(off_4['segmentList']) - 1,
+                            "segments": await segment_maker(off_4['segmentList'], 100)
+                        }
+                        offer_tmp['routes'].append(route_4_tmp)
+                        complete_offer = AdditionsTicket(
+                            ticket=offer_tmp,
+                            offer_id=offer_tmp['offer_id'],
+                            other={
+                                'id': "qanaqadir id lar"
+                            }
+                        )
+                        results.append(complete_offer)
+    elif trip_routes_cnt == 5:
+        for off_1 in offers['legList'][0]['itineraryList']:
+            route_1_tmp = {
+                "route_index": 1,
+                "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
+                "stops": len(off_1['segmentList']) - 1,
+                "segments": await segment_maker(off_1['segmentList'], 100)
+            }
+            baggage_info_1 = await get_baggage_info(off_1, passengers_info)
+            fare_info_1 = await get_fare_info(off_1, passengers_info)
+            for off_2 in offers['legList'][1]['itineraryList']:
+                route_2_tmp = {
+                    "route_index": 2,
+                    "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
+                    "stops": len(off_2['segmentList']) - 1,
+                    "segments": await segment_maker(off_2['segmentList'], 100)
+                }
+                baggage_info_2 = await get_baggage_info(off_2, passengers_info)
+                fare_info_2 = await get_fare_info(off_2, passengers_info)
+
+                for off_3 in offers['legList'][2]['itineraryList']:
+                    route_3_tmp = {
+                        "route_index": 3,
+                        "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
+                        "stops": len(off_3['segmentList']) - 1,
+                        "segments": await segment_maker(off_3['segmentList'], 100)
+                    }
+                    baggage_info_3 = await get_baggage_info(off_3, passengers_info)
+                    fare_info_3 = await get_fare_info(off_3, passengers_info)
+                    for off_4 in offers['legList'][3]['itineraryList']:
+                        route_4_tmp = {
+                            "route_index": 4,
+                            "direction": f"{off_4['segmentList'][0]['departure']['iata']}-{off_4['segmentList'][-1]['destination']['iata']}",
+                            "stops": len(off_4['segmentList']) - 1,
+                            "segments": await segment_maker(off_4['segmentList'], 100)
+                        }
+                        baggage_info_4 = await get_baggage_info(off_4, passengers_info)
+                        fare_info_4 = await get_fare_info(off_4, passengers_info)
+                        for off_5 in offers['legList'][4]['itineraryList']:
+                            baggage_info_5 = await get_baggage_info(off_5, passengers_info)
+                            fare_info_5 = await get_fare_info(off_5, passengers_info)
+
+                            baggage_info = baggage_info_1 + baggage_info_2 + baggage_info_3 + baggage_info_4 + baggage_info_5
+                            fare_info = fare_info_1 + fare_info_2 + fare_info_3 + fare_info_4 + fare_info_5
+                        
+                            offer_id = uuid.uuid4()
+                            offer_tmp = {
+                                'offer_id': str(offer_id),
+                                'price_info': price_info,
+                                'upsell': True,
+                                'booking': True,
+                                'price_details': price_details,
+                                'baggages_info': baggage_info,
+                                'fares_info': fare_info,
+                                'routes': [],
+                                'provider': {
+                                    'provider_id': provider_id,
+                                    'name': provider_name
+                                }
+                            }
+                            offer_tmp['routes'].append(route_1_tmp)
+                            offer_tmp['routes'].append(route_2_tmp)
+                            offer_tmp['routes'].append(route_3_tmp)
+                            offer_tmp['routes'].append(route_4_tmp)
+                            route_5_tmp = {
+                                "route_index": 5,
+                                "direction": f"{off_5['segmentList'][0]['departure']['iata']}-{off_5['segmentList'][-1]['destination']['iata']}",
+                                "stops": len(off_5['segmentList']) - 1,
+                                "segments": await segment_maker(off_5['segmentList'], 100)
+                            }
+                            offer_tmp['routes'].append(route_5_tmp)
+                            complete_offer = AdditionsTicket(
+                                ticket=offer_tmp,
+                                offer_id=offer_tmp['offer_id'],
+                                other={
+                                    'id': "qanaqadir id lar"
+                                }
+                            )
+                            results.append(complete_offer)
+    elif trip_routes_cnt == 6:
+        for off_1 in offers['legList'][0]['itineraryList']:
+            route_1_tmp = {
+                "route_index": 1,
+                "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
+                "stops": len(off_1['segmentList']) - 1,
+                "segments": await segment_maker(off_1['segmentList'], 100)
+            }
+            baggage_info_1 = await get_baggage_info(off_1, passengers_info)
+            fare_info_1 = await get_fare_info(off_1, passengers_info)
+            for off_2 in offers['legList'][1]['itineraryList']:
+                route_2_tmp = {
+                    "route_index": 2,
+                    "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
+                    "stops": len(off_2['segmentList']) - 1,
+                    "segments": await segment_maker(off_2['segmentList'], 100)
+                }
+                baggage_info_2 = await get_baggage_info(off_2, passengers_info)
+                fare_info_2 = await get_fare_info(off_2, passengers_info)
+
+                for off_3 in offers['legList'][2]['itineraryList']:
+                    route_3_tmp = {
+                        "route_index": 3,
+                        "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
+                        "stops": len(off_3['segmentList']) - 1,
+                        "segments": await segment_maker(off_3['segmentList'], 100)
+                    }
+                    baggage_info_3 = await get_baggage_info(off_3, passengers_info)
+                    fare_info_3 = await get_fare_info(off_3, passengers_info)
+                    for off_4 in offers['legList'][3]['itineraryList']:
+                        route_4_tmp = {
+                            "route_index": 4,
+                            "direction": f"{off_4['segmentList'][0]['departure']['iata']}-{off_4['segmentList'][-1]['destination']['iata']}",
+                            "stops": len(off_4['segmentList']) - 1,
+                            "segments": await segment_maker(off_4['segmentList'], 100)
+                        }
+                        baggage_info_4 = await get_baggage_info(off_4, passengers_info)
+                        fare_info_4 = await get_fare_info(off_4, passengers_info)
+                        for off_5 in offers['legList'][4]['itineraryList']:
+                            route_5_tmp = {
+                                "route_index": 5,
+                                "direction": f"{off_5['segmentList'][0]['departure']['iata']}-{off_5['segmentList'][-1]['destination']['iata']}",
+                                "stops": len(off_5['segmentList']) - 1,
+                                "segments": await segment_maker(off_5['segmentList'], 100)
+                            }
+                            baggage_info_5 = await get_baggage_info(off_5, passengers_info)
+                            fare_info_5 = await get_fare_info(off_5, passengers_info)
+                            for off_6 in offers['legList'][5]['itineraryList']:
+                                baggage_info_6 = await get_baggage_info(off_6, passengers_info)
+                                fare_info_6 = await get_fare_info(off_6, passengers_info)
+
+                                baggage_info = baggage_info_1 + baggage_info_2 + baggage_info_3 + baggage_info_4 + baggage_info_5 + baggage_info_6
+                                fare_info = fare_info_1 + fare_info_2 + fare_info_3 + fare_info_4 + fare_info_5 + fare_info_6
+                            
+                                offer_id = uuid.uuid4()
+                                offer_tmp = {
+                                    'offer_id': str(offer_id),
+                                    'price_info': price_info,
+                                    'upsell': True,
+                                    'booking': True,
+                                    'price_details': price_details,
+                                    'baggages_info': baggage_info,
+                                    'fares_info': fare_info,
+                                    'routes': [],
+                                    'provider': {
+                                        'provider_id': provider_id,
+                                        'name': provider_name
+                                    }
+                                }
+                                offer_tmp['routes'].append(route_1_tmp)
+                                offer_tmp['routes'].append(route_2_tmp)
+                                offer_tmp['routes'].append(route_3_tmp)
+                                offer_tmp['routes'].append(route_4_tmp)
+                                offer_tmp['routes'].append(route_5_tmp)
+                                route_6_tmp = {
+                                    "route_index": 6,
+                                    "direction": f"{off_6['segmentList'][0]['departure']['iata']}-{off_6['segmentList'][-1]['destination']['iata']}",
+                                    "stops": len(off_6['segmentList']) - 1,
+                                    "segments": await segment_maker(off_6['segmentList'], 100)
+                                }
+                                offer_tmp['routes'].append(route_6_tmp)
+                                complete_offer = AdditionsTicket(
+                                    ticket=offer_tmp,
+                                    offer_id=offer_tmp['offer_id'],
+                                    other={
+                                        'id': "qanaqadir id lar"
+                                    }
+                                )
+                                results.append(complete_offer)
     return results
 
 async def segment_maker(segments, duration_minutes):

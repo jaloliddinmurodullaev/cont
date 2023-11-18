@@ -81,10 +81,11 @@ class AerticketIntegration(BaseIntegration):
                 'message': res['message'],
                 'data'   : await search_converter(res, provider_id, provider_name, currency, len(data['segmentList']))
             }
-            result['data'] = await filter_tickets(result['data'])
-            
             # inserting data to cache
-            asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
+            await set_provider_response_to_cache(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
+            
+            # filtering only offers
+            result['data'] = await filter_tickets(result['data'])
 
             # inserting data to a database for Business Intelligence
             asyncio.create_task(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))

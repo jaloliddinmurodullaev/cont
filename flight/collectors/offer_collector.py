@@ -47,11 +47,15 @@ class OfferCollector:
             result['status'] = 'error'
             result['code'] = 404
 
+        # Filters
+
+        # sort by price
         if self.sort_type == 'price':
             result['offers'] = await asyncio.create_task(self.sort_by_price(offers))
 
         result['count'] = len(result['offers'])
 
+        # limit offers
         if self.limit != None:
             print(len(result['offers']))
             if self.limit == 1:
@@ -60,6 +64,7 @@ class OfferCollector:
             else:
                 result['offers'] = result['offers'][:self.limit]
         
+        # currency converter
         if self.currency != None:
             pass
 

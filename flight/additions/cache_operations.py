@@ -2,6 +2,8 @@ import os
 import redis
 import json
 
+from flight.additions.additions import filter_tickets
+
 HOST = os.environ.get('CACHE_HOST')
 PORT = os.environ.get('CACHE_PORT')
 
@@ -16,8 +18,8 @@ async def check_offers_existance(request_id): # Cache operation
 
         for offer_key in redis_client.scan_iter(key):
             if redis_client.exists(str(offer_key.decode("utf-8"))):
-                offer = json.loads(redis_client.get(str(offer_key.decode("utf-8"))))
-                offers = offers + offer['data']
+                offerTicket = json.loads(redis_client.get(str(offer_key.decode("utf-8"))))
+                offers = offers + offerTicket['data']
         redis_client.close()
 
         return offers
@@ -135,7 +137,7 @@ async def check_status(request_id):
     redis_client.close()
     return ans
 
-async def set_provider_response_to_cache(data, provider_id, offer, request_id):
+async def set_provider_response_to_cache(data, provider_id, offers, request_id):
     # here is where all rules should be applied
     ''' A function that saves provider search response in cache for 3 minutes '''
     directions = ""
@@ -145,8 +147,19 @@ async def set_provider_response_to_cache(data, provider_id, offer, request_id):
 
     key = f"{provider_id}_{directions}ADT{data.get('adt')}_CHD{data.get('chd')}_INF{data.get('inf')}_INS{data.get('ins')}_FLEX{data.get('flexible')}_{data.get('class')}_{request_id}"
 
+    results = {
+        'data': []
+    }
+
+    for offer in offers['data']:
+        results['data'].append(offer.ticket)
+
     redis_client = redis.Redis(host=HOST, port=PORT)
-    redis_client.set(key, json.dumps(offer), 3*60)
+    redis_client.set(
+        key, 
+        json.dumps(results), 
+        3*60
+        )
     redis_client.close()
 
 

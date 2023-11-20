@@ -12,6 +12,8 @@ from flight.additions.integration import BaseIntegration
 from .converters.search_converter import search_converter
 
 GATEWAY = os.environ.get('AerTicket_Base_URL')
+APIKEY = os.environ.get('AerTicket_Login_Key')
+PASSKEY = os.environ.get('AerTicket_Password_Key')
 
 TTL = 3 * 60
 
@@ -21,7 +23,6 @@ CABIN_TYPES = {
 }
 
 class AerticketIntegration(BaseIntegration):
-
 #################################### INIT ######################################
 
     def __init__(self, auth_data, data):
@@ -94,9 +95,8 @@ class AerticketIntegration(BaseIntegration):
         else:
             result = {
                 'status' : res['status'], 
-                'message': res['message'],
-                'data'   : res['data']
-            }
+                'message': res['message']  
+            } 
             return result
  
     async def search_request_maker(self):
@@ -159,3 +159,31 @@ class AerticketIntegration(BaseIntegration):
         }
         
         return body
+
+####################################################### UPSELL #######################################################
+
+    async def upsell(self, system_id, provider_id, provider_name, request_id, data):
+        body = await asyncio.create_task(self.upsell_request_maker(data))
+
+        context = json.dumps(body)
+
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY
+        
+        res = await asyncio.create_task(self.__request("/api/v1/search-upsell", context))
+
+        if res['status'] == 'success':
+            pass
+        else:
+            result = {
+                'status' : res['status'],
+                'message': res['message']
+            }
+            return result
+    
+    async def upsell_request_maker(self, data):
+        upsell = {
+            "fareId": data['fareId'],
+            "itineraryIdList": data['itineraryIdList']
+        }
+        return upsell

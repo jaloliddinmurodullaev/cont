@@ -57,7 +57,6 @@ class OfferCollector:
 
         # limit offers
         if self.limit != None:
-            print(len(result['offers']))
             if self.limit == 1:
                 if len(result['offers']) > 0:
                     result['offers'] = [result['offers'][0]]

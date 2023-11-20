@@ -3,7 +3,7 @@ import copy
 
 from flight.additions.additions import AdditionsTicket
 
-async def search_converter(data, provider_id, provider_name, currency, trip_routes_cnt):
+async def search_converter(data, provider_id, provider_name, system_id, currency, trip_routes_cnt):
     offers = data['data']
     results = []
     _has_adt = True
@@ -63,7 +63,10 @@ async def search_converter(data, provider_id, provider_name, currency, trip_rout
                     offer_id=offer_tmp['offer_id'],
                     other={
                         'id': "qanaqadir id lar"
-                    }
+                    },
+                    provider_id=provider_id,
+                    provider_name=provider_name,
+                    system_id=system_id
                 )
                 results.append(complete_offer)
     
@@ -77,7 +80,17 @@ async def search_converter(data, provider_id, provider_name, currency, trip_rout
             offers = await round_trip(_offers, price_info, price_details, 
                                        passengers_info, provider_id, provider_name)
             for off in offers:
-                results.append(off)
+                complete_offer = AdditionsTicket(
+                    ticket=off,
+                    offer_id=off['offer_id'],
+                    other={
+                        'id': "qanaqadir id lar"
+                    },
+                    provider_id=provider_id,
+                    provider_name=provider_name,
+                    system_id=system_id
+                )
+                results.append(complete_offer)
 
     else: # multi city
         for _offers in offers['availableFareList']:
@@ -89,7 +102,17 @@ async def search_converter(data, provider_id, provider_name, currency, trip_rout
             offers = await multi_city(_offers, price_info, price_details, 
                                         passengers_info, provider_id, provider_name, trip_routes_cnt)
             for off in offers:
-                results.append(off) 
+                complete_offer = AdditionsTicket(
+                    ticket=off,
+                    offer_id=off['offer_id'],
+                    other={
+                        'id': "qanaqadir id lar"
+                    },
+                    provider_id=provider_id,
+                    provider_name=provider_name,
+                    system_id=system_id
+                )
+                results.append(complete_offer)
 
     return results
 
@@ -632,6 +655,3 @@ async def get_fare_info(route, passengers_info):
                     fares_info.append(copy.deepcopy(fare_info_tmp))
 
     return fares_info
-
-
-

@@ -109,10 +109,13 @@ class Helper:
             return False
 
 class AdditionsTicket:
-    def __init__(self, ticket, offer_id, other) -> None:
-        self.ticket   = ticket
-        self.offer_id = offer_id
-        self.other    = other
+    def __init__(self, ticket, offer_id, other, provider_id, provider_name, system_id) -> None:
+        self.ticket        = ticket
+        self.offer_id      = offer_id
+        self.other         = other
+        self.provider_id   = provider_id
+        self.provider_name = provider_name
+        self.system_id     = system_id
 
 async def filter_tickets(offers) -> dict:
     filtered_tickets = []

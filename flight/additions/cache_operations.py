@@ -19,7 +19,10 @@ async def check_offers_existance(request_id): # Cache operation
         for offer_key in redis_client.scan_iter(key):
             if redis_client.exists(str(offer_key.decode("utf-8"))):
                 offerTicket = json.loads(redis_client.get(str(offer_key.decode("utf-8"))))
-                offers = offers + offerTicket['data']
+                offer_tmp = []
+                for off in offerTicket['data']:
+                    offer_tmp.append(off['ticket'])
+                offers = offers + offer_tmp
         redis_client.close()
 
         return offers
@@ -148,11 +151,17 @@ async def set_provider_response_to_cache(data, provider_id, offers, request_id):
     key = f"{provider_id}_{directions}ADT{data.get('adt')}_CHD{data.get('chd')}_INF{data.get('inf')}_INS{data.get('ins')}_FLEX{data.get('flexible')}_{data.get('class')}_{request_id}"
 
     results = {
-        'data': []
+        'data': [],
     }
 
     for offer in offers['data']:
-        results['data'].append(offer.ticket)
+        results['data'].append({
+            'ticket'       : offer.ticket,
+            'other'        : offer.other,
+            'provider_id'  : offer.provider_id,
+            'provider_name': offer.provider_name,
+            'system_id'    : offer.system_id
+        })
 
     redis_client = redis.Redis(host=HOST, port=PORT)
     redis_client.set(
@@ -161,5 +170,34 @@ async def set_provider_response_to_cache(data, provider_id, offers, request_id):
         3*60
         )
     redis_client.close()
+
+async def get_single_offer(request_id, offer_id):
+    
+    ''' getting single offer'''
+
+    key = f"*_{request_id}"
+    offer_tmp = None
+    
+    redis_client = redis.Redis(host=HOST, port=PORT)
+
+    for offer_key in redis_client.scan_iter(key):
+        if redis_client.exists(str(offer_key.decode("utf-8"))):
+            offerTicket = json.loads(redis_client.get(str(offer_key.decode("utf-8"))))
+            for off in offerTicket['data']:
+                if off['ticket']['offer_id'] == offer_id:
+                    offer_tmp = off
+    redis_client.close()
+
+    if offer_tmp != None:
+        result = {
+            'status': 'success',
+            'offer_data': offer_tmp
+        }
+    else:
+        result = {
+            'status': 'error',
+            'message': 'offer_id not found'
+        }
+        return result
 
 

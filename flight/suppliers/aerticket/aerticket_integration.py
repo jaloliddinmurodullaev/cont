@@ -10,6 +10,7 @@ from flight.additions.cache_operations import set_provider_response_to_cache
 from flight.additions.integration import BaseIntegration
 
 from .converters.search_converter import search_converter
+from .converters.upsell_converter import upsell_converter
 
 GATEWAY = os.environ.get('AerTicket_Base_URL')
 APIKEY = os.environ.get('AerTicket_Login_Key')
@@ -23,7 +24,7 @@ CABIN_TYPES = {
 }
 
 class AerticketIntegration(BaseIntegration):
-#################################### INIT ######################################
+####################################### INIT #######################################
 
     def __init__(self, auth_data, data):
         self.loginkey      = auth_data.get('loginKey', None)
@@ -59,7 +60,7 @@ class AerticketIntegration(BaseIntegration):
                 result = await response.json()
                 return [status_code, result]
             
-#################################### SEARCH ######################################
+###################################### SEARCH ######################################
     
     async def search(self, system_id, provider_id, provider_name, request_id):
         data = await asyncio.create_task(self.search_request_maker())
@@ -80,7 +81,7 @@ class AerticketIntegration(BaseIntegration):
             result = {
                 'status' : res['status'],
                 'message': res['message'],
-                'data'   : await search_converter(res, provider_id, provider_name, currency, len(data['segmentList']))
+                'data'   : await search_converter(res, provider_id, provider_name, system_id, currency, len(data['segmentList']))
             }
             # inserting data to cache
             await set_provider_response_to_cache(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
@@ -160,26 +161,49 @@ class AerticketIntegration(BaseIntegration):
         
         return body
 
-####################################################### UPSELL #######################################################
+###################################### UPSELL ######################################
 
-    async def upsell(self, system_id, provider_id, provider_name, request_id, data):
+    async def upsell(self, system_id, provider_id, provider_name, request_id, data, search_data):
         body = await asyncio.create_task(self.upsell_request_maker(data))
 
         context = json.dumps(body)
 
         self.loginkey = APIKEY
         self.passwordkey = PASSKEY
+
+        currency = {
+            'curFrom': 'EUR',
+            'curTo'  : 'USD'
+        } 
         
         res = await asyncio.create_task(self.__request("/api/v1/search-upsell", context))
 
+        result = {
+            'status': None,
+            'data': None
+        }
+
         if res['status'] == 'success':
-            pass
+            asyncio.create_task(set_status(request_id=request_id))
+
+            trip_routes_cnt = len(res['data']['availableFareList'][0]['legList'])
+
+            # a line below should be applied yet
+            # await set_provider_response_to_cache(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
+            resp = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
+            resp = await filter_tickets(resp)
+
+            result = {
+                'status': res['status'],
+                'data'  : resp
+            }
         else:
             result = {
                 'status' : res['status'],
                 'message': res['message']
             }
-            return result
+
+        return result
     
     async def upsell_request_maker(self, data):
         upsell = {
@@ -187,3 +211,40 @@ class AerticketIntegration(BaseIntegration):
             "itineraryIdList": data['itineraryIdList']
         }
         return upsell
+
+###################################### RULES  ######################################
+
+    async def rules(self):
+        pass
+
+###################################### BOOKING #####################################
+
+    async def booking(self):
+        pass
+
+################################## CANCEL BOOKING ##################################
+
+    async def cancel_booking(self):
+        pass
+
+################################### SPLIT BOOKING ##################################
+
+    async def split_booking(self):
+        pass
+
+#################################### TICKETING #####################################
+
+    async def ticketing(self):
+        pass
+
+###################################### VOID ########################################
+
+    async def void(self):
+        pass
+
+#################################### REFUND ########################################
+
+    async def refund(self):
+        pass
+
+#################################################################################### 

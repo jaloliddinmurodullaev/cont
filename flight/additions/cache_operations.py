@@ -186,6 +186,7 @@ async def get_single_offer(request_id, offer_id):
             for off in offerTicket['data']:
                 if off['ticket']['offer_id'] == offer_id:
                     offer_tmp = off
+    
     redis_client.close()
 
     if offer_tmp != None:
@@ -193,6 +194,7 @@ async def get_single_offer(request_id, offer_id):
             'status': 'success',
             'offer_data': offer_tmp
         }
+        return result
     else:
         result = {
             'status': 'error',

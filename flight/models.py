@@ -50,6 +50,10 @@ def create_database(db_name=DEFAULT_DB_NAME):
                 system_id UUID NOT NULL,
                 provider_id UUID NOT NULL,
                 provider_name VARCHAR(255),
+                departure VARCHAR(255),
+                arrival VARCHAR(255),
+                departure_date VARCHAR(255),
+                airline VARCHAR(255),
                 offer JSONB
             )
         '''

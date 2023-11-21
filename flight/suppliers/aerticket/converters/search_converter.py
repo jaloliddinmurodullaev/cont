@@ -31,10 +31,14 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             price_info = await get_price_info(_offers, currency_type)
             price_details = await get_price_details(_offers, currency_type)
 
+            fare_id = _offers['fareId']
+
             for offer in _offers['legList']:
+                itinerary_id_list = []
                 for off in offer['itineraryList']:
                     baggage_info = await get_baggage_info(off, passengers_info)
                     fare_info = await get_fare_info(off, passengers_info)
+                    itinerary_id_list.append(off['id'])
                     offer_id = uuid.uuid4()
                     offer_tmp = {
                         'offer_id': str(offer_id),
@@ -62,7 +66,8 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
                     ticket=offer_tmp,
                     offer_id=offer_tmp['offer_id'],
                     other={
-                        'id': "qanaqadir id lar"
+                        'fareId': fare_id,
+                        'itineraryIdList': itinerary_id_list
                     },
                     provider_id=provider_id,
                     provider_name=provider_name,

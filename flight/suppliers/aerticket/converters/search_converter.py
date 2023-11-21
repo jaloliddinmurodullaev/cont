@@ -85,17 +85,8 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             offers = await round_trip(_offers, price_info, price_details, 
                                        passengers_info, provider_id, provider_name)
             for off in offers:
-                complete_offer = AdditionsTicket(
-                    ticket=off,
-                    offer_id=off['offer_id'],
-                    other={
-                        'id': "qanaqadir id lar"
-                    },
-                    provider_id=provider_id,
-                    provider_name=provider_name,
-                    system_id=system_id
-                )
-                results.append(complete_offer)
+                print(type(off))
+                results.append(off)
 
     else: # multi city
         for _offers in offers['availableFareList']:
@@ -107,24 +98,17 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             offers = await multi_city(_offers, price_info, price_details, 
                                         passengers_info, provider_id, provider_name, trip_routes_cnt)
             for off in offers:
-                complete_offer = AdditionsTicket(
-                    ticket=off,
-                    offer_id=off['offer_id'],
-                    other={
-                        'id': "qanaqadir id lar"
-                    },
-                    provider_id=provider_id,
-                    provider_name=provider_name,
-                    system_id=system_id
-                )
-                results.append(complete_offer)
+                results.append(off)
 
     return results
 
 async def round_trip(offers, price_info, price_details, passengers_info, provider_id, provider_name):
     results = []
     # for offer in offers['legList']:
+    fare_id = offers['fareId']
     for off_from in offers['legList'][0]['itineraryList']:
+        itinerary_id_list = []
+        itinerary_id_list.append(off_from['id'])
         route_1_tmp = {
             "route_index": 1,
             "direction": f"{off_from['segmentList'][0]['departure']['iata']}-{off_from['segmentList'][-1]['destination']['iata']}",
@@ -134,6 +118,7 @@ async def round_trip(offers, price_info, price_details, passengers_info, provide
         baggage_info_from = await get_baggage_info(off_from, passengers_info)
         fare_info_from = await get_fare_info(off_from, passengers_info)
         for off_to in offers['legList'][1]['itineraryList']:
+            itinerary_id_list.append(off_to['id'])
             baggage_info_to = await get_baggage_info(off_to, passengers_info)
             fare_info_to = await get_fare_info(off_to, passengers_info)
 
@@ -170,7 +155,8 @@ async def round_trip(offers, price_info, price_details, passengers_info, provide
                 ticket=offer_tmp,
                 offer_id=offer_tmp['offer_id'],
                 other={
-                    'id': "qanaqadir id lar"
+                    'fareId': fare_id,
+                    'itineraryIdList': itinerary_id_list
                 }
             )
             results.append(complete_offer) 
@@ -181,7 +167,10 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
     results = []
 
     if trip_routes_cnt == 3:
+        fare_id = offers['fareId']
         for off_1 in offers['legList'][0]['itineraryList']:
+            itinerary_id_list = []
+            itinerary_id_list.append(off_1['id'])
             route_1_tmp = {
                 "route_index": 1,
                 "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
@@ -191,6 +180,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
             baggage_info_1 = await get_baggage_info(off_1, passengers_info)
             fare_info_1 = await get_fare_info(off_1, passengers_info)
             for off_2 in offers['legList'][1]['itineraryList']:
+                itinerary_id_list.append(off_2['id'])
                 route_2_tmp = {
                     "route_index": 2,
                     "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
@@ -201,6 +191,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                 fare_info_2 = await get_fare_info(off_2, passengers_info)
 
                 for off_3 in offers['legList'][2]['itineraryList']:
+                    itinerary_id_list.append(off_3['id'])
                     baggage_info_3 = await get_baggage_info(off_1, passengers_info)
                     fare_info_3 = await get_fare_info(off_1, passengers_info)
                     
@@ -235,12 +226,16 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                         ticket=offer_tmp,
                         offer_id=offer_tmp['offer_id'],
                         other={
-                            'id': "qanaqadir id lar"
+                            'fareId': fare_id,
+                            'itineraryIdList': itinerary_id_list
                         }
                     )
                     results.append(complete_offer)
     elif trip_routes_cnt == 4:
+        fare_id = offers['fareId']
         for off_1 in offers['legList'][0]['itineraryList']:
+            itinerary_id_list = []
+            itinerary_id_list.append(off_1['id'])
             route_1_tmp = {
                 "route_index": 1,
                 "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
@@ -250,6 +245,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
             baggage_info_1 = await get_baggage_info(off_1, passengers_info)
             fare_info_1 = await get_fare_info(off_1, passengers_info)
             for off_2 in offers['legList'][1]['itineraryList']:
+                itinerary_id_list.append(off_2['id'])
                 route_2_tmp = {
                     "route_index": 2,
                     "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
@@ -260,6 +256,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                 fare_info_2 = await get_fare_info(off_2, passengers_info)
 
                 for off_3 in offers['legList'][2]['itineraryList']:
+                    itinerary_id_list.append(off_3['id'])
                     route_3_tmp = {
                         "route_index": 3,
                         "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
@@ -269,7 +266,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                     baggage_info_3 = await get_baggage_info(off_3, passengers_info)
                     fare_info_3 = await get_fare_info(off_3, passengers_info)
                     for off_4 in offers['legList'][3]['itineraryList']:
-                    
+                        itinerary_id_list.append(off_4['id'])
                         baggage_info_4 = await get_baggage_info(off_4, passengers_info)
                         fare_info_4 = await get_fare_info(off_4, passengers_info)
 
@@ -305,12 +302,16 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                             ticket=offer_tmp,
                             offer_id=offer_tmp['offer_id'],
                             other={
-                                'id': "qanaqadir id lar"
+                                'fareId': fare_id,
+                                'itineraryIdList': itinerary_id_list
                             }
                         )
                         results.append(complete_offer)
     elif trip_routes_cnt == 5:
+        fare_id = offers['fareId']
         for off_1 in offers['legList'][0]['itineraryList']:
+            itinerary_id_list = []
+            itinerary_id_list.append(off_1['id'])
             route_1_tmp = {
                 "route_index": 1,
                 "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
@@ -320,6 +321,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
             baggage_info_1 = await get_baggage_info(off_1, passengers_info)
             fare_info_1 = await get_fare_info(off_1, passengers_info)
             for off_2 in offers['legList'][1]['itineraryList']:
+                itinerary_id_list.append(off_2['id'])
                 route_2_tmp = {
                     "route_index": 2,
                     "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
@@ -330,6 +332,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                 fare_info_2 = await get_fare_info(off_2, passengers_info)
 
                 for off_3 in offers['legList'][2]['itineraryList']:
+                    itinerary_id_list.append(off_3['id'])
                     route_3_tmp = {
                         "route_index": 3,
                         "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
@@ -339,6 +342,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                     baggage_info_3 = await get_baggage_info(off_3, passengers_info)
                     fare_info_3 = await get_fare_info(off_3, passengers_info)
                     for off_4 in offers['legList'][3]['itineraryList']:
+                        itinerary_id_list.append(off_4['id'])
                         route_4_tmp = {
                             "route_index": 4,
                             "direction": f"{off_4['segmentList'][0]['departure']['iata']}-{off_4['segmentList'][-1]['destination']['iata']}",
@@ -348,6 +352,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                         baggage_info_4 = await get_baggage_info(off_4, passengers_info)
                         fare_info_4 = await get_fare_info(off_4, passengers_info)
                         for off_5 in offers['legList'][4]['itineraryList']:
+                            itinerary_id_list.append(off_5['id'])
                             baggage_info_5 = await get_baggage_info(off_5, passengers_info)
                             fare_info_5 = await get_fare_info(off_5, passengers_info)
 
@@ -384,12 +389,16 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                                 ticket=offer_tmp,
                                 offer_id=offer_tmp['offer_id'],
                                 other={
-                                    'id': "qanaqadir id lar"
+                                    'fareId': fare_id,
+                                    'itineraryIdList': itinerary_id_list
                                 }
                             )
                             results.append(complete_offer)
     elif trip_routes_cnt == 6:
+        fare_id = offers['fareId']
         for off_1 in offers['legList'][0]['itineraryList']:
+            itinerary_id_list = []
+            itinerary_id_list.append(off_1['id'])
             route_1_tmp = {
                 "route_index": 1,
                 "direction": f"{off_1['segmentList'][0]['departure']['iata']}-{off_1['segmentList'][-1]['destination']['iata']}",
@@ -399,6 +408,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
             baggage_info_1 = await get_baggage_info(off_1, passengers_info)
             fare_info_1 = await get_fare_info(off_1, passengers_info)
             for off_2 in offers['legList'][1]['itineraryList']:
+                itinerary_id_list.append(off_2['id'])
                 route_2_tmp = {
                     "route_index": 2,
                     "direction": f"{off_2['segmentList'][0]['departure']['iata']}-{off_2['segmentList'][-1]['destination']['iata']}",
@@ -409,6 +419,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                 fare_info_2 = await get_fare_info(off_2, passengers_info)
 
                 for off_3 in offers['legList'][2]['itineraryList']:
+                    itinerary_id_list.append(off_3['id'])
                     route_3_tmp = {
                         "route_index": 3,
                         "direction": f"{off_3['segmentList'][0]['departure']['iata']}-{off_3['segmentList'][-1]['destination']['iata']}",
@@ -418,6 +429,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                     baggage_info_3 = await get_baggage_info(off_3, passengers_info)
                     fare_info_3 = await get_fare_info(off_3, passengers_info)
                     for off_4 in offers['legList'][3]['itineraryList']:
+                        itinerary_id_list.append(off_4['id'])
                         route_4_tmp = {
                             "route_index": 4,
                             "direction": f"{off_4['segmentList'][0]['departure']['iata']}-{off_4['segmentList'][-1]['destination']['iata']}",
@@ -427,6 +439,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                         baggage_info_4 = await get_baggage_info(off_4, passengers_info)
                         fare_info_4 = await get_fare_info(off_4, passengers_info)
                         for off_5 in offers['legList'][4]['itineraryList']:
+                            itinerary_id_list.append(off_5['id'])
                             route_5_tmp = {
                                 "route_index": 5,
                                 "direction": f"{off_5['segmentList'][0]['departure']['iata']}-{off_5['segmentList'][-1]['destination']['iata']}",
@@ -436,6 +449,7 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                             baggage_info_5 = await get_baggage_info(off_5, passengers_info)
                             fare_info_5 = await get_fare_info(off_5, passengers_info)
                             for off_6 in offers['legList'][5]['itineraryList']:
+                                itinerary_id_list.append(off_6['id'])
                                 baggage_info_6 = await get_baggage_info(off_6, passengers_info)
                                 fare_info_6 = await get_fare_info(off_6, passengers_info)
 
@@ -473,7 +487,8 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                                     ticket=offer_tmp,
                                     offer_id=offer_tmp['offer_id'],
                                     other={
-                                        'id': "qanaqadir id lar"
+                                        'fareId': fare_id,
+                                        'itineraryIdList': itinerary_id_list
                                     }
                                 )
                                 results.append(complete_offer)

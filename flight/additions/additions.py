@@ -66,7 +66,16 @@ class Validator:
         return (request_id != None and next_token != 0) 
 
     async def upsell_request_validator(data: dict) -> bool:
-        return True
+        request_id = data.get('request_id', None)
+        offer_id   = data.get('offer_id', None)
+
+        return (request_id != None and offer_id != None)
+    
+    async def rules_request_validator(data: dict) -> bool:
+        request_id = data.get('request_id', None)
+        offer_id   = data.get('offer_id', None)
+
+        return (request_id != None and offer_id != None)
 
     async def booking_request_validator(data: dict) -> bool:
         pass

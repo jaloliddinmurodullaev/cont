@@ -40,7 +40,8 @@ class AerticketIntegration(BaseIntegration):
         }
         if is_auth:
             res = await self.__send(self.gateway + endpoint, header, context)
-            if res[0] in [200, 201]:
+            print(len(res[1]['availableFareList']))
+            if res[0] in [200, 201] and len(res[1]['availableFareList']) > 0:
                 response['status']  = 'success'
                 response['message'] = 'could not get response from supplier'
                 response['data']    = res[1]
@@ -54,6 +55,7 @@ class AerticketIntegration(BaseIntegration):
         return response
     
     async def __send(self, url, headers, data):
+        print(data)
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=data, headers=headers) as response:
                 status_code = response.status
@@ -163,7 +165,7 @@ class AerticketIntegration(BaseIntegration):
 
 ###################################### UPSELL ######################################
 
-    async def upsell(self, system_id, provider_id, provider_name, request_id, data, search_data):
+    async def upsell(self, system_id, provider_id, provider_name, request_id, data, search_data): # data is data saved in the "other" field of an offer
         body = await asyncio.create_task(self.upsell_request_maker(data))
 
         context = json.dumps(body)
@@ -205,7 +207,7 @@ class AerticketIntegration(BaseIntegration):
 
         return result
     
-    async def upsell_request_maker(self, data):
+    async def upsell_request_maker(self, data): # data is data saved in the "other" field of an offer
         upsell = {
             "fareId": data['fareId'],
             "itineraryIdList": data['itineraryIdList']
@@ -214,9 +216,16 @@ class AerticketIntegration(BaseIntegration):
 
 ###################################### RULES  ######################################
 
-    async def rules(self):
-        pass
+    async def rules(self, system_id, provider_id, provider_name, request_id, data, search_data): # data is data saved in the "other" field of an offer
+        body = { 
+            "fareId": data['fareId'],
+            "itineraryIdList": data['itineraryIdList']
+        }
 
+        result = []
+
+        return result
+    
 ###################################### BOOKING #####################################
 
     async def booking(self):

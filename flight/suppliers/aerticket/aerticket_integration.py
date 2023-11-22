@@ -245,7 +245,13 @@ class AerticketIntegration(BaseIntegration):
 
         return response
     
-###################################### BOOKING #####################################
+################################### AVAILABILITY ###################################
+
+    async def availability(self, system_id, provider_id, provider_name, request_id, data, search_data):
+        
+        pass
+
+##################################### BOOKING ######################################
 
     async def booking(self):
         pass

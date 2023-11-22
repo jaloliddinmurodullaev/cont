@@ -1,6 +1,14 @@
 from random import randint
 from locust import HttpUser, task
 
+######## 
+# 
+# This locust files are not mandatory for the execution of the app. 
+# This is for stress testing.
+# One can use it when needed.
+#
+######## 
+
 class WebUser(HttpUser):
     # wait_time = randint(1, 3)
 

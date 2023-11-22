@@ -35,7 +35,7 @@ class RulesCollector:
             system_id     = res['system_id'] 
 
             auth_data = {
-                'login': 'login',
+                'login'   : 'login',
                 'password': 'passsword'
             }
 
@@ -56,7 +56,7 @@ class RulesCollector:
                     result['code'] = '100'
                     result['routes'] = response['data']
                 else:
-                    print('gds couldnt respond')
+                    print("gds couldn't respond")
                     result['status'] = 'error'
                     result['code'] = '404'
 

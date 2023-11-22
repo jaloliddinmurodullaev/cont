@@ -77,6 +77,12 @@ class Validator:
 
         return (request_id != None and offer_id != None)
 
+    async def availability_request_validator(data: dict) -> bool:
+        request_id = data.get('request_id', None)
+        offer_id   = data.get('offer_id', None)
+
+        return (request_id != None and offer_id != None)
+
     async def booking_request_validator(data: dict) -> bool:
         pass
     

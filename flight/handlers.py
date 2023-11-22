@@ -9,6 +9,8 @@ from flight.collectors.search_collector import SearchCollector
 from flight.collectors.offer_collector import OfferCollector
 from flight.collectors.upsell_collector import UpsellCollector
 from flight.collectors.rules_collector import RulesCollector
+from flight.collectors.availability_collector import AvailabilityCollector
+from flight.collectors.booking_collector import BookingCollector
 
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
 
@@ -30,6 +32,7 @@ class SearchHandler(tornado.web.RequestHandler):
         # print(f"Search handler execution time: {round(end_time - start_time, 2)} seconds")
         self.write(response[0])
 
+
 class OfferHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
@@ -47,6 +50,7 @@ class OfferHandler(tornado.web.RequestHandler):
 
         # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
         self.write(response[0])
+
 
 class UpsellHandler(tornado.web.RequestHandler):
     async def post(self):
@@ -66,6 +70,7 @@ class UpsellHandler(tornado.web.RequestHandler):
         # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
         self.write(response[0])
 
+
 class RulesHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
@@ -84,13 +89,49 @@ class RulesHandler(tornado.web.RequestHandler):
         # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
         self.write(response[0])
 
+
+class AvailabilityHandler(tornado.web.RequestHandler):
+    async def post(self):
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.availability_request_validator(data)):
+            # start_time = time.time()
+            collector = AvailabilityCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0])
+
+
 class BookingHandler(tornado.web.RequestHandler):
     async def post(self):
-        pass    
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.booking_request_validator(data)):
+            # start_time = time.time()
+            collector = BookingCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0])    
+
 
 class TicketingHandler(tornado.web.RequestHandler):
     async def post(self):
         pass
+
 
 # SYSTEM HANDLERS. DO NOT TRY TO CHANGE THEM.
 

@@ -7,7 +7,7 @@ from flight.additions.cache_operations import get_single_offer
 from flight.integrations import INTEGRATIONS
 from flight.models import get_system_name
 
-class AvailabilityCollector:
+class TicketingCollector:
     
     ''' A class that returns the rule of a ticket '''
 

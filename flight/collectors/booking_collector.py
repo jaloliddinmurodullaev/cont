@@ -15,3 +15,6 @@ class BookingCollector:
         self.request_id = data['request_id']
         self.offer_id   = data['offer_id']
         self.data       = data
+
+    async def collector(self):
+        pass

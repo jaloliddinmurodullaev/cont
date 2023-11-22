@@ -49,7 +49,7 @@ class RulesCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                response = await integration.rules(system_id, provider_id, provider_name, self.request_id, res['other'], search_data)
+                response = await integration.rules(system_id, provider_id, provider_name, self.request_id, res, search_data)
 
                 if response['status'] == 'success':
                     result['status'] = 'success'
@@ -69,4 +69,4 @@ class RulesCollector:
         else:
             result['status'] = 'error'
             result['code'] = '404'
-            return result 
+            return result

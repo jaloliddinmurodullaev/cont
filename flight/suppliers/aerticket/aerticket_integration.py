@@ -11,6 +11,7 @@ from flight.additions.integration import BaseIntegration
 
 from .converters.search_converter import search_converter
 from .converters.upsell_converter import upsell_converter
+from .converters.rules_converter  import rules_converter
 
 GATEWAY = os.environ.get('AerTicket_Base_URL')
 APIKEY = os.environ.get('AerTicket_Login_Key')
@@ -40,8 +41,8 @@ class AerticketIntegration(BaseIntegration):
         }
         if is_auth:
             res = await self.__send(self.gateway + endpoint, header, context)
-            print(len(res[1]['availableFareList']))
-            if res[0] in [200, 201] and len(res[1]['availableFareList']) > 0:
+
+            if res[0] in [200, 201]:
                 response['status']  = 'success'
                 response['message'] = 'could not get response from supplier'
                 response['data']    = res[1]
@@ -185,7 +186,7 @@ class AerticketIntegration(BaseIntegration):
             'data': None
         }
 
-        if res['status'] == 'success':
+        if res['status'] == 'success' and len(res['data']['availableFareList']) > 0:
             asyncio.create_task(set_status(request_id=request_id))
 
             trip_routes_cnt = len(res['data']['availableFareList'][0]['legList'])
@@ -201,8 +202,8 @@ class AerticketIntegration(BaseIntegration):
             }
         else:
             result = {
-                'status' : res['status'],
-                'message': res['message']
+                'status' : 'error',
+                'message': 'no fares found'
             }
 
         return result
@@ -217,14 +218,32 @@ class AerticketIntegration(BaseIntegration):
 ###################################### RULES  ######################################
 
     async def rules(self, system_id, provider_id, provider_name, request_id, data, search_data): # data is data saved in the "other" field of an offer
+        dat    = data['other']
+        routes = data['ticket']['routes']
+        fares  = data['ticket']['fares_info']
+
         body = { 
-            "fareId": data['fareId'],
-            "itineraryIdList": data['itineraryIdList']
+            "fareId": dat['fareId']
         }
 
-        result = []
+        context = json.dumps(body)
 
-        return result
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY
+
+        res = await asyncio.create_task(self.__request("/api/v1/fare-rules", context))
+        
+        if 'fareRuleList' in res['data'] and len(res['data']['fareRuleList']) > 0:
+            result = await rules_converter(res['data'], routes, fares)
+        else:
+            result = await rules_converter({}, routes, fares)
+        
+        response = {
+            'status': 'success',
+            'data': result
+        }
+
+        return response
     
 ###################################### BOOKING #####################################
 

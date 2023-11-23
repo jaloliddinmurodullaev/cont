@@ -7,6 +7,9 @@ from flight.additions.additions import filter_tickets
 HOST = os.environ.get('CACHE_HOST')
 PORT = os.environ.get('CACHE_PORT')
 
+# minutes for caching offers
+MINUTES = 10
+
 async def save_offers(data, provider_id, offers, request_id):
     
     ''' A function that saves provider search response in cache for 3 minutes '''
@@ -43,7 +46,7 @@ async def save_offers(data, provider_id, offers, request_id):
         redis_client.set(
             key + "_" + str(offer.offer_id), 
             json.dumps(results), 
-            5*60  
+            MINUTES*60  
         )
         redis_client.close()
     

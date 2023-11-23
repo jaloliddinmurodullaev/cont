@@ -7,22 +7,22 @@ from flight.additions.cache_operations import get_single_offer
 from flight.integrations import INTEGRATIONS
 from flight.models import get_system_name
 
-class AvailabilityCollector:
+class VerifyCollector:
     
     ''' A class that returns the rule of a ticket '''
 
-    def __init__(self, data) -> None:
-        self.request_id = data['request_id']
+    def __init__(self, data: dict) -> None:
+        self.request_id = data.get('request_id')
         self.offer_id   = data['offer_id']
         self.data       = data
 
     async def collector(self):
         result = {
-            'request_id': '',
-            'offer_id': '',
-            'status': '',
-            'code': '',
-            'availability': False
+            'status'      : '',
+            'request_id'  : self.request_id,
+            'offer_id'    : '',
+            'code'        : '',
+            'verified'    : False
         }
 
         res = await get_single_offer(request_id=self.request_id, offer_id=self.offer_id) 
@@ -49,24 +49,25 @@ class AvailabilityCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                response = await integration.availability(system_id, provider_id, provider_name, self.request_id, res, search_data)
+                response = await integration.verify(system_id, provider_id, provider_name, self.request_id, self.offer_id, res, search_data)
 
                 if response['status'] == 'success':
-                    result['status'] = 'success'
-                    result['code'] = '100'
-                    result['routes'] = response['data']
+                    result['status']       = 'success'
+                    result['code']         = '100'
+                    result['offer_id']     = response['data']['offer_id']
+                    result['verified']     = True
                 else:
-                    print("gds couldn't respond")
+                    print("gds did not respond")
                     result['status'] = 'error'
-                    result['code'] = '404'
+                    result['code']   = '404'
             else:
                 print('integration not found')
                 result['status'] = 'error'
-                result['code'] = '404'
+                result['code']   = '404'
             return result   
         else:
             result['status'] = 'error'
-            result['code'] = '404'
+            result['code']   = '404'
             return result
 
 

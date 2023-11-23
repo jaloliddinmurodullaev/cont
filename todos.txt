@@ -1,0 +1,23 @@
+TODOS:
+    sort by airlines in search
+    applying rules
+    applying currency converter 
+
+FULL METHODS:
+    booking
+    cancel booking
+    retrieve
+    ticketing
+    void
+    refund
+    ancillaries
+    seatmap
+    split
+
+DEPENDANT MICROSERVICES:
+    rules (ready, i need to use)
+    static (ready, i need to use)
+    currency (ready, i need to use)
+    log (ready, i need to use)
+    orders (ready, i need to use)
+

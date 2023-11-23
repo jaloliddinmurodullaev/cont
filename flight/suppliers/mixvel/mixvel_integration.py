@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 
 
 from flight.models import insert_data
-from flight.additions.cache_operations import set_status, set_provider_response_to_cache
+from flight.additions.cache_operations import set_status, save_offers
 from flight.additions.integration import BaseIntegration
 from .endpoint import is_login_endpoint, request_template
 from .converter.search_converter import search_converter
@@ -148,7 +148,7 @@ class MixvelIntegration(BaseIntegration):
             }
 
             # inserting data to cache
-            asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
+            asyncio.create_task(save_offers(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
             # Alternative for above
             # loop = asyncio.get_event_loop()
             # loop.run_until_complete(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))

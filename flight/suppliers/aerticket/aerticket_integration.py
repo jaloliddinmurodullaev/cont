@@ -1,17 +1,20 @@
+# External
 import asyncio
 import os
 import aiohttp
 import json
 
-from flight.models import insert_data
-from flight.additions.additions import filter_tickets
-from flight.additions.cache_operations import set_status
-from flight.additions.cache_operations import set_provider_response_to_cache
-from flight.additions.integration import BaseIntegration
+# Internal
+from flight.models                      import insert_data
+from flight.additions.additions         import filter_tickets
+from flight.additions.cache_operations  import set_status
+from flight.additions.cache_operations  import save_offers
+from flight.additions.integration       import BaseIntegration
 
-from .converters.search_converter import search_converter
-from .converters.upsell_converter import upsell_converter
-from .converters.rules_converter  import rules_converter
+from .converters.search_converter       import search_converter
+from .converters.upsell_converter       import upsell_converter
+from .converters.rules_converter        import rules_converter
+from .converters.verify_converter       import verify_converter
 
 GATEWAY = os.environ.get('AerTicket_Base_URL')
 APIKEY = os.environ.get('AerTicket_Login_Key')
@@ -56,7 +59,6 @@ class AerticketIntegration(BaseIntegration):
         return response
     
     async def __send(self, url, headers, data):
-        print(data)
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=data, headers=headers) as response:
                 status_code = response.status
@@ -87,7 +89,7 @@ class AerticketIntegration(BaseIntegration):
                 'data'   : await search_converter(res, provider_id, provider_name, system_id, currency, len(data['segmentList']))
             }
             # inserting data to cache
-            await set_provider_response_to_cache(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
+            await save_offers(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
             
             # filtering only offers
             result['data'] = await filter_tickets(result['data'])
@@ -99,8 +101,10 @@ class AerticketIntegration(BaseIntegration):
         else:
             result = {
                 'status' : res['status'], 
-                'message': res['message']  
+                'message': res['message'],
+                'data'   : []
             } 
+            await save_offers(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
             return result
  
     async def search_request_maker(self):
@@ -168,6 +172,7 @@ class AerticketIntegration(BaseIntegration):
 
     async def upsell(self, system_id, provider_id, provider_name, request_id, data, search_data): # data is data saved in the "other" field of an offer
         body = await asyncio.create_task(self.upsell_request_maker(data))
+        print(search_data)
 
         context = json.dumps(body)
 
@@ -191,9 +196,8 @@ class AerticketIntegration(BaseIntegration):
 
             trip_routes_cnt = len(res['data']['availableFareList'][0]['legList'])
 
-            # a line below should be applied yet
-            # await set_provider_response_to_cache(data=self.data, provider_id=provider_id, offers=result, request_id=request_id)
             resp = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
+            await save_offers(data=search_data, provider_id=provider_id, offers=resp, request_id=request_id)
             resp = await filter_tickets(resp)
 
             result = {
@@ -245,15 +249,50 @@ class AerticketIntegration(BaseIntegration):
 
         return response
     
-################################### AVAILABILITY ###################################
+###################################### VERIFY ######################################
 
-    async def availability(self, system_id, provider_id, provider_name, request_id, data, search_data):
+    async def verify(self, system_id, provider_id, provider_name, request_id, offer_id, data, search_data):
+        body = await asyncio.create_task(self.verify_request_maker(data['other']))
+
+        context = json.dumps(body)
+
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY
+
+        currency = {
+            'curFrom': 'EUR',
+            'curTo'  : 'USD'
+        } 
         
-        pass
+        res = await asyncio.create_task(self.__request("/api/v1/verify-fare", context))
+
+        result = {
+            'status': None,
+            'data': None
+        }
+
+        if res['status'] == 'success' and "fareId" in res['data']['fare']:
+            asyncio.create_task(set_status(request_id=request_id))
+            resp = await verify_converter(request_id, offer_id)
+            result['status'] = 'success'
+            result['data'] = resp
+        else:
+            result['status'] = 'error'
+            result['data'] = {}
+        
+        return result
+        
+
+    async def verify_request_maker(self, data):
+        upsell = {
+            "fareId": data['fareId'],
+            "itineraryIdList": data['itineraryIdList']
+        }
+        return upsell
 
 ##################################### BOOKING ######################################
 
-    async def booking(self):
+    async def booking(self, system_id, provider_id, provider_name, request_id, offer_id, data, search_data):
         pass
 
 ################################## CANCEL BOOKING ##################################

@@ -10,7 +10,7 @@ from flight.collectors.search_collector       import SearchCollector
 from flight.collectors.offer_collector        import OfferCollector
 from flight.collectors.upsell_collector       import UpsellCollector
 from flight.collectors.rules_collector        import RulesCollector
-from flight.collectors.availability_collector import AvailabilityCollector
+from flight.collectors.verify_collector       import VerifyCollector
 from flight.collectors.booking_collector      import BookingCollector
 from flight.collectors.ticketing_collector    import TicketingCollector
 
@@ -92,13 +92,13 @@ class RulesHandler(tornado.web.RequestHandler):
         self.write(response[0])
 
 
-class AvailabilityHandler(tornado.web.RequestHandler):
+class VerifyHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
 
-        if await asyncio.create_task(Validator.availability_request_validator(data)):
+        if await asyncio.create_task(Validator.verify_request_validator(data)):
             # start_time = time.time()
-            collector = AvailabilityCollector(data)
+            collector = VerifyCollector(data)
             response = await asyncio.gather(collector.collector())
             # end_time = time.time()
         else:

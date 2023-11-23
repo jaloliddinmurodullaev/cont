@@ -4,7 +4,7 @@ from .handlers import SearchHandler
 from .handlers import OfferHandler
 from .handlers import UpsellHandler
 from .handlers import RulesHandler
-from .handlers import AvailabilityCollector
+from .handlers import VerifyHandler
 from .handlers import BookingHandler
 from .handlers import TicketingHandler
 from .handlers import SystemAddHandler
@@ -16,7 +16,7 @@ def application():
             (r"/offers",         OfferHandler          ),
             (r"/upsell",         UpsellHandler         ),
             (r"/rules",          RulesHandler          ),
-            (r"/availability",   AvailabilityCollector ),
+            (r"/verify",         VerifyHandler         ),
             (r"/booking",        BookingHandler        ),
             (r"/cancel",         BookingHandler        ),
             (r"/split",          BookingHandler        ),

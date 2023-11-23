@@ -42,6 +42,7 @@ class SearchCollector:
             for provider in self.data.get('providers'):
                 offers = await asyncio.create_task(check_search_existance(provider_id=provider['provider_id'], data=self.data, request_id=request_check['request_id']))
                 if offers:
+                    result['status'] = 'error'
                     result['code'] = "404"
             
             return result
@@ -53,7 +54,7 @@ class SearchCollector:
         providerList = []
         for provider in self.data.get('providers'):
             offers = await asyncio.create_task(check_search_existance(provider_id=provider['provider_id'], data=self.data, request_id=self.request_id))
-
+            
             if not offers:
                 system_name = await asyncio.create_task(get_system_name(db_name='content', system_id=provider['system_id']))
                 if system_name is not None and system_name in INTEGRATIONS:
@@ -69,8 +70,15 @@ class SearchCollector:
                     result['code'] = "404"
             
         try:
-            await asyncio.gather(*[task['integration'].search(task['system_id'], task['provider_id'], task['provider_name'], self.request_id) for task in providerList])
+            search_response = await asyncio.gather(*[task['integration'].search(task['system_id'], task['provider_id'], task['provider_name'], self.request_id) for task in providerList])
+            cnt_404 = 0
+            for srd in search_response:
+                if len(srd['data']) == 0:
+                    cnt_404 += 1
+            if cnt_404 == len(search_response):
+                result['code'] = '404'
         except Exception as e:
+            result['code'] = "404"
             raise e
 
         result['status'] = await asyncio.create_task(check_status(request_id=self.request_id))

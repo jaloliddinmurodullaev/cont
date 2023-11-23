@@ -6,7 +6,7 @@ import json
 from flight.models import insert_data
 from flight.additions.additions import filter_tickets
 from flight.additions.cache_operations import set_status
-from flight.additions.cache_operations import set_provider_response_to_cache
+from flight.additions.cache_operations import save_offers
 from flight.additions.integration import BaseIntegration
 
 from .converters.search_converter import search_converter
@@ -103,7 +103,7 @@ class GalileoIntegration(BaseIntegration):
             result['data'] = asyncio.create_task(filter_tickets(result['data']))
             
             # inserting data to cache
-            asyncio.create_task(set_provider_response_to_cache(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
+            asyncio.create_task(save_offers(data=self.data, provider_id=provider_id, offer=result, request_id=request_id))
 
             # inserting data to a database for Business Intelligence
             asyncio.create_task(insert_data(system_id=system_id, provider_id=provider_id, provider_name=provider_name, offers=result))

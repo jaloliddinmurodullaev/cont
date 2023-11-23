@@ -2,7 +2,7 @@ import json
 import asyncio
 
 from flight.additions.cache_operations import check_status
-from flight.additions.cache_operations import check_offers_existance, get_search_data
+from flight.additions.cache_operations import get_offers, get_search_data
 
 class OfferCollector:
     
@@ -36,9 +36,10 @@ class OfferCollector:
             result['currency']   = search_data['currency']
             result['sort_type']  = self.sort_type
 
-            offers = await asyncio.create_task(check_offers_existance(request_id=self.request_id))
+            offers = await asyncio.create_task(get_offers(request_id=self.request_id))
             if offers: 
-                result['offers'] = offers
+                for off in offers:
+                    result['offers'].append(off['data']['ticket'])
                 result['code'] = 100
             else:
                 result['status'] = 'error'
@@ -70,7 +71,7 @@ class OfferCollector:
         return result
     
     async def sort_by_price(self, offers):
-        return sorted(offers, key=lambda offer: offer["price_info"]["price"])
+        return sorted(offers, key=lambda offer: offer['data']['ticket']["price_info"]["price"])
     
     async def currency_converter(self, offers, currFrom, currTo):
         pass

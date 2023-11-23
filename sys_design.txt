@@ -1,0 +1,2 @@
+single offer in cache:
+    offerId_requestId_providerId

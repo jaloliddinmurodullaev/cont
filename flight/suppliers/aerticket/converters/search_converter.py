@@ -34,11 +34,10 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             fare_id = _offers['fareId']
 
             for offer in _offers['legList']:
-                itinerary_id_list = []
                 for off in offer['itineraryList']:
                     baggage_info = await get_baggage_info(off, passengers_info)
                     fare_info = await get_fare_info(off, passengers_info)
-                    itinerary_id_list.append(off['id'])
+                    itinerary_id = off['id']
                     offer_id = uuid.uuid4()
                     offer_tmp = {
                         'offer_id': str(offer_id),
@@ -62,18 +61,18 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
                         "segments": await segment_maker(off['segmentList'], 100)
                     }
                     offer_tmp['routes'].append(route_tmp)
-                complete_offer = AdditionsTicket(
-                    ticket=offer_tmp,
-                    offer_id=offer_tmp['offer_id'],
-                    other={
-                        'fareId': fare_id,
-                        'itineraryIdList': itinerary_id_list
-                    },
-                    provider_id=provider_id,
-                    provider_name=provider_name,
-                    system_id=system_id
-                )
-                results.append(complete_offer)
+                    complete_offer = AdditionsTicket(
+                        ticket=offer_tmp,
+                        offer_id=offer_tmp['offer_id'],
+                        other={
+                            'fareId': fare_id,
+                            'itineraryIdList': [itinerary_id]
+                        },
+                        provider_id=provider_id,
+                        provider_name=provider_name,
+                        system_id=system_id
+                    )
+                    results.append(complete_offer)
     
     elif trip_routes_cnt == 2: # round trip
         for _offers in offers['availableFareList']:
@@ -85,7 +84,6 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             offers = await round_trip(_offers, price_info, price_details, 
                                        passengers_info, provider_id, provider_name)
             for off in offers:
-                print(type(off))
                 results.append(off)
 
     else: # multi city
@@ -553,13 +551,14 @@ async def get_price_info(_offers, currency_type):
                 pass
         for prc in passen['surchargeInfoList']:
             fee_amount += prc['value']
-
+    
     price_info = {
-        "price": total_price - fee_amount,
+        "price": round(total_price - fee_amount, 2),
         "currency": currency_type,
-        "fee_amount": fee_amount,
+        "fee_amount": round(fee_amount, 2),
         "commission_amount": 0
     }
+    
     return price_info
 
 async def get_price_details(_offers, currency_type):
@@ -586,16 +585,16 @@ async def get_price_details(_offers, currency_type):
             "passenger_type": passen['passengerTypeCode'],
             "currency": currency_type,
             "quantity": cnt,
-            "single_fare_amount": single_fare_amount - _fee_amount,
-            "single_tax_amount": single_tax_amount,
+            "single_fare_amount": round(single_fare_amount - _fee_amount, 2),
+            "single_tax_amount": round(single_tax_amount, 2),
             "single_tax_details": [],
-            "fee_amount": _fee_amount,
+            "fee_amount": round(_fee_amount, 2),
             "commission_amount": 0,
-            "single_total_amount": single_fare_amount + single_tax_amount,
-            "base_total_amount": single_fare_amount + single_tax_amount,
-            "tax_total_amount": single_tax_amount * cnt,
-            "total_amount": (single_fare_amount + single_tax_amount) * cnt,
-            "payable_amount": (single_fare_amount + single_tax_amount) * cnt
+            "single_total_amount": round(single_fare_amount + single_tax_amount, 2),
+            "base_total_amount": round(single_fare_amount + single_tax_amount, 2),
+            "tax_total_amount": round(single_tax_amount * cnt, 2),
+            "total_amount": round((single_fare_amount + single_tax_amount) * cnt, 2),
+            "payable_amount": round((single_fare_amount + single_tax_amount) * cnt, 2)
         }
 
         price_details.append(price_details_tmp)

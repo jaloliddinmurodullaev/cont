@@ -77,14 +77,48 @@ class Validator:
 
         return (request_id != None and offer_id != None)
 
-    async def availability_request_validator(data: dict) -> bool:
+    async def verify_request_validator(data: dict) -> bool:
         request_id = data.get('request_id', None)
         offer_id   = data.get('offer_id', None)
 
         return (request_id != None and offer_id != None)
 
     async def booking_request_validator(data: dict) -> bool:
-        pass
+        offer_id   = data.get('offer_id', None)
+        request_id = data.get('request_id', None)
+        passengers = data.get('passengers', [])
+
+        if offer_id == None or request_id == None or len(passengers) == 0:
+            return False
+        
+        for passenger in passengers:
+            passenger_type = passenger.get('type', None)
+            passenger_gender = passenger.get('gender', None)
+            passenger_last_name = passenger.get('last_name', None)
+            passenger_first_name = passenger.get('first_name', None)
+            passenger_middle_name = passenger.get('middle_name', None)
+            passenger_birth_date = passenger.get('birth_date', None)
+            passenger_citizenship = passenger.get('citizenship', None)
+            passenger_email = passenger.get('email', None)
+            passenger_document = passenger.get('document', None)
+            passenger_phone = passenger.get('phone', None)
+
+            document_type = passenger_document.get('type', None)
+            document_number = passenger_document.get('number', None)
+            document_issue_date = passenger_document.get('issue_date', None)
+            document_expire_date = passenger_document.get('expire_date', None)
+
+            phone_code = passenger.get('code', None)
+            phone_number = passenger.get('number', None)
+
+            if (passenger_type == None or passenger_gender == None or passenger_last_name == None or passenger_first_name == None or passenger_middle_name == None or 
+                passenger_birth_date == None or passenger_citizenship == None or passenger_email == None or passenger_phone == None or document_expire_date == None or 
+                document_issue_date == None or document_number == None or document_type == None or phone_code == None or phone_number == None):
+
+                return False
+        
+        return True
+
     
     async def adding_new_system_validator(data: dict) -> bool:
         system_id = data.get('system_id', False)

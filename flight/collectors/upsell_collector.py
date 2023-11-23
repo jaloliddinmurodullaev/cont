@@ -62,8 +62,6 @@ class UpsellCollector:
                     print('gds couldnt respond')
                     result['status'] = 'error'
                     result['code'] = '404'
-
-                
             else:
                 print('integration not found')
                 result['status'] = 'error'

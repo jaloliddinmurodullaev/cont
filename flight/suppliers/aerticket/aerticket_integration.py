@@ -321,15 +321,15 @@ class AerticketIntegration(BaseIntegration):
 
         print(res)
 
-        if res['status'] == 'success':
-            # resp = await booking_converter(request_id, offer_id, res, search_data)
-            return res
+        if res['status'] == 'success' and 'pnr' in res['data'] and "locator" in res['data']['pnr'] and res['data']['pnr']['locator'] != "":
+            resp = await booking_converter(offer_id, res, ticket, search_data)
+            return resp
         else:
             result = {
                 "request_id": request_id,
                 "status": "error",
                 "code": 405,
-            }
+            } 
         
         return result
 

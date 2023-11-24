@@ -38,7 +38,11 @@ class OfferCollector:
 
             offers = await asyncio.create_task(get_offers(request_id=self.request_id))
             if offers: 
+                cnt = 0
                 for off in offers:
+                    if cnt == 0:
+                        print(off['data']['ticket'])
+                        cnt += 1
                     result['offers'].append(off['data']['ticket'])
                 result['code'] = 100
             else:
@@ -50,9 +54,11 @@ class OfferCollector:
 
         # Filters
 
+        print()
+
         # sort by price
         if self.sort_type == 'price':
-            result['offers'] = await asyncio.create_task(self.sort_by_price(offers))
+            result['offers'] = await asyncio.create_task(self.sort_by_price(result['offers']))
 
         result['count'] = len(result['offers'])
 
@@ -71,7 +77,7 @@ class OfferCollector:
         return result
     
     async def sort_by_price(self, offers):
-        return sorted(offers, key=lambda offer: offer['data']['ticket']["price_info"]["price"])
+        return sorted(offers, key=lambda offer: offer["price_info"]["price"])
     
     async def currency_converter(self, offers, currFrom, currTo):
         pass

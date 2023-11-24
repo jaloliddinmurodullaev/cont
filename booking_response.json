@@ -53,43 +53,6 @@
                         "seat_distance": "70cm",
                         "seat_scheme": "3-3"
                     }
-                },
-                {
-                    "leg": "ESB-AYT",
-                    "departure_city": "Ankara",
-                    "departure_date": "2023-04-04",
-                    "departure_time": "13:00:00",
-                    "departure_airport": "ESB",
-                    "departure_country": "Turkey",
-                    "departure_terminal": "",
-                    "departure_timezone": "GMT+3:00",
-                    "arrival_city": "Antalya",
-                    "arrival_date": "2023-04-04",
-                    "arrival_time": "14:05:00",
-                    "arrival_airport": "AYT",
-                    "arrival_country": "Turkey",
-                    "arrival_terminal": "",
-                    "arrival_timezone": "GMT+3:00",
-                    "carrier_code": "TK",
-                    "carrier_name": "Turkish Airlines",
-                    "carrier_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
-                    "duration_minutes": 65,
-                    "stop_time_minutes": 150,
-                    "marketing_airline_code": "TK",
-                    "marketing_airline_name": "Turkish Airlines",
-                    "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
-                    "operating_airline_code": "TK",
-                    "operating_airline_name": "Turkish Airlines",
-                    "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/TK.svg",
-                    "airplane_info": {
-                        "has_wifi": true,
-                        "airplane_code": "78D",
-                        "airplane_name": "78D BOEING B737-800",
-                        "seat_angle": "10cm",
-                        "seat_width": "43cm",
-                        "seat_distance": "70cm",
-                        "seat_scheme": "3-3"
-                    }
                 }
             ]            
         }
@@ -146,22 +109,6 @@
                 "passport_issuance": "2030-12-12",
                 "passport_expiry": "2030-12-12"
             },
-            "seat_detail": [
-                {
-                    "seat": "10A",
-                    "status": "R",
-                    "price": 10.0,
-                    "currency": "USD",
-                    "segment": "IST-ESB"
-                },
-                {
-                    "seat": "10A",
-                    "status": "R",
-                    "price": 10.0,
-                    "currency": "USD",
-                    "segment": "IST-ESB"
-                }
-            ],
             "ticket_info": {
                 "price_info": [
                     {
@@ -231,36 +178,10 @@
                     }
                 ]
             },
-            "SSR": {},
-            "OSI": {},
-            "DOCO": {},
-            "DOCA": {},
-            "mile_card": {}
-        },
-        {
-            "ticket_number": null,
-            "passenger_type": "ADT",
-            "gender": "M",
-            "passenger_uid": "d416321e8cc54e238c7d25d8cb104d37",
-            "order_uid": "862dd86f04294748a20d1d0aebb2d3d8",
-            "firstname": "Jaloliddin",
-            "lastname": "Murodullayev",
-            "middlename": "Hojiakbar o'g'li",
-            "birth_date": "2001-09-01",
-            "passenger_category": "Student",
-            "phone_number": "+9989992747465",
-            "email_address": "test@mail.uz",
-            "document": {
-                "document_type": "PSP",
-                "citizenship": "UZ",
-                "passport_number": "AB7748325",
-                "passport_issuance": "2030-12-12",
-                "passport_expiry": "2030-12-12"
-            },
             "seat_detail": [
                 {
                     "seat": "10A",
-                    "status": "R", 
+                    "status": "R",
                     "price": 10.0,
                     "currency": "USD",
                     "segment": "IST-ESB"
@@ -273,75 +194,6 @@
                     "segment": "IST-ESB"
                 }
             ],
-            "ticket_info": {
-                "price_info": [
-                    {
-                        "currency": "USD",
-                        "fee_amount": 0,
-                        "commission_amount": 0,
-                        "single_total_amount": 25612800,
-                        "fare_total_amount": 26592000,
-                        "tax_total_amount": 24633600,
-                        "total_amount": 51225600,
-                        "payable_amount": 51225600,
-                        "single_fare_amount": 13296000,
-                        "single_tax_amount": 12316800,
-                        "single_tax_details": [
-                            {
-                                "code": "YQ",
-                                "total": 1200,
-                                "currency": "RUB",
-                                "description": "Additional fee added to the base fare of an airline ticket"
-                            }
-                        ]
-                    }
-                ],
-                "fares_info": [
-                    {
-                        "leg": "IST-ESB",
-                        "fare_code": "QEF",
-                        "description": "",
-                        "booking_class": "L",
-                        "service_class": "economy",
-                        "upsell": {
-                            "name": "Lite",
-                            "services": [
-                                {
-                                    "code": "AKN",
-                                    "name": "Bonus meal",
-                                    "status": true
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "baggage_info": [
-                    {
-                        "leg": "IST-ESB",
-                        "description": "",
-                        "baggage": {
-                            "value": 1,
-                            "unit": "PC",
-                            "size": {
-                                "unit": "cm",
-                                "width": 236,
-                                "height": 129,
-                                "length": 112
-                            }                            
-                        },
-                        "hand_baggage": {
-                            "value": 1,
-                            "unit": "PC",
-                            "size": {
-                                "unit": "cm",
-                                "width": 23,
-                                "height": 29,
-                                "length": 17
-                            }                            
-                        }
-                    }
-                ]
-            },
             "SSR": {},
             "OSI": {},
             "DOCO": {},

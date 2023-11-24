@@ -85,16 +85,156 @@ def create_database(db_name=DEFAULT_DB_NAME):
             )
         '''
 
+        create_table_query_search = f'''
+            CREATE TABLE IF NOT EXISTS search (
+                id SERIAL PRIMARY KEY,
+                request_id UUID,
+                adt INT,
+                chd INT,
+                inf INT,
+                class VARCHAR(50),
+                direct BOOLEAN,
+                flexible BOOLEAN,
+                currency VARCHAR(3),
+                directions JSONB
+            )
+        '''
+
+        create_table_query_offer = f'''
+            CREATE TABLE IF NOT EXISTS offer (
+                offer_id UUID PRIMARY KEY,
+                search INT REFERENCES search(id),
+                offer_data JSONB,
+                other JSONB,
+                provider_id UUID,
+                provider_name VARCHAR(400),
+                system_id UUID
+            )
+        '''
+
+        create_table_query_orders = f'''
+            CREATE TABLE IF NOT EXISTS orders (
+                order_id UUID PRIMARY KEY,
+                offer UUID REFERENCES offer(offer_id),
+                status VARCHAR(100),
+                agent_id UUID,
+                system_name VARCHAR(300),
+                order_number INT,
+                pnr_number VARCHAR(100),
+                passengers JSONB,
+                booking_response JSONB
+            )
+        '''
+
         cursor_s.execute(create_table_query_offers)
         cursor_s.execute(create_table_query_systems)
         cursor_s.execute(create_table_query_integrations)
         cursor_s.execute(create_table_query_admins)
+        cursor_s.execute(create_table_query_search)
+        cursor_s.execute(create_table_query_offer)
+        cursor_s.execute(create_table_query_orders)
 
         cursor_s.close()
         conn_s.close()
 
     cursor.close()
     conn.close()
+
+async def insert_search(search_data, db_name=DEFAULT_DB_NAME):
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    insert_query = "INSERT INTO search (request_id, adt, chd, inf, class, direct, flexible, currency, directions) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+    
+    directions = {
+        "directions": search_data['directions']
+    }
+    
+    await conn.execute(insert_query, search_data['request_id'], search_data['adt'], search_data['chd'], search_data['inf'], search_data['class'], search_data['direct'], search_data['flexible'], search_data['currency'], json.dumps(directions))
+
+    select_query = f"SELECT id FROM search WHERE request_id = $1"
+
+    search = await conn.fetchval(select_query, search_data['request_id'])
+
+    await conn.close()
+
+    return search if search else None
+
+async def insert_offer(offer_id, search_object, offer_data, other, provider_id, provider_name, system_id, db_name=DEFAULT_DB_NAME):
+    print(offer_id)
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    insert_query = "INSERT INTO offer (offer_id, search, offer_data, other, provider_id, provider_name, system_id) VALUES ($1, $2, $3, $4, $5, $6, $7)"
+
+    await conn.execute(insert_query, offer_id, search_object, json.dumps(offer_data), json.dumps(other), provider_id, provider_name, system_id)
+
+    select_query = f"SELECT offer_id FROM offer WHERE offer_id = $1"
+
+    offer = await conn.fetchval(select_query, offer_id)
+
+    await conn.close()
+
+    return offer if offer else None
+
+async def insert_order(order_id, offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response, db_name=DEFAULT_DB_NAME):
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    insert_query = "INSERT INTO orders (order_id, offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+
+    await conn.execute(insert_query, order_id, offer, status, agent_id, system_name, order_number, pnr_number, json.dumps(passengers), json.dumps(booking_response))
+
+    await conn.close()
+
+async def get_order(order_id, db_name=DEFAULT_DB_NAME):
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    select_query = f"SELECT * FROM offer WHERE order_id = $1"
+
+    order = await conn.fetchval(select_query, order_id)
+
+    await conn.close()
+
+    return order
+
+async def delete_order(order_id, db_name=DEFAULT_DB_NAME):
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    select_query = f"UPDATE orders SET status = 'C' WHERE order_id = $1"
+
+    order = await conn.fetchval(select_query, order_id)
+
+    await conn.close()
+
+    return order
 
 def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
     conn = psycopg2.connect(

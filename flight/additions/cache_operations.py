@@ -136,7 +136,7 @@ async def set_search_data(data, request_id, trip_type, currency): # Cache operat
                 "chd"       : data.get('chd'),
                 "inf"       : data.get('inf'),
                 "ins"       : data.get('ins'),
-                "clas"      : data.get('class'),
+                "class"     : data.get('class'),
                 "direct"    : data.get('direct'),
                 "flexible"  : data.get('flexible'),
                 "trip_type" : trip_type,

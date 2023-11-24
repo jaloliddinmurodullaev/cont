@@ -5,7 +5,11 @@ from flight.additions.cache_operations import get_search_data
 from flight.additions.cache_operations import get_single_offer
 
 from flight.integrations import INTEGRATIONS
+
 from flight.models import get_system_name
+from flight.models import insert_search
+from flight.models import insert_offer
+from flight.models import insert_order
 
 class BookingCollector:
     
@@ -47,9 +51,16 @@ class BookingCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                print(19919)
-                print(integration)
                 result = await integration.booking(system_id, provider_id, provider_name, self.request_id, self.offer_id, self.passengers, offer, search_data)
+                
+                search_object = await insert_search(search_data=search_data)
+                print(f"Search object: {search_object}")
+                if search_object is not None:
+                    offer_object = await insert_offer(offer_id=offer['offer_id'], search_object=search_object, offer_data=offer['ticket'], other=offer['other'], provider_id=provider_id, provider_name=provider_name, system_id=system_id) 
+                    print(f"Offer object: {offer_object}")
+                    if offer_object is not None:
+                        await insert_order(order_id=result['order_id'], offer=offer_object, status=result['status'], agent_id=self.data['agent']['agent_id'], system_name=system_name, order_number=result['order_number'], pnr_number=result['gds_pnr'], passengers=result['passengers'], booking_response=result)
+                        print("Booking data has been successfully saved to database")
 
                 return result
         else:

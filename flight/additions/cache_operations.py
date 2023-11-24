@@ -73,7 +73,7 @@ async def get_single_offer(request_id, offer_id):
 
     partial_key = f"{request_id}_*_{offer_id}"
     key = redis_client.keys(partial_key)[0].decode('utf-8')
-    
+
     offer = redis_client.get(key)
 
     offer = json.loads(offer)
@@ -95,7 +95,34 @@ async def get_single_offer(request_id, offer_id):
 
 
 async def update_offer(request_id, offer_id, value):
-    pass
+
+    ''' updating an offer'''
+
+    redis_client = redis.Redis(host=HOST, port=PORT)
+
+    try:
+        partial_key = f"{request_id}_*_{offer_id}"
+        key = redis_client.keys(partial_key)[0].decode('utf-8')
+        
+        redis_client.set(
+                key,
+                json.dumps(value), 
+                MINUTES*60  
+            )
+
+        result = {
+            'status': 'success',
+            'message': 'an offer has been cached'
+        }
+    except Exception as e:
+        result = {
+            'status': 'error',
+            'message': str(e)
+        }
+
+    redis_client.close()
+
+    return result
 
 
 async def set_search_data(data, request_id, trip_type, currency): # Cache operation

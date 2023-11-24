@@ -19,14 +19,21 @@ class BookingCollector:
 
     async def collector(self):
         
-        res = await get_single_offer(request_id=self.request_id, offer_id=self.offer_id) 
+        try:
+            offer = await get_single_offer(request_id=self.request_id, offer_id=self.offer_id)
+        except Exception as e:
+            return {
+                'status': 'error',
+                'request_id': self.request_id,
+                'code': 502
+            }
 
-        if res['status'] == 'success':
-            res = res['offer_data']
+        if offer['status'] == 'success':
+            offer = offer['offer_data']
 
-            provider_id   = res['provider_id']
-            provider_name = res['provider_name']
-            system_id     = res['system_id']
+            provider_id   = offer['provider_id']
+            provider_name = offer['provider_name']
+            system_id     = offer['system_id']
 
             auth_data = {
                 'login'   : 'login',
@@ -40,7 +47,11 @@ class BookingCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                result      = await integration.booking(system_id, system_name, provider_id, provider_name, self.request_id, self.offer_id, res, search_data)
+                print(19919)
+                print(integration)
+                result = await integration.booking(system_id, provider_id, provider_name, self.request_id, self.offer_id, self.passengers, offer, search_data)
+
+                return result
         else:
             result = {
                 'status'    : 'error',
@@ -49,3 +60,4 @@ class BookingCollector:
             }
 
         return result
+

@@ -1,8 +1,10 @@
 import json
+import copy
 import asyncio
 
 from flight.additions.cache_operations import get_search_data
 from flight.additions.cache_operations import get_single_offer
+from flight.additions.cache_operations import update_offer
 
 from flight.integrations import INTEGRATIONS
 from flight.models import get_system_name
@@ -25,14 +27,14 @@ class VerifyCollector:
             'verified'    : False
         }
 
-        res = await get_single_offer(request_id=self.request_id, offer_id=self.offer_id) 
+        offer = await get_single_offer(request_id=self.request_id, offer_id=self.offer_id) 
 
-        if res['status'] == 'success':
-            res = res['offer_data']
+        if offer['status'] == 'success':
+            offer = offer['offer_data']
 
-            provider_id   = res['provider_id']
-            provider_name = res['provider_name']
-            system_id     = res['system_id'] 
+            provider_id   = offer['provider_id']
+            provider_name = offer['provider_name']
+            system_id     = offer['system_id'] 
 
             auth_data = {
                 'login'   : 'login',
@@ -49,12 +51,12 @@ class VerifyCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                response = await integration.verify(system_id, provider_id, provider_name, self.request_id, self.offer_id, res, search_data)
+                response = await integration.verify(system_id, provider_id, provider_name, self.request_id, self.offer_id, offer, search_data)
 
                 if response['status'] == 'success':
                     result['status']       = 'success'
                     result['code']         = '100'
-                    result['offer_id']     = response['data']['offer_id']
+                    result['offer_id']     = self.offer_id
                     result['verified']     = True
                 else:
                     print("gds did not respond")

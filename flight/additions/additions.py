@@ -108,8 +108,11 @@ class Validator:
             document_issue_date = passenger_document.get('issue_date', None)
             document_expire_date = passenger_document.get('expire_date', None)
 
-            phone_code = passenger.get('code', None)
-            phone_number = passenger.get('number', None)
+            phone_number = passenger_phone.get('number', None)
+            phone_code = passenger_phone.get('code', None)
+
+            # print(passenger_type, passenger_gender, passenger_last_name, passenger_first_name, passenger_middle_name, passenger_birth_date, passenger_citizenship, passenger_email, 
+            #       passenger_document, passenger_phone, document_expire_date, document_issue_date, document_number, document_type, phone_code, phone_number)
 
             if (passenger_type == None or passenger_gender == None or passenger_last_name == None or passenger_first_name == None or passenger_middle_name == None or 
                 passenger_birth_date == None or passenger_citizenship == None or passenger_email == None or passenger_phone == None or document_expire_date == None or 

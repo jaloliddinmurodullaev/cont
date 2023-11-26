@@ -19,6 +19,7 @@ class BookingCollector:
         self.passengers = data['passengers']
         self.request_id = data['request_id']
         self.offer_id   = data['offer_id']
+        self.agent      = data['agent']
         self.data       = data
 
     async def collector(self):
@@ -51,7 +52,7 @@ class BookingCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                result = await integration.booking(system_id, provider_id, provider_name, self.request_id, self.offer_id, self.passengers, offer, search_data)
+                result = await integration.booking(system_id, provider_id, provider_name, self.request_id, self.offer_id, self.data, offer, search_data)
                 
                 search_object = await insert_search(search_data=search_data)
                 print(f"Search object: {search_object}")

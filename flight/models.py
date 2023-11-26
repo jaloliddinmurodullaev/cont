@@ -219,7 +219,7 @@ async def get_order(order_id, db_name=DEFAULT_DB_NAME):
 
     return order
 
-async def delete_order(order_id, db_name=DEFAULT_DB_NAME):
+async def update_order(order_id, status_code, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
         host     = HOST,
         port     = PORT,
@@ -228,9 +228,9 @@ async def delete_order(order_id, db_name=DEFAULT_DB_NAME):
         database = db_name
     )
 
-    select_query = f"UPDATE orders SET status = 'C' WHERE order_id = $1"
+    select_query = f"UPDATE orders SET status = $2 WHERE order_id = $1"
 
-    order = await conn.fetchval(select_query, order_id)
+    order = await conn.fetchval(select_query, order_id, status_code)
 
     await conn.close()
 
@@ -246,7 +246,7 @@ def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
     )
     
     conn.autocommit = True
-    cursor = conn.cursor()
+    cursor = conn.cursor() 
 
     try:
         insert_query = "INSERT INTO admins (username, password) VALUES ($1, $2)"

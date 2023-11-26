@@ -54,8 +54,6 @@ class OfferCollector:
 
         # Filters
 
-        print()
-
         # sort by price
         if self.sort_type == 'price':
             result['offers'] = await asyncio.create_task(self.sort_by_price(result['offers']))

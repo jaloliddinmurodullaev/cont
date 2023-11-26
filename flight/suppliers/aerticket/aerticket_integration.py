@@ -255,8 +255,6 @@ class AerticketIntegration(BaseIntegration):
 
         context = json.dumps(body)
 
-        print(context)
-
         self.loginkey = APIKEY
         self.passwordkey = PASSKEY 
         
@@ -308,9 +306,8 @@ class AerticketIntegration(BaseIntegration):
 
 ##################################### BOOKING ######################################
 
-    async def booking(self, system_id, provider_id, provider_name, request_id, offer_id, passengers, ticket, search_data):
-        print('booking')
-        body = await asyncio.create_task(self.booking_request_maker(ticket['other'], passengers))
+    async def booking(self, system_id, provider_id, provider_name, request_id, offer_id, booking_data, ticket, search_data):
+        body = await asyncio.create_task(self.booking_request_maker(ticket['other'], booking_data['passengers'], booking_data['agent']))
 
         context = json.dumps(body)
 
@@ -318,8 +315,6 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/create-booking", context))
-
-        print(res)
 
         if res['status'] == 'success' and 'pnr' in res['data'] and "locator" in res['data']['pnr'] and res['data']['pnr']['locator'] != "":
             resp = await booking_converter(offer_id, res, ticket, search_data)
@@ -333,18 +328,18 @@ class AerticketIntegration(BaseIntegration):
         
         return result
 
-    async def booking_request_maker(self, data, passengers): # data is data saved in the "other" field of an offer
+    async def booking_request_maker(self, data, passengers, agent): # data is data saved in the "other" field of an offer
         body = {
             "fareId": data['fareId'],
             "billingInformation": {
-                "email": "d.razzakov@easybooking.uz",
-                "city": "Samarkand",
-                "country": "UZ",
-                "street": "Amir Temur",
-                "zipCode": "140150",
-                "lastName": "SOFTCON",
-                "firstName": "Dilshod",
-                "phoneNumber": "998662304400"
+                "email": agent['email'],
+                "city": agent['city'],
+                "country": agent['country'],
+                "street": agent['street'],
+                "zipCode": agent['zip_code'],
+                "lastName": agent['last_name'],
+                "firstName": agent['first_name'],
+                "phoneNumber": agent['phone_number']
             },
             "passengerList": []
         }

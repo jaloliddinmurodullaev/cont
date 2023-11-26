@@ -174,7 +174,6 @@ async def check_search_existance(data, provider_id, request_id): # Cache operati
         
         redis_client = redis.Redis(host=HOST, port=PORT)
         offers = redis_client.get(key)
-        print(type(offers))
         redis_client.close()
         return offers
 

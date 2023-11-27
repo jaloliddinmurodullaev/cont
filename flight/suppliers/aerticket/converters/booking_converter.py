@@ -41,16 +41,22 @@ async def get_passengers(passengers, price_info, baggages_info, fares_info):
         passenger_tmp = {
             'ticket_number': None,
             'passenger_type': passenger['type'],
-            'firstname': passenger['firstname'],
-            'lastname': passenger['lastname'],
-            'middlename': passenger['middlename'],
+            'first_name': passenger['first_name'],
+            'last_name': passenger['last_name'],
+            'middle_name': passenger['middle_name'],
             'birth_date': passenger['birth_date'],
             'gender': passenger['gender'],
             'passenger_category': "Unknown",
             'phone_number': '+998992747465',
             'order_id': str(passenger_order_id),
             'passenger_id': str(passenger_id),
-            'document': passenger['document'],
+            'document': {
+                "document_type": passenger['document']['type'],
+                "citizenship": passenger['citizenship'],
+                "passport_number": passenger['document']['number'],
+                "passport_issuance": passenger['document']['issue_date'],
+                "passport_expiry": passenger['document']['expire_date']
+            },
             'ticket_info': {
                 'price_info': [],
                 'fares_info': [],

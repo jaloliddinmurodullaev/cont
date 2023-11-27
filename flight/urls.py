@@ -6,6 +6,7 @@ from .handlers import UpsellHandler
 from .handlers import RulesHandler
 from .handlers import VerifyHandler
 from .handlers import BookingHandler
+from .handlers import RetrieveHandler
 from .handlers import TicketingHandler
 from .handlers import SystemAddHandler
 
@@ -18,6 +19,7 @@ def application():
             (r"/rules",          RulesHandler          ),
             (r"/verify",         VerifyHandler         ),
             (r"/booking",        BookingHandler        ),
+            (r"/retrieve",       RetrieveHandler       ),
             (r"/cancel",         TicketingHandler      ),
             (r"/split",          TicketingHandler      ),
             (r"/ticketing",      TicketingHandler      ),

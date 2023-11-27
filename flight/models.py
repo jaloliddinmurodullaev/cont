@@ -1,3 +1,4 @@
+import copy
 import os
 import json
 import uuid
@@ -202,7 +203,7 @@ async def insert_order(order_id, offer, status, agent_id, system_name, order_num
 
     await conn.close()
 
-async def get_order(order_id, db_name=DEFAULT_DB_NAME):
+async def get_order(order_number, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
         host     = HOST,
         port     = PORT,
@@ -211,11 +212,17 @@ async def get_order(order_id, db_name=DEFAULT_DB_NAME):
         database = db_name
     )
 
-    select_query = f"SELECT * FROM offer WHERE order_id = $1"
+    select_query = f"SELECT * FROM orders WHERE order_number = $1"
 
-    order = await conn.fetchval(select_query, order_id)
+    order = await conn.fetchrow(select_query, order_number)
+
+    order = dict(order)
+
+    order['order_id'] = copy.deepcopy(str(order['order_id']))
 
     await conn.close()
+
+    print(type(order))
 
     return order
 

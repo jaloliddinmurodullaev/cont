@@ -12,6 +12,7 @@ from flight.collectors.upsell_collector       import UpsellCollector
 from flight.collectors.rules_collector        import RulesCollector
 from flight.collectors.verify_collector       import VerifyCollector
 from flight.collectors.booking_collector      import BookingCollector
+from flight.collectors.retrieve_collector     import RetrieveCollector
 from flight.collectors.ticketing_collector    import TicketingCollector
 
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
@@ -127,7 +128,25 @@ class BookingHandler(tornado.web.RequestHandler):
             }, False]
 
         # print(f"Booking handler execution time: {round(end_time - start_time, 2)} seconds")
-        self.write(response[0])    
+        self.write(response[0])   
+
+class RetrieveHandler(tornado.web.RequestHandler):
+    async def post(self):
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.retrieve_request_validator(data)):
+            # start_time = time.time()
+            collector = RetrieveCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Booking handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0])  
 
 
 class TicketingHandler(tornado.web.RequestHandler):

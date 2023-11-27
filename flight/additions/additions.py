@@ -122,7 +122,12 @@ class Validator:
         
         return True
 
-    
+    async def retrieve_request_validator(data: dict) -> bool:
+        if data.get('order_number', None) is not None and data.get('request_id', None) is not None:
+            return True
+        else:
+            return False
+
     async def adding_new_system_validator(data: dict) -> bool:
         system_id = data.get('system_id', False)
         system_name = data.get('system_name', False)

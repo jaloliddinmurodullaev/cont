@@ -1,6 +1,6 @@
 import uuid
 
-async def booking_converter(offer_id, booking_data, ticket, search_data):
+async def booking_converter(offer_id, booking_data, ticket, search_data, passengers, agent):
     order_id = str(uuid.uuid1())
 
     response = {
@@ -23,5 +23,45 @@ async def booking_converter(offer_id, booking_data, ticket, search_data):
         "agent": {},
         "passengers": []
     }
+
+    response['routes'] = ticket['ticket']['routes']
+    response['price_info'] = ticket['ticket']['price_info']
+    response['price_details'] = ticket['ticket']['price_details']
+    response['agent'] = agent
+    response['passengers'] = await get_passengers(passengers, ticket['ticket']['price_details'], ticket['ticket']['baggages_info'], ticket['ticket']['fares_info'])
     
     return response
+
+async def get_passengers(passengers, price_info, baggages_info, fares_info):
+    response = []
+
+    for passenger in passengers:
+        passenger_order_id = uuid.uuid1()
+        passenger_id = uuid.uuid1()
+        passenger_tmp = {
+            'ticket_number': None,
+            'passenger_type': passenger['type'],
+            'firstname': passenger['firstname'],
+            'lastname': passenger['lastname'],
+            'middlename': passenger['middlename'],
+            'birth_date': passenger['birth_date'],
+            'gender': passenger['gender'],
+            'passenger_category': "Unknown",
+            'phone_number': '+998992747465',
+            'order_id': str(passenger_order_id),
+            'passenger_id': str(passenger_id),
+            'document': passenger['document'],
+            'ticket_info': {
+                'price_info': [],
+                'fares_info': [],
+                'baggage_info': []
+            },
+            'seat_detail': [],
+            'SSR': {},
+            'OSI': {},
+            'DOCO': {},
+            'DOCA': {},
+            'mile_card': {}
+        }
+        response.append(passenger_tmp)
+    return(response)

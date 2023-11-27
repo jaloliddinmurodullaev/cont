@@ -317,7 +317,7 @@ class AerticketIntegration(BaseIntegration):
         res = await asyncio.create_task(self.__request("/api/v1/create-booking", context))
 
         if res['status'] == 'success' and 'pnr' in res['data'] and "locator" in res['data']['pnr'] and res['data']['pnr']['locator'] != "":
-            resp = await booking_converter(offer_id, res, ticket, search_data)
+            resp = await booking_converter(offer_id, res, ticket, search_data, booking_data['passengers'], booking_data['agent'])
             return resp
         else:
             result = {

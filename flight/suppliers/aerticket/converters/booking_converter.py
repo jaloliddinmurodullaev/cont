@@ -38,6 +38,49 @@ async def get_passengers(passengers, price_info, baggages_info, fares_info):
     for passenger in passengers:
         passenger_order_id = uuid.uuid1()
         passenger_id = uuid.uuid1()
+        fares_info_tmp = []
+        baggages_info_tmp = []
+        price_details_tmp = []
+
+        for pr_in in price_info:
+            if pr_in['passenger_type'] == passenger['type']:
+                price_details_tmp.append({
+                    "currency": pr_in['currency'],
+                    "fee_amount": pr_in['fee_amount'],
+                    "commission_amount": pr_in['commission_amount'],
+                    "single_total_amount": pr_in['single_total_amount'],
+                    "fare_total_amount": pr_in['fare_total_amount'],
+                    "tax_total_amount": pr_in['tax_total_amount'],
+                    "total_amount": pr_in['total_amount'],
+                    "payable_amount": pr_in['payable_amount'],
+                    "single_fare_amount": pr_in['single_fare_amount'],
+                    "single_tax_amount": pr_in['single_tax_amount'],
+                    "single_tax_details": pr_in['single_tax_details']
+                })
+        
+        for fr_in in fares_info:
+            if fr_in['passenger_type'] == passenger['type']:
+                fares_info_tmp.append({
+                    "leg": fr_in['leg'],
+                    "fare_code": fr_in['fare_code'],
+                    "description": fr_in['description'],
+                    "booking_class": fr_in['booking_class'],
+                    "service_class": fr_in['service_class'],
+                    "upsell": {
+                        "name": fr_in['upsell']['name'],
+                        "services": fr_in['upsell']['services']
+                    }
+                })
+
+        for bg_in in baggages_info:
+            if bg_in['passenger_type'] == passenger['type']:
+                baggages_info_tmp.append({
+                    "leg": bg_in['leg'],
+                    "description": bg_in['description'],
+                    "baggage": bg_in['baggage'],
+                    "hand_baggage": bg_in['hand_baggage']
+                })
+
         passenger_tmp = {
             'ticket_number': None,
             'passenger_type': passenger['type'],
@@ -58,9 +101,9 @@ async def get_passengers(passengers, price_info, baggages_info, fares_info):
                 "passport_expiry": passenger['document']['expire_date']
             },
             'ticket_info': {
-                'price_info': [],
-                'fares_info': [],
-                'baggage_info': []
+                'price_info': price_details_tmp,
+                'fares_info': fares_info_tmp,
+                'baggage_info': baggages_info_tmp
             },
             'seat_detail': [],
             'SSR': {},

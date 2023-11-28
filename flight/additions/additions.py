@@ -128,6 +128,27 @@ class Validator:
         else:
             return False
 
+    async def cancel_request_validator(data: dict) -> bool:
+        if data.get('order_number', None) is not None:
+            return True
+        else:
+            return False
+
+    async def ticket_request_validator(data: dict) -> bool:
+        if data.get('order_number', None) is not None and data.get("payment_method", None) is not None:
+            return True
+        else:
+            return False
+
+    async def void_request_validator(data: dict) -> bool:
+        return True
+    
+    async def refund_request_validator(data: dict) -> bool:
+        return True
+    
+    async def services_request_validator(data: dict) -> bool:
+        return True 
+
     async def adding_new_system_validator(data: dict) -> bool:
         system_id = data.get('system_id', False)
         system_name = data.get('system_name', False)
@@ -166,6 +187,7 @@ class Helper:
             return False
 
 class AdditionsTicket:
+
     def __init__(self, ticket, offer_id, other, provider_id, provider_name, system_id) -> None:
         self.ticket        = ticket
         self.offer_id      = offer_id

@@ -21,3 +21,9 @@ DEPENDANT MICROSERVICES:
     log (ready, i need to use)
     orders (ready, i need to use)
 
+STATUS ORDER:
+    B - booked
+    C - cancelled
+    T - ticketed
+    V - voided
+    R - refunded

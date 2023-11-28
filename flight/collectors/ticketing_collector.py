@@ -1,20 +1,64 @@
 import json
 import asyncio
 
-from flight.additions.cache_operations import get_search_data
-from flight.additions.cache_operations import get_single_offer
-
 from flight.integrations import INTEGRATIONS
+
 from flight.models import get_system_name
+from flight.models import update_order
+from flight.models import get_order
 
 class TicketingCollector:
     
     ''' A class that returns the rule of a ticket '''
 
     def __init__(self, data) -> None:
-        self.request_id = data['request_id']
-        self.offer_id   = data['offer_id']
-        self.data       = data
+        self.order_number = data['order_number']
+        self.payment_type = data['payment_type']
+        self.data         = data
+        self.TICKET       = 'T'
 
     async def collector(self):
-        pass
+        try:
+            print(self.order_number)
+            order = await get_order(order_number=self.order_number)
+        except Exception as e:
+            return {
+                'status'      : 'error',
+                'order_number': self.order_number,
+                'code'        : -100
+            }
+        
+        if order is not None:
+            provider_id   = order['provider_id']
+            provider_name = order['provider_name']
+            system_id     = order['booking_system']
+
+            auth_data = {
+                'login'   : 'login',
+                'password': 'password'
+            }
+
+            system_name = await asyncio.create_task(get_system_name(db_name='content', system_id=system_id))
+            pnr = order['gds_pnr']
+
+            if system_name is not None and system_name in INTEGRATIONS:
+                integration = INTEGRATIONS[system_name](auth_data, self.data)
+                result = await integration.ticketing(system_id, provider_id, provider_name, self.data, pnr)
+
+                if result['status'] == 'success':
+                    ticket_offer = await update_order(order_number=self.order_number, order_status_code=self.TICKET)
+                    if ticket_offer is not None:
+                        ticketed_offer = await get_order(self.order_number)
+                        result = {
+                            'status': 'success',
+                            'code'  : 100,
+                            'order' : ticketed_offer
+                        }
+
+        else:
+            result = {
+                'status': 'error',
+                'code'  : -100
+            }
+
+        return result

@@ -12,8 +12,11 @@ from flight.collectors.upsell_collector       import UpsellCollector
 from flight.collectors.rules_collector        import RulesCollector
 from flight.collectors.verify_collector       import VerifyCollector
 from flight.collectors.booking_collector      import BookingCollector
+from flight.collectors.cancel_collector       import CancelCollector
 from flight.collectors.retrieve_collector     import RetrieveCollector
 from flight.collectors.ticketing_collector    import TicketingCollector
+from flight.collectors.void_collector         import VoidCollector
+from flight.collectors.refund_collector       import RefundCollector
 
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
 
@@ -130,6 +133,7 @@ class BookingHandler(tornado.web.RequestHandler):
         # print(f"Booking handler execution time: {round(end_time - start_time, 2)} seconds")
         self.write(response[0])   
 
+
 class RetrieveHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
@@ -149,11 +153,30 @@ class RetrieveHandler(tornado.web.RequestHandler):
         self.write(response[0])  
 
 
+class CancelHandler(tornado.web.RequestHandler):
+    async def post(self):
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.cancel_request_validator(data)):
+            # start_time = time.time()
+            collector = CancelCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Booking handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0]) 
+
+
 class TicketingHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
 
-        if await asyncio.create_task(Validator.booking_request_validator(data)):
+        if await asyncio.create_task(Validator.ticket_request_validator(data)):
             # start_time = time.time()
             collector = TicketingCollector(data)
             response = await asyncio.gather(collector.collector())
@@ -165,7 +188,43 @@ class TicketingHandler(tornado.web.RequestHandler):
             }, False]
 
         # print(f"Ticketing handler execution time: {round(end_time - start_time, 2)} seconds")
-        self.write(response[0])    
+        self.write(response[0])  
+
+class VoidHandler(tornado.web.RequestHandler):
+    async def post(self):
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.void_request_validator(data)):
+            # start_time = time.time()
+            collector = VoidCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Void handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0]) 
+
+class RefundHandler(tornado.web.RequestHandler):
+    async def post(self):
+        data = json.loads(self.request.body)
+
+        if await asyncio.create_task(Validator.refund_request_validator(data)):
+            # start_time = time.time()
+            collector = RefundCollector(data)
+            response = await asyncio.gather(collector.collector())
+            # end_time = time.time()
+        else:
+            response = [{
+                "status" : "error",
+                "message": "Data is not valid. Please, provide valid data!"
+            }, False]
+
+        # print(f"Void handler execution time: {round(end_time - start_time, 2)} seconds")
+        self.write(response[0])   
 
 
 # SYSTEM HANDLERS. DO NOT TRY TO CHANGE THEM.

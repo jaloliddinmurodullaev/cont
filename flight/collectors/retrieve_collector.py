@@ -20,28 +20,22 @@ class RetrieveCollector:
         self.data       = data
 
     async def collector(self):
-
-        print('-----------------------------------------------')
-        print('-------------- RETRIEVE --------------')
-        print('-----------------------------------------------')
         
         try:
             print(self.order_number)
             order = await get_order(order_number=self.order_number)
         except Exception as e:
             return {
-                'status': 'error',
+                'status'    : 'error',
                 'request_id': self.request_id,
-                'code': 502
+                'code'      : 502
             }
-
-        print(order)
 
         if order is not None:
             result = {
                 'status': 'success',
                 'code'  : 100,
-                'order': json.dumps(order)
+                'order' : order
             }
         else:
             result = {

@@ -1,6 +1,7 @@
 import copy
 import os
 import json
+import time
 import uuid
 import asyncpg
 import psycopg2
@@ -40,6 +41,8 @@ def create_database(db_name=DEFAULT_DB_NAME):
             password = PASS,
             database = db_name
         )
+
+        time.sleep(10)
 
         conn_s.autocommit = True
         cursor_s = conn_s.cursor()
@@ -218,15 +221,14 @@ async def get_order(order_number, db_name=DEFAULT_DB_NAME):
 
     order = dict(order)
 
-    order['order_id'] = copy.deepcopy(str(order['order_id']))
+    order['booking_response'] = copy.deepcopy(json.loads(order['booking_response']))
+    order['booking_response']['status'] = copy.deepcopy(order['status'])
 
     await conn.close()
 
-    print(type(order))
+    return order['booking_response']
 
-    return order
-
-async def update_order(order_id, status_code, db_name=DEFAULT_DB_NAME):
+async def update_order(order_number, order_status_code, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
         host     = HOST,
         port     = PORT,
@@ -235,13 +237,35 @@ async def update_order(order_id, status_code, db_name=DEFAULT_DB_NAME):
         database = db_name
     )
 
-    select_query = f"UPDATE orders SET status = $2 WHERE order_id = $1"
+    select_query = f"UPDATE orders SET status = $2 WHERE order_number = $1"
 
-    order = await conn.fetchval(select_query, order_id, status_code)
+    try:
+        order = await conn.execute(select_query, order_number, order_status_code)
+    except Exception as e:
+        print(str(e))
 
     await conn.close()
 
     return order
+
+async def get_orders_count(db_name=DEFAULT_DB_NAME):
+    conn = await asyncpg.connect(
+        host     = HOST,
+        port     = PORT,
+        user     = USER,
+        password = PASS,
+        database = db_name
+    )
+
+    select_query = "SELECT COUNT(*) FROM orders;"
+
+    count = await conn.execute(select_query)
+
+    print(count)
+
+    await conn.close()
+
+    return count
 
 def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
     conn = psycopg2.connect(
@@ -263,10 +287,10 @@ def create_admin(username='admin', password='admin', db_name=DEFAULT_DB_NAME):
 
     cursor.close()
     conn.close()
-
+ 
 def change_admin_username_and_password(username, password, db_name=DEFAULT_DB_NAME):
     pass # yet to update
-
+ 
 def get_admin(username, password, db_name=DEFAULT_DB_NAME):
     conn = psycopg2.connect(
         host     = HOST,
@@ -295,7 +319,7 @@ def get_admin(username, password, db_name=DEFAULT_DB_NAME):
     conn.close()
 
     return response
-
+ 
 async def insert_data(system_id, provider_id, provider_name, offers, db_name=DEFAULT_DB_NAME):
     conn = await asyncpg.connect(
         host     = HOST,
@@ -355,9 +379,4 @@ async def get_system_name(system_id, db_name=DEFAULT_DB_NAME):
     await conn.close()
     
     return system_name if system_name else None
-
-
-
-
-
 

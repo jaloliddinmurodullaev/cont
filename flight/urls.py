@@ -7,7 +7,10 @@ from .handlers import RulesHandler
 from .handlers import VerifyHandler
 from .handlers import BookingHandler
 from .handlers import RetrieveHandler
+from .handlers import CancelHandler
 from .handlers import TicketingHandler
+from .handlers import VoidHandler
+from .handlers import RefundHandler
 from .handlers import SystemAddHandler
 
 def application():
@@ -20,12 +23,11 @@ def application():
             (r"/verify",         VerifyHandler         ),
             (r"/booking",        BookingHandler        ),
             (r"/retrieve",       RetrieveHandler       ),
-            (r"/cancel",         TicketingHandler      ),
-            (r"/split",          TicketingHandler      ),
+            (r"/cancel",         CancelHandler         ),
             (r"/ticketing",      TicketingHandler      ),
-            (r"/void",           TicketingHandler      ),
-            (r"/refund",         TicketingHandler      ),
-            (r"/add-new-system", SystemAddHandler      )  
+            (r"/void",           VoidHandler           ),
+            (r"/refund",         RefundHandler         ),
+            (r"/add-new-system", SystemAddHandler      ) 
         ],
         debug=False,
         autoreload=True,

@@ -392,30 +392,95 @@ class AerticketIntegration(BaseIntegration):
 
         return body
     
-##################################### RETRIEVE #####################################
-
-    async def retrieve(self):
-        pass
-
 ################################## CANCEL BOOKING ##################################
 
-    async def cancel_booking(self):
-        pass
+    async def cancel_booking(self, system_id, provider_id, provider_name, request_data, order_pnr):
+        body = {
+            'bookingData': {
+                'locator': order_pnr
+            },
+            'forceCancellationOnExistingTickets': False
+        }
 
-################################### SPLIT BOOKING ##################################
+        context = json.dumps(body)
 
-    async def split_booking(self):
-        pass
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY 
+
+        res = await asyncio.create_task(self.__request("/api/v1/cancel-booking", context))
+        
+        if res['status'] == 'success' and res['success'] == True:
+            response = {
+                'status': 'success',
+                'code'  : 100
+            }
+        else:
+            response = {
+                'status': 'error',
+                'code'  : -100 
+            }
+
+        return response
 
 #################################### TICKETING #####################################
 
-    async def ticketing(self):
-        pass
+    async def ticketing(self, system_id, provider_id, provider_name, request_data, order_pnr):
+        body = {
+            'bookingData': {
+                'locator': order_pnr
+            }
+        }
+
+        context = json.dumps(body)
+
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY 
+
+        res = await asyncio.create_task(self.__request("/api/v1/ticket-booking", context))
+        
+        if res['status'] == 'success' and res['success'] == True:
+            response = {
+                'status': 'success',
+                'code'  : 100
+            }
+        else:
+            response = {
+                'status': 'error',
+                'code'  : -100 
+            }
+
+        return response
+
+
 
 ###################################### VOID ########################################
 
-    async def void(self):
-        pass
+    async def void(self, system_id, provider_id, provider_name, request_data, order_pnr):
+        body = {
+            'bookingData': {
+                'locator': order_pnr
+            }
+        }
+
+        context = json.dumps(body)
+
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY 
+
+        res = await asyncio.create_task(self.__request("/api/v1/void-booking", context))
+        
+        if res['status'] == 'success' and res['success'] == True:
+            response = {
+                'status': 'success',
+                'code'  : 100
+            }
+        else:
+            response = {
+                'status': 'error',
+                'code'  : -100 
+            }
+
+        return response
 
 #################################### REFUND ########################################
 

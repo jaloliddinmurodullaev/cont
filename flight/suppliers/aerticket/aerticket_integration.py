@@ -193,16 +193,12 @@ class AerticketIntegration(BaseIntegration):
         }
 
         if res['status'] == 'success' and len(res['data']['availableFareList']) > 0:
+            result['status'] = 'success'
             trip_routes_cnt = len(res['data']['availableFareList'][0]['legList'])
-
-            resp = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
-            await save_offers(data=search_data, provider_id=provider_id, offers=resp, request_id=request_id)
-            resp = await filter_tickets(resp)
-
-            result = {
-                'status': res['status'],
-                'data'  : resp
-            }
+            search_data['directions'] = json.loads(search_data['directions'])
+            result['data'] = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
+            await save_offers(data=search_data, provider_id=provider_id, offers=result, request_id=request_id)
+            result['data'] = await filter_tickets(result['data'])
         else:
             result = {
                 'status' : 'error',

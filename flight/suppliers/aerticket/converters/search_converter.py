@@ -494,43 +494,54 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
 
 async def segment_maker(segments, duration_minutes):
     result_segments = []
-
+    cnt = 0
     for segment in segments:
+        cnt += 1
         segment_tmp = {
+            "segment_index": cnt,
             "leg": f"{segment['departure']['iata']}-{segment['destination']['iata']}",
+            "flight_number": "",
+            "departure_country": segment['departure']['iata'],
+            "departure_country_code": segment['departure']['iata'],
             "departure_city": segment['departure']['iata'],
+            "departure_city_code": segment['departure']['iata'],
+            "departure_airport": segment['departure']['iata'],
+            "departure_airport_code": segment['departure']['iata'],
+            "departure_terminal": "",
             "departure_date": f"{segment['departureDate']['year']}-{segment['departureDate']['month']}-{segment['departureDate']['day']}",
             "departure_time": f"{segment['departureTimeOfDay']['hour'] if segment['departureTimeOfDay']['hour'] > 9 else '0' + str(segment['departureTimeOfDay']['hour'])}:{segment['departureTimeOfDay']['minute'] if segment['departureTimeOfDay']['minute'] > 9 else '0' + str(segment['departureTimeOfDay']['minute'])}:00",
-            "departure_airport": segment['departure']['iata'],
-            "departure_country": segment['departure']['iata'],
-            "departure_terminal": "",
             "departure_timezone": "",
+            "arrival_country": segment['destination']['iata'],
+            "arrival_country_code": segment['destination']['iata'],
             "arrival_city": segment['destination']['iata'],
+            "arrival_city_code": segment['destination']['iata'],
+            "arrival_airport": segment['destination']['iata'],
+            "arrival_airport_code": segment['destination']['iata'],
+            "arrival_terminal": "",
             "arrival_date": f"{segment['arrivalDate']['year']}-{segment['arrivalDate']['month']}-{segment['arrivalDate']['day']}",
             "arrival_time": f"{segment['arrivalTimeOfDay']['hour'] if segment['arrivalTimeOfDay']['hour'] > 9 else '0' + str(segment['arrivalTimeOfDay']['hour'])}:{segment['arrivalTimeOfDay']['minute'] if segment['arrivalTimeOfDay']['minute'] > 9 else '0' + str(segment['arrivalTimeOfDay']['minute'])}:00",
-            "arrival_airport": segment['destination']['iata'],
-            "arrival_country": segment['destination']['iata'],
-            "arrival_terminal": "",
             "arrival_timezone": "",
-            "carrier_code": segment['operatingAirline']['iata'],
-            "carrier_name": segment['operatingAirline']['name'],
-            "carrier_logo": f"https://b2b.easybooking.uz/images/airline/{segment['operatingAirline']['iata']}.svg",
+            # "carrier_code": segment['operatingAirline']['iata'],
+            # "carrier_name": segment['operatingAirline']['name'],
+            # "carrier_logo": f"https://b2b.easybooking.uz/images/airline/{segment['operatingAirline']['iata']}.svg",
             "duration_minutes": duration_minutes,
             "stop_time_minutes": "",
+            "marketing_airline": segment['marketingAirline']['name'],
             "marketing_airline_code": segment['marketingAirline']['iata'],
-            "marketing_airline_name": segment['marketingAirline']['name'],
             "marketing_airline_logo": f"https://b2b.easybooking.uz/images/airline/{segment['marketingAirline']['iata']}.svg",
+            "operating_airline": segment['operatingAirline']['name'],
             "operating_airline_code": segment['operatingAirline']['iata'],
-            "operating_airline_name": segment['operatingAirline']['name'],
             "operating_airline_logo": f"https://b2b.easybooking.uz/images/airline/{segment['operatingAirline']['iata']}.svg",
+            "seatmap_availability": False,
+            "services_availability": False,
             "airplane_info": {
-                "has_wifi": False,
+                "airplane": segment['equipmentType']['code'],
                 "airplane_code": segment['equipmentType']['code'],
-                "airplane_name": segment['equipmentType']['code'],
-                "seat_angle": "",
                 "seat_width": "",
+                "seat_angle": "",
+                "seat_scheme": "",
                 "seat_distance": "",
-                "seat_scheme": ""
+                "has_wifi": False,
             }
         }
         result_segments.append(segment_tmp)
@@ -566,7 +577,7 @@ async def get_price_details(_offers, currency_type):
     price_details = []
 
     for passen in _offers['passengerTypeFareList']:
-        single_fare_amount = 0
+        single_base_amount = 0
         single_tax_amount = 0
         cnt = passen['count']
         _fee_amount = 0
@@ -575,7 +586,7 @@ async def get_price_details(_offers, currency_type):
             if price_list['type'] == 'TOTAL_TAX':
                 single_tax_amount = price_list['value']
             if price_list['type'] == 'AGENCY_PURCHASE_PRICE':
-                single_fare_amount = price_list['value']
+                single_base_amount = price_list['value']
         
         for charge_list in passen['surchargeInfoList']:
             _fee_amount += charge_list['value']
@@ -585,16 +596,16 @@ async def get_price_details(_offers, currency_type):
             "passenger_type": passen['passengerTypeCode'],
             "currency": currency_type,
             "quantity": cnt,
-            "single_fare_amount": round(single_fare_amount - _fee_amount, 2),
+            "single_base_amount": round(single_base_amount - _fee_amount, 2),
             "single_tax_amount": round(single_tax_amount, 2),
             "single_tax_details": [],
             "fee_amount": round(_fee_amount, 2),
             "commission_amount": 0,
-            "single_total_amount": round(single_fare_amount + single_tax_amount, 2),
-            "base_total_amount": round(single_fare_amount + single_tax_amount, 2),
+            "single_total_amount": round(single_base_amount + single_tax_amount, 2),
+            "base_total_amount": round(single_base_amount + single_tax_amount, 2),
             "tax_total_amount": round(single_tax_amount * cnt, 2),
-            "total_amount": round((single_fare_amount + single_tax_amount) * cnt, 2),
-            "payable_amount": round((single_fare_amount + single_tax_amount) * cnt, 2)
+            "total_amount": round((single_base_amount + single_tax_amount) * cnt, 2),
+            "payable_amount": round((single_base_amount + single_tax_amount) * cnt, 2)
         }
 
         price_details.append(price_details_tmp)
@@ -657,10 +668,6 @@ async def get_fare_info(route, passengers_info):
                     "fare_code": segment['fareBase'],
                     "service_class": segment['cabinClass'],
                     "booking_class": segment['bookingClassCode'],
-                    "fare_messages": {
-                        "LTD": "",
-                        "PEN": ""
-                    },
                     "description": ""
                 }
 

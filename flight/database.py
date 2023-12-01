@@ -1,7 +1,6 @@
 import os
 import time
 import asyncio
-from tkinter import N
 import asyncpg
 import psycopg2
 from dotenv import load_dotenv

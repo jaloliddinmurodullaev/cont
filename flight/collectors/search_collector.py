@@ -56,7 +56,7 @@ class SearchCollector:
             offers = await asyncio.create_task(check_search_existance(provider_id=provider['provider_id'], data=self.data, request_id=self.request_id))
             
             if not offers:
-                system_name = await asyncio.create_task(get_system_name(db_name='content', system_id=provider['system_id']))
+                system_name = await asyncio.create_task(get_system_name(system_id=provider['system_id']))
                 if system_name is not None and system_name in INTEGRATIONS:
                     integration = INTEGRATIONS[system_name](provider['auth_data'], self.data)
                     data = {

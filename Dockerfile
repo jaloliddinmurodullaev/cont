@@ -1,26 +1,18 @@
-FROM python:3.10.6
-
-RUN mkdir app
-COPY . /app
-WORKDIR /app
-
-# Setting environment variables
+FROM python:3.11 as compiler
 ENV PYTHONUNBUFFERED 1
-ENV DB_HOST=postgres
-ENV DB_PORT=5432
-ENV DB_USER=postgres
-ENV DB_PASS=1111
-ENV DEFAULT_DB_NAME=content
 
-ENV CACHE_HOST=redis
-ENV CACHE_PORT=6379
+RUN mkdir content
+WORKDIR /content/
 
-# Installing requirements
+RUN python3 -m venv /opt/venv
+# Enable venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# install requirements
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /content/requirements.txt
+RUN pip install -Ur requirements.txt
 
-# Database migration
-# RUN python run.py migrate
+EXPOSE 8028
 
-# Running the app
-# CMD ["python", "run.py", "runserver"]
+COPY . /content/

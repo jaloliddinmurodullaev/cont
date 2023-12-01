@@ -16,20 +16,20 @@ from .handlers import SystemAddHandler
 def application():
     url_pattern = tornado.web.Application(
         [
-            (r"/search",         SearchHandler         ),
-            (r"/offers",         OfferHandler          ),
-            (r"/upsell",         UpsellHandler         ),
-            (r"/rules",          RulesHandler          ),
-            (r"/verify",         VerifyHandler         ),
-            (r"/booking",        BookingHandler        ),
-            (r"/retrieve",       RetrieveHandler       ),
-            (r"/cancel",         CancelHandler         ),
-            (r"/ticketing",      TicketingHandler      ),
-            (r"/void",           VoidHandler           ),
-            (r"/refund",         RefundHandler         ),
-            (r"/add-new-system", SystemAddHandler      ) 
+            (r"/gateway/search",         SearchHandler         ),
+            (r"/gateway/offers",         OfferHandler          ),
+            (r"/gateway/upsell",         UpsellHandler         ),
+            (r"/gateway/rules",          RulesHandler          ),
+            (r"/gateway/verify",         VerifyHandler         ),
+            (r"/gateway/booking",        BookingHandler        ),
+            (r"/gateway/retrieve",       RetrieveHandler       ),
+            (r"/gateway/cancel",         CancelHandler         ),
+            (r"/gateway/ticketing",      TicketingHandler      ),
+            (r"/gateway/void",           VoidHandler           ),
+            (r"/gateway/refund",         RefundHandler         ),
+            (r"/gateway/add-new-system", SystemAddHandler      ) 
         ],
-        debug=False,
+        debug=True,
         autoreload=True,
         template_path="flight/templates"
     )

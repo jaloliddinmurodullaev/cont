@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  api:
+  content_api:
     container_name: "content_api_app"
     build:
       context: .
@@ -10,22 +10,23 @@ services:
     command:
       sh -c "python run.py migrate && python run.py runserver"
     depends_on:
-      - postgres
-      - redis
+      - postgres_content
+      - redis_content
     restart: always
 
-  postgres:
-    container_name: "content_db"
-    image: postgres:latest
+  
+  postgres_content:
+    container_name: "postgres_content"
+    image: postgres:13.3
     ports:
-      - 5432:5432
+      - 54328:5432
     env_file:
       - ./.env.test
     restart: unless-stopped
 
-  redis:
-    container_name: "content_redis"
-    image: redis:latest
+  redis_content:
+    container_name: "redis_content"
+    image: redis:latest 
     ports:
-      - 6379:6379
+      - 63790:6379
     restart: unless-stopped

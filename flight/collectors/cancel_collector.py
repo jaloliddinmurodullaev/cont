@@ -39,7 +39,7 @@ class CancelCollector:
                 'password': 'password'
             }
 
-            system_name = await asyncio.create_task(get_system_name(db_name='content', system_id=system_id))
+            system_name = await asyncio.create_task(get_system_name(system_id=system_id))
             pnr = order['gds_pnr']
 
             if system_name is not None and system_name in INTEGRATIONS:

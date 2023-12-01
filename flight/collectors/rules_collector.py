@@ -45,7 +45,7 @@ class RulesCollector:
             search_data = await get_search_data(request_id=self.request_id)
             search_data = json.loads(search_data)
 
-            system_name = await asyncio.create_task(get_system_name(db_name='content', system_id=system_id))
+            system_name = await asyncio.create_task(get_system_name(system_id=system_id))
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)

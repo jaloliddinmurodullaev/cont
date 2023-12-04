@@ -24,7 +24,9 @@ class SearchHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
 
-        if await asyncio.create_task(Validator.search_request_valiadator(data)):
+        error_list = await asyncio.create_task(Validator.search_request_valiadator(data))
+
+        if error_list == []:
             # start_time = time.time()
             collector = SearchCollector(data)
             response = await asyncio.gather(collector.collector())
@@ -32,7 +34,7 @@ class SearchHandler(tornado.web.RequestHandler):
         else:
             response = [{
                 "status" : "error",
-                "message": "Data is not valid. Please, provide valid data!"
+                "message": error_list
             }, False]
         
         # print(f"Search handler execution time: {round(end_time - start_time, 2)} seconds")

@@ -27,6 +27,22 @@ class SearchCollector:
     async def collector(self): # Router
         trip_type = "RT" if len(self.data.get('directions')) == 2 else ("OW" if len(self.data.get('directions')) == 1 else "MC")
         self.request_id = str(uuid.uuid1())
+
+        sample_data = self.data
+
+        sample_data['providers'] = [
+            {
+                "system_id": "45ecd28f-2ff3-49c5-b0b7-dd839ca3c9a3",
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "provider_name": "Jaloliddin Services",
+                "auth_data": {
+                    "loginKey": "950138",
+                    "passwordKey": "5pYdP97vXHe5"
+                }
+            }
+        ]
+
+        self.data = sample_data
         
         result = {
             "code": "100",

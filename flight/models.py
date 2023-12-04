@@ -1,6 +1,7 @@
 import json
 import uuid
 import copy
+import time
 from .database import db_simple, db_async
 
 def create_database():
@@ -77,7 +78,7 @@ def create_database():
 
     create_table_query_orders = f'''
         CREATE TABLE IF NOT EXISTS orders (
-            order_id UUID PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             offer UUID REFERENCES offer(offer_id),
             status VARCHAR(100),
             agent_id UUID,
@@ -99,6 +100,24 @@ def create_database():
     db.execute(create_table_query_orders)
     db.close()
 
+    # time.sleep(2)
+
+    # db.reset()
+
+    # system_id = "45ecd28f-2ff3-49c5-b0b7-dd839ca3c9a3"
+    # system_name = "aerticket"
+    # system_type = "Supplier"
+    # auth_data_fields = ["login", "password"]
+    
+    # try:       
+    #     insert_query = f"INSERT INTO systems (system_id, system_name, system_type, auth_data_fields) VALUES ($1, $2, $3, $4)"
+    #     db.execute(insert_query, uuid.UUID(system_id), system_name, system_type, json.dumps({"fields": auth_data_fields}))
+    # except Exception as e:
+    #     print(e)
+
+    # finally:
+    #     db.close()
+
 async def insert_search(search_data):
     _db = db_async()
     insert_query = "INSERT INTO search (request_id, adt, chd, inf, class, direct, flexible, currency, directions) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
@@ -114,7 +133,6 @@ async def insert_search(search_data):
     return search if search else None
 
 async def insert_offer(offer_id, search_object, offer_data, other, provider_id, provider_name, system_id):
-    print(offer_id)
     _db = db_async()
 
     insert_query = "INSERT INTO offer (offer_id, search, offer_data, other, provider_id, provider_name, system_id) VALUES ($1, $2, $3, $4, $5, $6, $7)"
@@ -129,12 +147,12 @@ async def insert_offer(offer_id, search_object, offer_data, other, provider_id, 
 
     return offer if offer else None
 
-async def insert_order(order_id, offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response):
+async def insert_order(offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response):
     _db = db_async()
 
-    insert_query = "INSERT INTO orders (order_id, offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+    insert_query = "INSERT INTO orders (offer, status, agent_id, system_name, order_number, pnr_number, passengers, booking_response) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
 
-    await _db.execute(insert_query, order_id, offer, status, agent_id, system_name, order_number, pnr_number, json.dumps(passengers), json.dumps(booking_response))
+    await _db.execute(insert_query, offer, status, agent_id, system_name, order_number, pnr_number, json.dumps(passengers), json.dumps(booking_response))
 
     await _db.close()
 
@@ -174,15 +192,14 @@ async def update_ticket_number(order_number, booking_data):
 async def get_orders_count():
     _db = db_async()
 
-    select_query = "SELECT COUNT(*) FROM orders;"
+    select_query = "SELECT * FROM orders"
 
     count = await _db.execute(select_query)
-
-    print(count)
+    rows = count
 
     await _db.close()
 
-    return count
+    return rows
 
 def create_admin(username='admin', password='admin'):
     db = db_simple()
@@ -231,6 +248,7 @@ async def insert_system(system_id, system_name, system_type, auth_data_fields):
     }
     _db = db_async()
     try:       
+        print(type(auth_data_fields))
         insert_query = "INSERT INTO systems (system_id, system_name, system_type, auth_data_fields) VALUES ($1, $2, $3, $4)"
         await _db.execute(insert_query, uuid.UUID(system_id), system_name, system_type, json.dumps({"fields": auth_data_fields}))
 

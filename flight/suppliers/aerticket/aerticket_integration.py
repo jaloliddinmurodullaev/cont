@@ -6,12 +6,15 @@ import aiohttp
 import json
 
 # Internal
+from flight.models                      import get_orders_count
 from flight.models                      import insert_data
 from flight.additions.additions         import filter_tickets
 from flight.additions.cache_operations  import set_status
 from flight.additions.cache_operations  import save_offers
 from flight.additions.cache_operations  import update_offer
+
 from flight.additions.integration       import BaseIntegration
+
 from .converters.search_converter       import search_converter
 from .converters.upsell_converter       import upsell_converter
 from .converters.rules_converter        import rules_converter
@@ -174,7 +177,8 @@ class AerticketIntegration(BaseIntegration):
 
     async def upsell(self, system_id, provider_id, provider_name, request_id, ticket, search_data): # data is data saved in the "other" field of an offer
         body = await asyncio.create_task(self.upsell_request_maker(ticket['other']))
-
+        print(ticket)
+        print('---------------------------------')
         context = json.dumps(body)
 
         self.loginkey = APIKEY
@@ -196,9 +200,14 @@ class AerticketIntegration(BaseIntegration):
             result['status'] = 'success'
             trip_routes_cnt = len(res['data']['availableFareList'][0]['legList'])
             search_data['directions'] = json.loads(search_data['directions'])
-            result['data'] = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
-            await save_offers(data=search_data, provider_id=provider_id, offers=result, request_id=request_id)
-            result['data'] = await filter_tickets(result['data'])
+            upsell_response = await upsell_converter(res['data'], system_id, provider_id, provider_name, currency, trip_routes_cnt, search_data)
+            result['data'] = copy.deepcopy(await filter_tickets(upsell_response))
+            for offer in upsell_response:
+                offer.ticket['routes'] = copy.deepcopy(ticket['ticket']['routes'])        
+            upsell = {
+                'data': upsell_response
+            }
+            await save_offers(data=search_data, provider_id=provider_id, offers=upsell, request_id=request_id)
         else:
             result = {
                 'status' : 'error',
@@ -302,7 +311,7 @@ class AerticketIntegration(BaseIntegration):
 
 ##################################### BOOKING ######################################
 
-    async def booking(self, system_id, provider_id, provider_name, request_id, offer_id, booking_data, ticket, search_data):
+    async def booking(self, system_id, provider_id, provider_name, request_id, offer_id, booking_data, ticket, search_data):        
         body = await asyncio.create_task(self.booking_request_maker(ticket['other'], booking_data['passengers'], booking_data['agent']))
 
         context = json.dumps(body)
@@ -311,15 +320,18 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/create-booking", context))
-
+        print(res['data'])
         if res['status'] == 'success' and 'pnr' in res['data'] and "locator" in res['data']['pnr'] and res['data']['pnr']['locator'] != "":
             resp = await booking_converter(offer_id, res, ticket, search_data, booking_data['passengers'], booking_data['agent'])
-            return resp
+            result = {
+                "status": 'success',
+                "data"  : resp
+            }
         else:
             result = {
                 "request_id": request_id,
                 "status": "error",
-                "code": 405,
+                "code": -100,
             } 
         
         return result
@@ -427,8 +439,6 @@ class AerticketIntegration(BaseIntegration):
             }
         }
 
-        print(order)
-
         context = json.dumps(body)
 
         self.loginkey = APIKEY
@@ -450,7 +460,6 @@ class AerticketIntegration(BaseIntegration):
 
         return response
 
-
 ###################################### VOID ########################################
 
     async def void(self, system_id, provider_id, provider_name, request_data, order_pnr):
@@ -466,9 +475,8 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/void-booking", context))
-        
+        print(res['data'])
         if res['status'] == 'success' and res['data']['success'] == True:
-            print(res['data'])
             response = {
                 'status': 'success',
                 'code'  : 100

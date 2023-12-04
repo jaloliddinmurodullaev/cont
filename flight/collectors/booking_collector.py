@@ -54,16 +54,19 @@ class BookingCollector:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
                 result = await integration.booking(system_id, provider_id, provider_name, self.request_id, self.offer_id, self.data, offer, search_data)
                 
-                search_object = await insert_search(search_data=search_data)
-                print(f"Search object: {search_object}")
-                if search_object is not None:
-                    offer_object = await insert_offer(offer_id=offer['offer_id'], search_object=search_object, offer_data=offer['ticket'], other=offer['other'], provider_id=provider_id, provider_name=provider_name, system_id=system_id) 
-                    print(f"Offer object: {offer_object}")
-                    if offer_object is not None:
-                        await insert_order(order_id=result['order_id'], offer=offer_object, status=result['status'], agent_id=self.data['agent']['agent_id'], system_name=system_name, order_number=result['order_number'], pnr_number=result['gds_pnr'], passengers=result['passengers'], booking_response=result)
-                        print("Booking data has been successfully saved to database")
+                if result['status'] == 'success':
+                    search_object = await insert_search(search_data=search_data)
+                    print(f"Search object: {search_object}")
+                    if search_object is not None:
+                        offer_object = await insert_offer(offer_id=offer['offer_id'], search_object=search_object, offer_data=offer['ticket'], other=offer['other'], provider_id=provider_id, provider_name=provider_name, system_id=system_id) 
+                        print(f"Offer object: {offer_object}")
+                        if offer_object is not None:
+                            await insert_order(offer=offer_object, status=result['data']['status'], agent_id=self.data['agent']['agent_id'], system_name=system_name, order_number=result['data']['order_number'], pnr_number=result['data']['gds_pnr'], passengers=result['data']['passengers'], booking_response=result['data'])
+                            print("Booking data has been successfully saved to database")
 
-                return result
+                    return result['data']
+                else:
+                    return result
         else:
             result = {
                 'status'    : 'error',

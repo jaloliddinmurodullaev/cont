@@ -141,12 +141,12 @@ class db_async():
                 await self.connect()
                 # await self._connection.execute(query)
                 if args:
-                    await self._connection.execute(query, *args)
+                    res = await self._connection.execute(query, *args)
                     # (f"Execute SQL: {query}, {args}")
                 else:
-                    await self._connection.execute(query)
+                    res = await self._connection.execute(query)
                     # (f"Execute SQL: {query}")
-                return
+                return res
             except Exception as error:
                 retry_counter += 1
                 # (f"Got error: {str(error).strip()}. Retrying {retry_counter}")

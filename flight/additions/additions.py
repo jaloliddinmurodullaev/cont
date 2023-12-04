@@ -5,8 +5,11 @@ import uuid
 class Validator:
 
     async def search_request_valiadator(data: dict) -> bool:
+
+        error_list = []
+
         directions = data.get('directions', None)
-        providers = data.get('providers', None)
+        # providers = data.get('providers', None)
         adt = data.get('adt', False)
         chd = data.get('chd', None)
         inf = data.get('inf', None)
@@ -16,41 +19,88 @@ class Validator:
         direct = data.get('direct', None)
         airlines = data.get('direct', None)
 
-        if directions == None or providers == None or adt == False or chd == None or inf == None or ins == None or clas == None or flexible == None or direct == None or airlines == None:
-            return False
+        if directions == None:
+            error_list.append({
+                "message": "directions field should not be empty"
+            })
+
+        if adt == False or adt < 1:
+            error_list.append({
+                "message": "adt field should not be empty and greater than 0"
+            })
+        
+        if chd == None:
+            error_list.append({
+                "message": "chd field should not be empty"
+            })
+        
+        if inf == None:
+            error_list.append({
+                "message": "inf field should not be empty"
+            })
+        
+        if ins == None:
+            error_list.append({
+                "message": "ins field should not be empty"
+            })
+
+        if clas == None:
+            error_list.append({
+                "message": "class field should not be empty"
+            })
+        
+        if flexible == None:
+            error_list.append({
+                "message": "flexible field should not be empty"
+            })
+
+        if direct == None:
+            error_list.append({
+                "message": "direct field should not be empty"
+            })
+        
+        if airlines == None:
+            error_list.append({
+                "message": "airlines field should not be empty"
+            })
 
         are_dirs_correct = True
         if directions != None and isinstance(directions, list):
             for dir in directions:
-                if not dir.get('departure', False):
-                    are_dirs_correct = False
-                    break
-                if not dir.get('arrival', False):
-                    are_dirs_correct = False
-                    break
-                if not dir.get('departure_date', False):
-                    are_dirs_correct = False
-                    break
+                if not dir.get('departure', False) and dir['departure'] != "":
+                    error_list.append({
+                        "message": "departure field should not be empty"
+                    })
+                if not dir.get('arrival', False) and dir['arrival'] != "":
+                    error_list.append({
+                        "message": "arrival field should not be empty"
+                    })
+                if not dir.get('departure_date', False) and dir['departure_date'] != "":
+                    error_list.append({
+                        "message": "departure date field should not be empty"
+                    })
         else:
             are_dirs_correct = False
+        
+        return error_list
 
         are_providers_correct = True
-        if providers != None and isinstance(providers, list):
-            for prov in providers:
-                if not prov.get('system_id', False):
-                    are_providers_correct = False
-                    break
-                if not prov.get('provider_id', False):
-                    are_providers_correct = False
-                    break
-                if not prov.get('provider_name', False):
-                    are_providers_correct = False
-                    break
-                if not prov.get('auth_data', False):
-                    are_providers_correct = False
-                    break
-        else:
-            are_providers_correct = False
+        # if providers != None and isinstance(providers, list):
+        #     for prov in providers:
+        #         if not prov.get('system_id', False):
+        #             are_providers_correct = False
+        #             break
+        #         if not prov.get('provider_id', False):
+        #             are_providers_correct = False
+        #             break
+        #         if not prov.get('provider_name', False):
+        #             are_providers_correct = False
+        #             break
+        #         if not prov.get('auth_data', False):
+        #             are_providers_correct = False
+        #             break
+        # else:
+        #     are_providers_correct = False
 
         is_count_correct = True
 

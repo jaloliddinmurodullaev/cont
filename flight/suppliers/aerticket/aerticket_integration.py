@@ -404,8 +404,7 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/cancel-booking", context))
-        print(res['data']['success'])
-        print(res['status'])
+        
         if res['status'] == 'success' and res['data']['success'] == True:
             response = {
                 'status': 'success',
@@ -421,12 +420,14 @@ class AerticketIntegration(BaseIntegration):
 
 #################################### TICKETING #####################################
 
-    async def ticketing(self, system_id, provider_id, provider_name, request_data, order_pnr):
+    async def ticketing(self, system_id, provider_id, provider_name, request_data, order):
         body = {
             'bookingData': {
-                'locator': order_pnr
+                'locator': order['gds_pnr']
             }
         }
+
+        print(order)
 
         context = json.dumps(body)
 
@@ -434,8 +435,9 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/ticket-booking", context))
-        print(res)
+        
         if res['status'] == 'success' and res['data']['success'] == True:
+            print(res['data'])
             response = {
                 'status': 'success',
                 'code'  : 100
@@ -465,7 +467,8 @@ class AerticketIntegration(BaseIntegration):
 
         res = await asyncio.create_task(self.__request("/api/v1/void-booking", context))
         
-        if res['status'] == 'success' and res['success'] == True:
+        if res['status'] == 'success' and res['data']['success'] == True:
+            print(res['data'])
             response = {
                 'status': 'success',
                 'code'  : 100
@@ -481,6 +484,11 @@ class AerticketIntegration(BaseIntegration):
 #################################### REFUND ########################################
 
     async def refund(self):
-        pass
+        response = {
+            'status': 'error',
+            'code'  : -100 
+        }
+
+        return response
 
 #################################################################################### 

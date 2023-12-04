@@ -10,7 +10,7 @@ load_dotenv()
 HOST = os.environ.get('DB_HOST')
 PORT = os.environ.get('DB_PORT')
 USER = os.environ.get('DB_USER')
-PASS = os.environ.get('DB_PASS') 
+PASS = os.environ.get('DB_PASS')
 DEFAULT_DB_NAME = os.environ.get('DEFAULT_DB_NAME')
 
 class db_simple():
@@ -34,20 +34,20 @@ class db_simple():
             
             except psycopg2.OperationalError as error:
                 retry_counter += 1
-                print("got error {}. reconnecting {}".format(str(error).strip(), retry_counter))
+                # ("got error {}. reconnecting {}".format(str(error).strip(), retry_counter))
                 time.sleep(5)
                 self.connect()
             except psycopg2.DatabaseError as error:
-                print("got error {}. reconnecting {}".format(str(error).strip(), retry_counter))
+                # ("got error {}. reconnecting {}".format(str(error).strip(), retry_counter))
                 conn = psycopg2.connect(user = self.user, password = self.password, host = self.host, port = self.port)
                 conn.autocommit = True
                 cursor = conn.cursor()
                 cursor.execute(f"CREATE DATABASE {DEFAULT_DB_NAME}")
-                print("Created db {DEFAULT_DB_NAME}")
+                # ("Created db {DEFAULT_DB_NAME}")
                 result = self.execute(f"SELECT datname FROM pg_catalog.pg_database WHERE datname = '{DEFAULT_DB_NAME}'")
-                print("-------------------------- Select --------------------")
-                print(result)
-                print("-------------------------- end Select --------------------")
+                # ("-------------------------- Select --------------------")
+                # (result)
+                # ("-------------------------- end Select --------------------")
                 # if result is None:
                 cursor.close()
                 conn.close()
@@ -68,22 +68,22 @@ class db_simple():
             # self._cursor.execute(query)
             if args:
                 self._cursor.execute(query, *args)
-                print(f"Execute SQL: {query}, {args}")
+                # (f"Execute SQL: {query}, {args}")
             else:
                 self._cursor.execute(query)
-                print(f"Execute SQL: {query}")
+                # (f"Execute SQL: {query}")
             retry_counter = 0
         except (psycopg2.DatabaseError, psycopg2.OperationalError) as error:
             retry_counter += 1
-            print("got error {}. retrying {}".format(str(error).strip(), retry_counter))
+            # ("got error {}. retrying {}".format(str(error).strip(), retry_counter))
             time.sleep(1)
             self.reset()
             if args:
                 self._cursor.execute(query, *args)
-                print(f"Execute SQL: {query}, {args}")
+                # (f"Execute SQL: {query}, {args}")
             else:
                 self._cursor.execute(query)
-                print(f"Execute SQL: {query}")
+                # (f"Execute SQL: {query}")
         except (Exception, psycopg2.Error) as error:
             raise error
         try:  
@@ -102,7 +102,7 @@ class db_simple():
             if self._cursor:
                 self._cursor.close()
             self._connection.close()
-            print("PostgreSQL connection is closed")
+            # ("PostgreSQL connection is closed")
         self._connection = None
         self._cursor = None
 
@@ -126,11 +126,11 @@ class db_async():
             while True:
                 try:
                     self._connection = await asyncpg.connect(user=self.user, password=self.password, host=self.host,port=self.port, database=self.database)
-                    # print(self._connection)
+                    # # (self._connection)
                     return self._connection
                 except (Exception, asyncpg.PostgresError) as error:
                     retry_counter += 1
-                    print(f"Got error: {str(error).strip()}. Reconnecting {retry_counter}")
+                    # (f"Got error: {str(error).strip()}. Reconnecting {retry_counter}")
                     await asyncio.sleep(5)
                     continue
 
@@ -142,14 +142,14 @@ class db_async():
                 # await self._connection.execute(query)
                 if args:
                     await self._connection.execute(query, *args)
-                    print(f"Execute SQL: {query}, {args}")
+                    # (f"Execute SQL: {query}, {args}")
                 else:
                     await self._connection.execute(query)
-                    print(f"Execute SQL: {query}")
+                    # (f"Execute SQL: {query}")
                 return
             except Exception as error:
                 retry_counter += 1
-                print(f"Got error: {str(error).strip()}. Retrying {retry_counter}")
+                # (f"Got error: {str(error).strip()}. Retrying {retry_counter}")
                 await asyncio.sleep(1)
                 await self.reset()
                 continue
@@ -161,14 +161,14 @@ class db_async():
                 await self.connect()
                 if args:
                     res = await self._connection.fetchval(query, *args)
-                    print(f"Execute SQL: {query}, {args}")
+                    # (f"Execute SQL: {query}, {args}")
                 else:
                     res = await self._connection.fetchval(query)
-                    print(f"Execute SQL: {query}")
+                    # (f"Execute SQL: {query}")
                 return res
             except Exception as error:
                 retry_counter += 1
-                print(f"Got error: {str(error).strip()}. Retrying {retry_counter}")
+                # (f"Got error: {str(error).strip()}. Retrying {retry_counter}")
                 await asyncio.sleep(1)
                 await self.reset()
                 continue
@@ -180,14 +180,14 @@ class db_async():
                 await self.connect()
                 if args:
                     res = await self._connection.fetchrow(query, *args)
-                    print(f"Execute SQL: {query}, {args}")
+                    # (f"Execute SQL: {query}, {args}")
                 else:
                     res = await self._connection.fetchrow(query)
-                    print(f"Execute SQL: {query}")
+                    # (f"Execute SQL: {query}")
                 return res
             except Exception as error:
                 retry_counter += 1
-                print(f"Got error: {str(error).strip()}. Retrying {retry_counter}")
+                # (f"Got error: {str(error).strip()}. Retrying {retry_counter}")
                 await asyncio.sleep(1)
                 await self.reset()
                 continue
@@ -199,7 +199,7 @@ class db_async():
     async def close(self):
         if self._connection:
             await self._connection.close()
-            print("PostgreSQL async connection is closed")
+            # ("PostgreSQL async connection is closed")
         self._connection = None
 
 

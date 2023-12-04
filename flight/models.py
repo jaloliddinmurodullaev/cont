@@ -168,6 +168,9 @@ async def update_order(order_number, order_status_code):
 
     return order
 
+async def update_ticket_number(order_number, booking_data):
+    pass
+
 async def get_orders_count():
     _db = db_async()
 

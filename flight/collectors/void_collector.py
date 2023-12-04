@@ -29,7 +29,7 @@ class VoidCollector:
             }
         
         if order is not None:
-            provider_id   = order['provider_id']
+            provider_id   = order['provider_uid']
             provider_name = order['provider_name']
             system_id     = order['booking_system']
 
@@ -43,17 +43,16 @@ class VoidCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                result = await integration.ticketing(system_id, provider_id, provider_name, self.data, pnr)
+                result = await integration.void(system_id, provider_id, provider_name, self.data, pnr)
 
                 if result['status'] == 'success':
-                    void_offer = await update_order(order_number=self.order_number, order_status_code=self.VOID)
-                    if void_offer is not None:
-                        voided_offer = await get_order(self.order_number)
-                        result = {
-                            'status': 'success',
-                            'code'  : 100,
-                            'order' : voided_offer
-                        }
+                    await update_order(order_number=self.order_number, order_status_code=self.VOID)
+                    voided_offer = await get_order(self.order_number)
+                    result = {
+                        'status': 'success',
+                        'code'  : 100,
+                        'order' : voided_offer
+                    }
 
         else:
             result = {

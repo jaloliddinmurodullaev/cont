@@ -1,6 +1,5 @@
 import uuid
-import time
-from datetime import datetime, timezone
+from datetime import datetime
 
 from flight.models import get_orders_count
 

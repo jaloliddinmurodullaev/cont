@@ -82,7 +82,7 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             price_details = await get_price_details(_offers, currency_type)
 
             offers = await round_trip(_offers, price_info, price_details, 
-                                       passengers_info, provider_id, provider_name)
+                                       passengers_info, provider_id, provider_name, system_id)
             for off in offers:
                 results.append(off)
 
@@ -94,13 +94,13 @@ async def search_converter(data, provider_id, provider_name, system_id, currency
             price_details = await get_price_details(_offers, currency_type)
 
             offers = await multi_city(_offers, price_info, price_details, 
-                                        passengers_info, provider_id, provider_name, trip_routes_cnt)
+                                        passengers_info, provider_id, provider_name, system_id, trip_routes_cnt)
             for off in offers:
                 results.append(off)
 
     return results
 
-async def round_trip(offers, price_info, price_details, passengers_info, provider_id, provider_name):
+async def round_trip(offers, price_info, price_details, passengers_info, provider_id, provider_name, system_id):
     results = []
     # for offer in offers['legList']:
     fare_id = offers['fareId']
@@ -155,13 +155,16 @@ async def round_trip(offers, price_info, price_details, passengers_info, provide
                 other={
                     'fareId': fare_id,
                     'itineraryIdList': itinerary_id_list
-                }
+                },
+                provider_id=provider_id,
+                provider_name=provider_name,
+                system_id=system_id
             )
             results.append(complete_offer) 
 
     return results
 
-async def multi_city(offers, price_info, price_details, passengers_info, provider_id, provider_name, trip_routes_cnt):
+async def multi_city(offers, price_info, price_details, passengers_info, provider_id, provider_name, system_id, trip_routes_cnt):
     results = []
 
     if trip_routes_cnt == 3:
@@ -226,7 +229,10 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                         other={
                             'fareId': fare_id,
                             'itineraryIdList': itinerary_id_list
-                        }
+                        },
+                        provider_id=provider_id,
+                        provider_name=provider_name,
+                        system_id=system_id
                     )
                     results.append(complete_offer)
     elif trip_routes_cnt == 4:
@@ -302,7 +308,10 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                             other={
                                 'fareId': fare_id,
                                 'itineraryIdList': itinerary_id_list
-                            }
+                            },
+                            provider_id=provider_id,
+                            provider_name=provider_name,
+                            system_id=system_id
                         )
                         results.append(complete_offer)
     elif trip_routes_cnt == 5:
@@ -389,7 +398,10 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                                 other={
                                     'fareId': fare_id,
                                     'itineraryIdList': itinerary_id_list
-                                }
+                                },
+                                provider_id=provider_id,
+                                provider_name=provider_name,
+                                system_id=system_id
                             )
                             results.append(complete_offer)
     elif trip_routes_cnt == 6:
@@ -487,7 +499,10 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
                                     other={
                                         'fareId': fare_id,
                                         'itineraryIdList': itinerary_id_list
-                                    }
+                                    },
+                                    provider_id=provider_id,
+                                    provider_name=provider_name,
+                                    system_id=system_id
                                 )
                                 results.append(complete_offer)
     return results

@@ -29,8 +29,8 @@ class CancelCollector:
             }
 
         if order is not None:
-
-            provider_id   = order['provider_id']
+            print(order)
+            provider_id   = order['provider_uid']
             provider_name = order['provider_name']
             system_id     = order['booking_system']
 
@@ -44,22 +44,16 @@ class CancelCollector:
 
             if system_name is not None and system_name in INTEGRATIONS:
                 integration = INTEGRATIONS[system_name](auth_data, self.data)
-                result = await integration.cancel_booking(system_id, provider_id, provider_name, self.data, pnr)
+                res = await integration.cancel_booking(system_id, provider_id, provider_name, self.data, pnr)
 
-                if result['status'] == 'success':
-                    cancel_offer = await update_order(order_number=self.order_number, order_status_code=self.CANCEL)
-                    if cancel_offer is not None:
-                        cancelled_order = await get_order(self.order_number)
-                        result = {
-                            'status': 'success',
-                            'code'  : 100,
-                            'order' : cancelled_order
-                        }
-                    else:
-                        result = {
-                            'status': 'error',
-                            'code'  : -100
-                        }
+                if res['status'] == 'success':
+                    await update_order(order_number=self.order_number, order_status_code=self.CANCEL)
+                    cancelled_order = await get_order(self.order_number)
+                    result = {
+                        'status': 'success',
+                        'code'  : 100,
+                        'order' : cancelled_order
+                    }
                 else:
                     result = {
                         'status': 'error',

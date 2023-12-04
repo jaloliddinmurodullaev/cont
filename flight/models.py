@@ -1,5 +1,6 @@
 import json
 import uuid
+import copy
 from .database import db_simple, db_async
 
 def create_database():
@@ -142,10 +143,10 @@ async def get_order(order_number):
 
     select_query = f"SELECT * FROM orders WHERE order_number = $1"
 
-    order = await conn.fetchrow(select_query, order_number)
+    order = await _db.fetchrow(select_query, order_number)
 
     order = dict(order)
-
+    print(order['status'])
     order['booking_response'] = copy.deepcopy(json.loads(order['booking_response']))
     order['booking_response']['status'] = copy.deepcopy(order['status'])
 

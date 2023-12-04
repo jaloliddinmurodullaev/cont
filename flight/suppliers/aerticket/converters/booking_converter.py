@@ -53,7 +53,7 @@ async def get_passengers(passengers, price_info, baggages_info, fares_info):
                     "tax_total_amount": pr_in['tax_total_amount'],
                     "total_amount": pr_in['total_amount'],
                     "payable_amount": pr_in['payable_amount'],
-                    "single_fare_amount": pr_in['single_fare_amount'],
+                    "single_fare_amount": pr_in['single_base_amount'],
                     "single_tax_amount": pr_in['single_tax_amount'],
                     "single_tax_details": pr_in['single_tax_details']
                 })

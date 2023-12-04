@@ -173,6 +173,25 @@ class db_async():
                 await self.reset()
                 continue
 
+    async def fetchrow(self, query, *args):
+        retry_counter = 0
+        while True:
+            try:
+                await self.connect()
+                if args:
+                    res = await self._connection.fetchrow(query, *args)
+                    print(f"Execute SQL: {query}, {args}")
+                else:
+                    res = await self._connection.fetchrow(query)
+                    print(f"Execute SQL: {query}")
+                return res
+            except Exception as error:
+                retry_counter += 1
+                print(f"Got error: {str(error).strip()}. Retrying {retry_counter}")
+                await asyncio.sleep(1)
+                await self.reset()
+                continue
+
     async def reset(self):
         await self.close()
         await self.connect()

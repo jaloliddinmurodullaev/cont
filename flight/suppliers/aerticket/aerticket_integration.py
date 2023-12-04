@@ -404,8 +404,9 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/cancel-booking", context))
-        
-        if res['status'] == 'success' and res['success'] == True:
+        print(res['data']['success'])
+        print(res['status'])
+        if res['status'] == 'success' and res['data']['success'] == True:
             response = {
                 'status': 'success',
                 'code'  : 100
@@ -433,8 +434,8 @@ class AerticketIntegration(BaseIntegration):
         self.passwordkey = PASSKEY 
 
         res = await asyncio.create_task(self.__request("/api/v1/ticket-booking", context))
-        
-        if res['status'] == 'success' and res['success'] == True:
+        print(res)
+        if res['status'] == 'success' and res['data']['success'] == True:
             response = {
                 'status': 'success',
                 'code'  : 100
@@ -446,7 +447,6 @@ class AerticketIntegration(BaseIntegration):
             }
 
         return response
-
 
 
 ###################################### VOID ########################################

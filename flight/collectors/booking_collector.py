@@ -30,7 +30,7 @@ class BookingCollector:
             return {
                 'status': 'error',
                 'request_id': self.request_id,
-                'code': 502
+                'code': -100
             }
 
         if offer['status'] == 'success':
@@ -68,7 +68,7 @@ class BookingCollector:
             result = {
                 'status'    : 'error',
                 'request_id': self.request_id,
-                'code'      : 404
+                'code'      : -100
             }
 
         return result

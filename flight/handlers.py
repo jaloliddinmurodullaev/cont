@@ -21,6 +21,13 @@ from flight.collectors.refund_collector       import RefundCollector
 # FLIGHT HANDLERS. BE CAREFUL WHILE CHANGING THEM.
 
 class SearchHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -42,6 +49,13 @@ class SearchHandler(tornado.web.RequestHandler):
 
 
 class OfferHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -61,6 +75,13 @@ class OfferHandler(tornado.web.RequestHandler):
 
 
 class UpsellHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -80,6 +101,13 @@ class UpsellHandler(tornado.web.RequestHandler):
 
 
 class RulesHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -99,6 +127,13 @@ class RulesHandler(tornado.web.RequestHandler):
 
 
 class VerifyHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -118,6 +153,13 @@ class VerifyHandler(tornado.web.RequestHandler):
 
 
 class BookingHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -137,6 +179,13 @@ class BookingHandler(tornado.web.RequestHandler):
 
 
 class RetrieveHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -156,6 +205,13 @@ class RetrieveHandler(tornado.web.RequestHandler):
 
 
 class CancelHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -175,6 +231,13 @@ class CancelHandler(tornado.web.RequestHandler):
 
 
 class TicketingHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 
@@ -193,6 +256,13 @@ class TicketingHandler(tornado.web.RequestHandler):
         self.write(response[0])  
 
 class VoidHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        # Set CORS headers
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST")
+
     async def post(self):
         data = json.loads(self.request.body)
 

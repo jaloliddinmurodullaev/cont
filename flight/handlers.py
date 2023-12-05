@@ -33,19 +33,26 @@ class SearchHandler(tornado.web.RequestHandler):
 
         error_list = await asyncio.create_task(Validator.search_request_valiadator(data))
 
-        if error_list == []:
-            # start_time = time.time()
-            collector = SearchCollector(data)
-            response = await asyncio.gather(collector.collector())
-            # end_time = time.time()
-        else:
-            response = [{
-                "status" : "error",
-                "message": error_list
-            }, False]
+        # if error_list == []:
+        #     # start_time = time.time()
+        #     collector = SearchCollector(data)
+        #     response = await asyncio.gather(collector.collector())
+        #     # end_time = time.time()
+        # else:
+        #     response = [{
+        #         "status" : "error",
+        #         "message": error_list
+        #     }, False]
         
         # print(f"Search handler execution time: {round(end_time - start_time, 2)} seconds")
-        self.write(response[0])
+        # self.write(response[0])
+
+        data = {
+            "code": "100",
+            "status": "success",
+            "request_id": "6c62dcec-9334-11ee-8688-5169d0acfb81"
+        }
+        self.write(data)
 
 
 class OfferHandler(tornado.web.RequestHandler):
@@ -59,19 +66,24 @@ class OfferHandler(tornado.web.RequestHandler):
     async def post(self):
         data = json.loads(self.request.body)
 
-        if await asyncio.create_task(Validator.offers_request_valiadator(data)):
-            # start_time = time.time()
-            collector = OfferCollector(data)
-            response = await asyncio.gather(collector.collector())
-            # end_time = time.time()
-        else:
-            response = [{
-                "status" : "error",
-                "message": "Data is not valid. Please, provide valid data!"
-            }, False]
+        # if await asyncio.create_task(Validator.offers_request_valiadator(data)):
+        #     # start_time = time.time()
+        #     collector = OfferCollector(data)
+        #     response = await asyncio.gather(collector.collector())
+        #     # end_time = time.time()
+        # else:
+        #     response = [{
+        #         "status" : "error",
+        #         "message": "Data is not valid. Please, provide valid data!"
+        #     }, False]
 
-        # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
-        self.write(response[0])
+        # # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
+        # self.write(response[0])
+
+        f = open("./flight/offer_ow.json")
+        data = json.load(f)
+        self.write(data)
+        f.close()
 
 
 class UpsellHandler(tornado.web.RequestHandler):

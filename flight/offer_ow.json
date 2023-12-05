@@ -1,0 +1,2020 @@
+{
+    "request_id": "6c62dcec-9334-11ee-8688-5169d0acfb81",
+    "status": "success",
+    "code": 100,
+    "trip_type": "OW",
+    "sort_type": "price",
+    "currency": "USD",
+    "count": 44,
+    "next_token": null,
+    "offers": [
+        {
+            "offer_id": "7d8f64a6-a6e8-4f59-a433-1a1c5cb8d4c1",
+            "price_info": {
+                "price": 33.99,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 17,
+                    "single_tax_amount": 16.99,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 39.49,
+                    "base_total_amount": 39.49,
+                    "tax_total_amount": 16.99,
+                    "total_amount": 39.49,
+                    "payable_amount": 39.49
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "QCALF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "Q",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "11:00:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "13:30:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air Shuttle",
+                            "marketing_airline_code": "DY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "operating_airline": "Norwegian Air Shuttle",
+                            "operating_airline_code": "DY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "962eef92-2f35-48bd-b74e-85e5735e3abd",
+            "price_info": {
+                "price": 73.61,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 49,
+                    "single_tax_amount": 24.61,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 79.11,
+                    "base_total_amount": 79.11,
+                    "tax_total_amount": 24.61,
+                    "total_amount": 79.11,
+                    "payable_amount": 79.11
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "QCALF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "Q",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "XLF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "X",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "17:00:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "18:00:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air Shuttle",
+                            "marketing_airline_code": "DY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "operating_airline": "Norwegian Air Shuttle",
+                            "operating_airline_code": "DY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "20:20:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "22:15:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air",
+                            "marketing_airline_code": "D8",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "operating_airline": "Norwegian Air",
+                            "operating_airline_code": "D8",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "25083c03-b5fa-468d-b76e-161d4a6e6529",
+            "price_info": {
+                "price": 73.61,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 49,
+                    "single_tax_amount": 24.61,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 79.11,
+                    "base_total_amount": 79.11,
+                    "tax_total_amount": 24.61,
+                    "total_amount": 79.11,
+                    "payable_amount": 79.11
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "QCALF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "Q",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "XLF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "X",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "15:00:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "16:00:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air Shuttle",
+                            "marketing_airline_code": "DY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "operating_airline": "Norwegian Air Shuttle",
+                            "operating_airline_code": "DY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "20:20:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "22:15:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air",
+                            "marketing_airline_code": "D8",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "operating_airline": "Norwegian Air",
+                            "operating_airline_code": "D8",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "587d61c3-6959-44f3-bb91-ada268824b93",
+            "price_info": {
+                "price": 86.61,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 62,
+                    "single_tax_amount": 24.61,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 92.11,
+                    "base_total_amount": 92.11,
+                    "tax_total_amount": 24.61,
+                    "total_amount": 92.11,
+                    "payable_amount": 92.11
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "QCALF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "Q",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "LOWFARE",
+                        "services": []
+                    },
+                    "fare_code": "HLF",
+                    "service_class": "ECONOMY",
+                    "booking_class": "H",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "15:00:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "16:00:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air Shuttle",
+                            "marketing_airline_code": "DY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "operating_airline": "Norwegian Air Shuttle",
+                            "operating_airline_code": "DY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/DY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "17:20:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "19:15:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Norwegian Air",
+                            "marketing_airline_code": "D8",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "operating_airline": "Norwegian Air",
+                            "operating_airline_code": "D8",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/D8.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "73H",
+                                "airplane_code": "73H",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "e9046643-c7a9-4aca-9444-491692db5bf1",
+            "price_info": {
+                "price": 89.86,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 35,
+                    "single_tax_amount": 54.86,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 95.36,
+                    "base_total_amount": 95.36,
+                    "tax_total_amount": 54.86,
+                    "total_amount": 95.36,
+                    "payable_amount": 95.36
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO3GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO3GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-RIX",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "08:35:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "11:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-HEL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "13:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "14:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "ff2d1acb-02d0-4508-a89b-e1cf3c3331bd",
+            "price_info": {
+                "price": 89.86,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 35,
+                    "single_tax_amount": 54.86,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 95.36,
+                    "base_total_amount": 95.36,
+                    "tax_total_amount": 54.86,
+                    "total_amount": 95.36,
+                    "payable_amount": 95.36
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO3GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO3GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-RIX",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "19:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "22:25:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-HEL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "23:20:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-21",
+                            "arrival_time": "00:20:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "78fd2e3f-9ef9-4adc-880a-4e28f5994af5",
+            "price_info": {
+                "price": 91.13,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 33,
+                    "single_tax_amount": 58.13,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 96.63,
+                    "base_total_amount": 96.63,
+                    "tax_total_amount": 58.13,
+                    "total_amount": 96.63,
+                    "payable_amount": 96.63
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "16:05:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "17:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32N",
+                                "airplane_code": "32N",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "17:45:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "19:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32N",
+                                "airplane_code": "32N",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "0186197e-6af2-4ba3-b36b-9b163e90db87",
+            "price_info": {
+                "price": 91.13,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 33,
+                    "single_tax_amount": 58.13,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 96.63,
+                    "base_total_amount": 96.63,
+                    "tax_total_amount": 58.13,
+                    "total_amount": 96.63,
+                    "payable_amount": 96.63
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "07:40:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "08:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32N",
+                                "airplane_code": "32N",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "11:00:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "13:00:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Regional Jet",
+                            "operating_airline_code": "EE",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/EE.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "CR9",
+                                "airplane_code": "CR9",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "b55ab61b-1ede-4de8-837c-cd85b1fa6e74",
+            "price_info": {
+                "price": 91.13,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 33,
+                    "single_tax_amount": 58.13,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 96.63,
+                    "base_total_amount": 96.63,
+                    "tax_total_amount": 58.13,
+                    "total_amount": 96.63,
+                    "payable_amount": 96.63
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "13:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "14:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "319",
+                                "airplane_code": "319",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "17:45:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "19:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32N",
+                                "airplane_code": "32N",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "acd65a3e-7f0f-438b-a630-18b457154909",
+            "price_info": {
+                "price": 91.13,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 33,
+                    "single_tax_amount": 58.13,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 96.63,
+                    "base_total_amount": 96.63,
+                    "tax_total_amount": 58.13,
+                    "total_amount": 96.63,
+                    "payable_amount": 96.63
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-ARN",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                },
+                {
+                    "leg": "ARN-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GOLIGHT",
+                        "services": []
+                    },
+                    "fare_code": "LKNOGHT",
+                    "service_class": "ECONOMY",
+                    "booking_class": "L",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-ARN",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "09:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "ARN",
+                            "arrival_country_code": "ARN",
+                            "arrival_city": "ARN",
+                            "arrival_city_code": "ARN",
+                            "arrival_airport": "ARN",
+                            "arrival_airport_code": "ARN",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "10:35:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Scandinavian Airlines",
+                            "operating_airline_code": "SK",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "ARN-HEL",
+                            "flight_number": "",
+                            "departure_country": "ARN",
+                            "departure_country_code": "ARN",
+                            "departure_city": "ARN",
+                            "departure_city_code": "ARN",
+                            "departure_airport": "ARN",
+                            "departure_airport_code": "ARN",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-20",
+                            "departure_time": "13:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-20",
+                            "arrival_time": "15:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Scandinavian Airlines",
+                            "marketing_airline_code": "SK",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/SK.svg",
+                            "operating_airline": "Regional Jet",
+                            "operating_airline_code": "EE",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/EE.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "CR9",
+                                "airplane_code": "CR9",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        }
+    ]
+}

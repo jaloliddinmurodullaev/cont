@@ -2,6 +2,7 @@ import uuid
 import copy
 
 from flight.additions.additions import AdditionsTicket
+from flight.microservices.static.main_api import StaticMicroservice
 
 async def search_converter(data, provider_id, provider_name, system_id, currency, trip_routes_cnt):
     offers = data['data']
@@ -510,6 +511,9 @@ async def multi_city(offers, price_info, price_details, passengers_info, provide
 async def segment_maker(segments, duration_minutes):
     result_segments = []
     cnt = 0
+
+    # static_StaticMicroservice
+
     for segment in segments:
         cnt += 1
         segment_tmp = {

@@ -1,4 +1,5 @@
 import json
+import time
 import asyncio
 import tornado.web
 
@@ -44,15 +45,23 @@ class SearchHandler(tornado.web.RequestHandler):
         #         "message": error_list
         #     }, False]
         
-        # print(f"Search handler execution time: {round(end_time - start_time, 2)} seconds")
+        # # print(f"Search handler execution time: {round(end_time - start_time, 2)} seconds")
         # self.write(response[0])
 
-        data = {
-            "code": "100",
-            "status": "success",
-            "request_id": "6c62dcec-9334-11ee-8688-5169d0acfb81"
-        }
-        self.write(data)
+        if len(data['directions']) == 1:
+            response_ow = {
+                "code": "100",
+                "status": "success",
+                "request_id": "6c62dcec-9334-11ee-8688-5169d0acfb81"
+            }
+            self.write(response_ow)
+        else:
+            response_rt = {
+                "code": "100",
+                "status": "success",
+                "request_id": "0bd10cf8-9336-11ee-8688-5169d0acfb81"
+            }
+            self.write(response_rt)
 
 
 class OfferHandler(tornado.web.RequestHandler):
@@ -80,10 +89,24 @@ class OfferHandler(tornado.web.RequestHandler):
         # # print(f"Offer handler execution time: {round(end_time - start_time, 2)} seconds")
         # self.write(response[0])
 
-        f = open("./flight/offer_ow.json")
-        data = json.load(f)
-        self.write(data)
-        f.close()
+        if data['request_id'] == "6c62dcec-9334-11ee-8688-5169d0acfb81":
+            if data['next_token'] == "b2ec4126-58b5-4a88-99f4-8387733e0ce0":
+                time.sleep(3)
+                f = open("./flight/offer_ow2.json")
+                data = json.load(f)
+                f.close()
+                self.write(data)
+            else:
+                time.sleep(2)
+                f = open("./flight/offer_ow.json")
+                data = json.load(f)
+                f.close()
+                self.write(data)
+        if data['request_id'] == "0bd10cf8-9336-11ee-8688-5169d0acfb81":
+            f = open("./flight/offer_rt.json")
+            data = json.load(f)
+            f.close()
+            self.write(data)
 
 
 class UpsellHandler(tornado.web.RequestHandler):

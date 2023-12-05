@@ -1,0 +1,2992 @@
+{
+    "request_id": "0bd10cf8-9336-11ee-8688-5169d0acfb81",
+    "status": "success",
+    "code": 100,
+    "trip_type": "RT",
+    "sort_type": "price",
+    "currency": "USD",
+    "count": 35,
+    "next_token": null,
+    "offers": [
+        {
+            "offer_id": "76c78e31-5748-4a8b-ad92-8ed964416c03",
+            "price_info": {
+                "price": 186.5,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 77.0,
+                    "single_tax_amount": 109.5,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 192.0,
+                    "base_total_amount": 192.0,
+                    "tax_total_amount": 109.5,
+                    "total_amount": 192.0,
+                    "payable_amount": 192.0
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "PNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "P",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "PNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "P",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-RIX",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "14:10:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "16:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-HEL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "19:40:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "20:40:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-RIX",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "15:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "16:30:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-OSL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "18:25:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "19:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "a50158cb-9f50-44d9-ab63-8a391b8e7912",
+            "price_info": {
+                "price": 186.5,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 77.0,
+                    "single_tax_amount": 109.5,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 192.0,
+                    "base_total_amount": 192.0,
+                    "tax_total_amount": 109.5,
+                    "total_amount": 192.0,
+                    "payable_amount": 192.0
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "PNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "P",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "PNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "P",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-RIX",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "08:35:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "11:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-HEL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "13:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "14:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-RIX",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "15:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "16:30:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-OSL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "18:25:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "19:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "04e68cd9-2b65-4b80-9850-de968b40eec9",
+            "price_info": {
+                "price": 204.23,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 93.0,
+                    "single_tax_amount": 111.23,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 209.73,
+                    "base_total_amount": 209.73,
+                    "tax_total_amount": 111.23,
+                    "total_amount": 209.73,
+                    "payable_amount": 209.73
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-FRA",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "FRA-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-MUC",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "MUC-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-FRA",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "FRA-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-MUC",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "MUC-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-FRA",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "13:10:00",
+                            "departure_timezone": "",
+                            "arrival_country": "FRA",
+                            "arrival_country_code": "FRA",
+                            "arrival_city": "FRA",
+                            "arrival_city_code": "FRA",
+                            "arrival_airport": "FRA",
+                            "arrival_airport_code": "FRA",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "15:20:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32N",
+                                "airplane_code": "32N",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "FRA-HEL",
+                            "flight_number": "",
+                            "departure_country": "FRA",
+                            "departure_country_code": "FRA",
+                            "departure_city": "FRA",
+                            "departure_city_code": "FRA",
+                            "departure_airport": "FRA",
+                            "departure_airport_code": "FRA",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "17:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "21:00:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "319",
+                                "airplane_code": "319",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-MUC",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "12:35:00",
+                            "departure_timezone": "",
+                            "arrival_country": "MUC",
+                            "arrival_country_code": "MUC",
+                            "arrival_city": "MUC",
+                            "arrival_city_code": "MUC",
+                            "arrival_airport": "MUC",
+                            "arrival_airport_code": "MUC",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "14:15:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "MUC-OSL",
+                            "flight_number": "",
+                            "departure_country": "MUC",
+                            "departure_country_code": "MUC",
+                            "departure_city": "MUC",
+                            "departure_city_code": "MUC",
+                            "departure_airport": "MUC",
+                            "departure_airport_code": "MUC",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "15:40:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "17:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "21988d9d-199d-420d-90da-0c4f8e2864cd",
+            "price_info": {
+                "price": 204.23,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 93.0,
+                    "single_tax_amount": 111.23,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 209.73,
+                    "base_total_amount": 209.73,
+                    "tax_total_amount": 111.23,
+                    "total_amount": 209.73,
+                    "payable_amount": 209.73
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-FRA",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "FRA-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-MUC",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "MUC-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-FRA",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "FRA-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-MUC",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "MUC-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "CLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "KETCLSE3",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-FRA",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "06:10:00",
+                            "departure_timezone": "",
+                            "arrival_country": "FRA",
+                            "arrival_country_code": "FRA",
+                            "arrival_city": "FRA",
+                            "arrival_city_code": "FRA",
+                            "arrival_airport": "FRA",
+                            "arrival_airport_code": "FRA",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "08:30:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "321",
+                                "airplane_code": "321",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "FRA-HEL",
+                            "flight_number": "",
+                            "departure_country": "FRA",
+                            "departure_country_code": "FRA",
+                            "departure_city": "FRA",
+                            "departure_city_code": "FRA",
+                            "departure_airport": "FRA",
+                            "departure_airport_code": "FRA",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "09:45:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "13:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "32Q",
+                                "airplane_code": "32Q",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-MUC",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "12:35:00",
+                            "departure_timezone": "",
+                            "arrival_country": "MUC",
+                            "arrival_country_code": "MUC",
+                            "arrival_city": "MUC",
+                            "arrival_city_code": "MUC",
+                            "arrival_airport": "MUC",
+                            "arrival_airport_code": "MUC",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "14:15:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "MUC-OSL",
+                            "flight_number": "",
+                            "departure_country": "MUC",
+                            "departure_country_code": "MUC",
+                            "departure_city": "MUC",
+                            "departure_city_code": "MUC",
+                            "departure_airport": "MUC",
+                            "departure_airport_code": "MUC",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "15:40:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "17:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Lufthansa",
+                            "marketing_airline_code": "LH",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "operating_airline": "Lufthansa",
+                            "operating_airline_code": "LH",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/LH.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "ab48dbd1-16e4-4f17-af72-a7a2d5700a86",
+            "price_info": {
+                "price": 204.5,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 87.0,
+                    "single_tax_amount": 117.5,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 210.0,
+                    "base_total_amount": 210.0,
+                    "tax_total_amount": 117.5,
+                    "total_amount": 210.0,
+                    "payable_amount": 210.0
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "UNO1GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "U",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "UNO1GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "U",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-RIX",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                },
+                {
+                    "leg": "RIX-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "GREEN",
+                        "services": []
+                    },
+                    "fare_code": "KNO2GRN",
+                    "service_class": "ECONOMY",
+                    "booking_class": "K",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-RIX",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "19:50:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "22:25:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-HEL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "23:20:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-23",
+                            "arrival_time": "00:20:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 1,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-RIX",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "15:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "RIX",
+                            "arrival_country_code": "RIX",
+                            "arrival_city": "RIX",
+                            "arrival_city_code": "RIX",
+                            "arrival_airport": "RIX",
+                            "arrival_airport_code": "RIX",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "16:30:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        },
+                        {
+                            "segment_index": 2,
+                            "leg": "RIX-OSL",
+                            "flight_number": "",
+                            "departure_country": "RIX",
+                            "departure_country_code": "RIX",
+                            "departure_city": "RIX",
+                            "departure_city_code": "RIX",
+                            "departure_airport": "RIX",
+                            "departure_airport_code": "RIX",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "18:25:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "19:10:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Air Baltic",
+                            "marketing_airline_code": "BT",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "operating_airline": "Air Baltic",
+                            "operating_airline_code": "BT",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/BT.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "223",
+                                "airplane_code": "223",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "dd0b0a50-c6b4-42a1-99b7-4d7385248970",
+            "price_info": {
+                "price": 258.76,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 195.0,
+                    "single_tax_amount": 63.76,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 264.26,
+                    "base_total_amount": 264.26,
+                    "tax_total_amount": 63.76,
+                    "total_amount": 264.26,
+                    "payable_amount": 264.26
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "08:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "10:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-OSL",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "07:15:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "07:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "959cdddd-deb7-4940-87d0-434be5789429",
+            "price_info": {
+                "price": 258.76,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 195.0,
+                    "single_tax_amount": 63.76,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 264.26,
+                    "base_total_amount": 264.26,
+                    "tax_total_amount": 63.76,
+                    "total_amount": 264.26,
+                    "payable_amount": 264.26
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "08:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "10:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-OSL",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "16:05:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "16:40:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "319",
+                                "airplane_code": "319",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "85cfee03-e2de-4888-bc4d-fd0ae69011fb",
+            "price_info": {
+                "price": 258.76,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 195.0,
+                    "single_tax_amount": 63.76,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 264.26,
+                    "base_total_amount": 264.26,
+                    "tax_total_amount": 63.76,
+                    "total_amount": 264.26,
+                    "payable_amount": 264.26
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "13:15:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "15:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-OSL",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "07:15:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "07:50:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "63a5ceec-6d5c-4eff-9da8-c948d8290d35",
+            "price_info": {
+                "price": 258.76,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 195.0,
+                    "single_tax_amount": 63.76,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 264.26,
+                    "base_total_amount": 264.26,
+                    "tax_total_amount": 63.76,
+                    "total_amount": 264.26,
+                    "payable_amount": 264.26
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "08:30:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "10:55:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-OSL",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "12:05:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "12:35:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        },
+        {
+            "offer_id": "ab0f8a31-b50c-4584-afb4-2fd703f87e95",
+            "price_info": {
+                "price": 258.76,
+                "currency": "EUR",
+                "fee_amount": 5.5,
+                "commission_amount": 0
+            },
+            "upsell": true,
+            "booking": true,
+            "price_details": [
+                {
+                    "passenger_type": "ADT",
+                    "currency": "EUR",
+                    "quantity": 1,
+                    "single_base_amount": 195.0,
+                    "single_tax_amount": 63.76,
+                    "single_tax_details": [],
+                    "fee_amount": 5.5,
+                    "commission_amount": 0,
+                    "single_total_amount": 264.26,
+                    "base_total_amount": 264.26,
+                    "tax_total_amount": 63.76,
+                    "total_amount": 264.26,
+                    "payable_amount": 264.26
+                }
+            ],
+            "baggages_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "baggage": {
+                        "value": 1,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "hand_baggage": {
+                        "value": 0,
+                        "unit": "PC",
+                        "size": {
+                            "height": null,
+                            "width": null,
+                            "length": null,
+                            "unit": ""
+                        }
+                    },
+                    "description": ""
+                }
+            ],
+            "fares_info": [
+                {
+                    "leg": "OSL-HEL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                },
+                {
+                    "leg": "HEL-OSL",
+                    "passenger_type": "ADT",
+                    "seats": "9",
+                    "upsell": {
+                        "name": "ECLASSIC",
+                        "services": []
+                    },
+                    "fare_code": "NNN0S9CZ",
+                    "service_class": "ECONOMY",
+                    "booking_class": "N",
+                    "description": ""
+                }
+            ],
+            "routes": [
+                {
+                    "route_index": 1,
+                    "direction": "OSL-HEL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "OSL-HEL",
+                            "flight_number": "",
+                            "departure_country": "OSL",
+                            "departure_country_code": "OSL",
+                            "departure_city": "OSL",
+                            "departure_city_code": "OSL",
+                            "departure_airport": "OSL",
+                            "departure_airport_code": "OSL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-22",
+                            "departure_time": "13:15:00",
+                            "departure_timezone": "",
+                            "arrival_country": "HEL",
+                            "arrival_country_code": "HEL",
+                            "arrival_city": "HEL",
+                            "arrival_city_code": "HEL",
+                            "arrival_airport": "HEL",
+                            "arrival_airport_code": "HEL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-22",
+                            "arrival_time": "15:45:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "320",
+                                "airplane_code": "320",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "route_index": 2,
+                    "direction": "HEL-OSL",
+                    "stops": 0,
+                    "segments": [
+                        {
+                            "segment_index": 1,
+                            "leg": "HEL-OSL",
+                            "flight_number": "",
+                            "departure_country": "HEL",
+                            "departure_country_code": "HEL",
+                            "departure_city": "HEL",
+                            "departure_city_code": "HEL",
+                            "departure_airport": "HEL",
+                            "departure_airport_code": "HEL",
+                            "departure_terminal": "",
+                            "departure_date": "2023-12-24",
+                            "departure_time": "12:05:00",
+                            "departure_timezone": "",
+                            "arrival_country": "OSL",
+                            "arrival_country_code": "OSL",
+                            "arrival_city": "OSL",
+                            "arrival_city_code": "OSL",
+                            "arrival_airport": "OSL",
+                            "arrival_airport_code": "OSL",
+                            "arrival_terminal": "",
+                            "arrival_date": "2023-12-24",
+                            "arrival_time": "12:35:00",
+                            "arrival_timezone": "",
+                            "duration_minutes": 100,
+                            "stop_time_minutes": "",
+                            "marketing_airline": "Finnair",
+                            "marketing_airline_code": "AY",
+                            "marketing_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "operating_airline": "Finnair",
+                            "operating_airline_code": "AY",
+                            "operating_airline_logo": "https://b2b.easybooking.uz/images/airline/AY.svg",
+                            "seatmap_availability": false,
+                            "services_availability": false,
+                            "airplane_info": {
+                                "airplane": "E90",
+                                "airplane_code": "E90",
+                                "seat_width": "",
+                                "seat_angle": "",
+                                "seat_scheme": "",
+                                "seat_distance": "",
+                                "has_wifi": false
+                            }
+                        }
+                    ]
+                }
+            ],
+            "provider": {
+                "provider_id": "35b107aa-8570-4fea-94fb-0ad75a067733",
+                "name": "Jaloliddin Services"
+            }
+        }
+    ]
+}

@@ -1,12 +1,12 @@
 {
     "request_id": "6c62dcec-9334-11ee-8688-5169d0acfb81",
-    "status": "In process",
+    "status": "success",
     "code": 100,
     "trip_type": "OW",
     "sort_type": "price",
     "currency": "USD",
     "count": 44,
-    "next_token": "b2ec4126-58b5-4a88-99f4-8387733e0ce0",
+    "next_token": null,
     "offers": [
         {
             "offer_id": "7d8f64a6-a6e8-4f59-a433-1a1c5cb8d4c1",

@@ -1,12 +1,12 @@
 {
     "request_id": "0bd10cf8-9336-11ee-8688-5169d0acfb81",
-    "status": "success",
+    "status": "In process",
     "code": 100,
     "trip_type": "RT",
     "sort_type": "price",
     "currency": "USD",
     "count": 35,
-    "next_token": null,
+    "next_token": "b2ec4126-58b5-4a88-99f4-8387733e0ce0",
     "offers": [
         {
             "offer_id": "76c78e31-5748-4a8b-ad92-8ed964416c03",

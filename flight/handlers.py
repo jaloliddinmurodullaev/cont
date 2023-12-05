@@ -90,23 +90,24 @@ class OfferHandler(tornado.web.RequestHandler):
         # self.write(response[0])
 
         if data['request_id'] == "6c62dcec-9334-11ee-8688-5169d0acfb81":
+            time.sleep(2)
+            f = open("./flight/offer_ow.json")
+            data = json.load(f)
+            f.close()
+            self.write(data)
+        if data['request_id'] == "0bd10cf8-9336-11ee-8688-5169d0acfb81":
             if data['next_token'] == "b2ec4126-58b5-4a88-99f4-8387733e0ce0":
-                time.sleep(3)
-                f = open("./flight/offer_ow2.json")
+                time.sleep(2)
+                f = open("./flight/offer_rt2.json")
                 data = json.load(f)
                 f.close()
                 self.write(data)
             else:
                 time.sleep(2)
-                f = open("./flight/offer_ow.json")
+                f = open("./flight/offer_rt.json")
                 data = json.load(f)
                 f.close()
                 self.write(data)
-        if data['request_id'] == "0bd10cf8-9336-11ee-8688-5169d0acfb81":
-            f = open("./flight/offer_rt.json")
-            data = json.load(f)
-            f.close()
-            self.write(data)
 
 
 class UpsellHandler(tornado.web.RequestHandler):

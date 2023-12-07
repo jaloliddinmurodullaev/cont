@@ -16,8 +16,8 @@ class RefundCollector:
 
     def __init__(self, data) -> None:
         self.order_number = data['order_number']
-        self.payment_type = data['payment_type']
-        self.data       = data
+        self.data         = data
+        self.REFUND       = 'R'
 
     async def collector(self):
         try:
@@ -47,12 +47,12 @@ class RefundCollector:
                 result = await integration.refund(system_id, provider_id, provider_name, self.data, pnr)
 
                 if result['status'] == 'success':
-                    await update_order(order_number=self.order_number, order_status_code=self.VOID)
-                    voided_offer = await get_order(self.order_number)
+                    await update_order(order_number=self.order_number, order_status_code=self.REFUND)
+                    refunded_offer = await get_order(self.order_number)
                     result = {
                         'status': 'success',
                         'code'  : 100,
-                        'order' : voided_offer
+                        'order' : refunded_offer
                     }
 
         else:

@@ -122,3 +122,4 @@ async def get_passengers(passengers, price_info, baggages_info, fares_info):
         }
         response.append(passenger_tmp)
     return(response)
+

@@ -36,3 +36,13 @@ ticket numbers
 ticketing_time_limit
 void_time_limit
 
+what I do today [05-12-2023]
+static api to offers
+currency api to offers
+DONE
+
+what I do today [06-12-2023]
+refund
+ticket number background job
+
+

@@ -1,6 +1,9 @@
 from datetime import datetime
 import uuid
 
+from flight.microservices.static.main_api import StaticMicroservice
+
+static_microservice = StaticMicroservice()
 
 class Validator:
 
@@ -17,97 +20,94 @@ class Validator:
         clas = data.get('class', None)
         flexible = data.get('flexible', None)
         direct = data.get('direct', None)
-        airlines = data.get('direct', None)
+        airlines = data.get('airlines', None)
 
         if directions == None:
             error_list.append({
-                "message": "directions field should not be empty"
+                "message": "directions field should be exist"
             })
 
         if adt == False or adt < 1:
             error_list.append({
-                "message": "adt field should not be empty and greater than 0"
+                "message": "adt field should be exist and greater than 0"
             })
         
         if chd == None:
             error_list.append({
-                "message": "chd field should not be empty"
+                "message": "chd field should be exist"
             })
         
         if inf == None:
             error_list.append({
-                "message": "inf field should not be empty"
+                "message": "inf field should be exist"
             })
         
         if ins == None:
             error_list.append({
-                "message": "ins field should not be empty"
+                "message": "ins field should be exist"
             })
 
         if clas == None:
             error_list.append({
-                "message": "class field should not be empty"
+                "message": "class field should be exist"
             })
         
         if flexible == None:
             error_list.append({
-                "message": "flexible field should not be empty"
+                "message": "flexible field should be exist"
             })
 
         if direct == None:
             error_list.append({
-                "message": "direct field should not be empty"
+                "message": "direct field should be exist"
             })
         
         if airlines == None:
             error_list.append({
-                "message": "airlines field should not be empty"
+                "message": "airlines field should be exist"
             })
-
-        are_dirs_correct = True
+        
         if directions != None and isinstance(directions, list):
             for dir in directions:
-                if not dir.get('departure', False) and dir['departure'] != "":
+                # if not dir.get('departure', False) or dir['departure'] == "":
+                #     error_list.append({
+                #         "message": "departure field should not be empty"
+                #     })
+                # else:
+                #     dep = dir.get('departure')
+                #     dep_airport = await static_microservice.get_airport_data(airport_iata=dep)
+                #     if dep != dep_airport['iata_code']:
+                #         error_list.append({
+                #             "message": "departure code is incorrect"
+                #         })
+                # if not dir.get('arrival', False) or dir['arrival'] == "":
+                #     error_list.append({
+                #         "message": "arrival field should not be empty"
+                #     })
+                # else:
+                #     arr = dir.get('arrival')
+                #     arr_airport = await static_microservice.get_airport_data(airport_iata=arr)
+                #     if arr != arr_airport['iata_code']:
+                #         error_list.append({
+                #             "message": "arrival code is incorrect"
+                #         })
+                if not dir.get('departure_date', False) or dir['departure_date'] == "":
                     error_list.append({
-                        "message": "departure field should not be empty"
+                        "message": "departure date field should be exist"
                     })
-                if not dir.get('arrival', False) and dir['arrival'] != "":
-                    error_list.append({
-                        "message": "arrival field should not be empty"
-                    })
-                if not dir.get('departure_date', False) and dir['departure_date'] != "":
-                    error_list.append({
-                        "message": "departure date field should not be empty"
-                    })
+                else:
+                    format_str = "%Y-%m-%d"
+                    input_date = datetime.strptime(dir.get('departure_date'), format_str)
+                    current_date = datetime.now().date()
+
+                    if current_date > input_date.date():
+                        error_list.append({
+                            "message": "departure date is overdue"
+                        })
         else:
-            are_dirs_correct = False
+            pass
         
         return error_list
-
-        are_providers_correct = True
-        # if providers != None and isinstance(providers, list):
-        #     for prov in providers:
-        #         if not prov.get('system_id', False):
-        #             are_providers_correct = False
-        #             break
-        #         if not prov.get('provider_id', False):
-        #             are_providers_correct = False
-        #             break
-        #         if not prov.get('provider_name', False):
-        #             are_providers_correct = False
-        #             break
-        #         if not prov.get('auth_data', False):
-        #             are_providers_correct = False
-        #             break
-        # else:
-        #     are_providers_correct = False
-
-        is_count_correct = True
-
-        if inf + ins > adt or adt + chd + ins > 9:
-            is_count_correct = False
-                
-        return (adt and chd != None and inf != None and ins != None and clas != None and flexible != None and direct != None and are_dirs_correct and is_count_correct and are_providers_correct)
 
     async def offers_request_valiadator(data: dict) -> bool:
         request_id = data.get('request_id', None)
@@ -256,3 +256,10 @@ async def filter_tickets(offers) -> dict:
         }
         filtered_tickets.append(offer.ticket)
     return filtered_tickets
+
+
+
+
+
+
+

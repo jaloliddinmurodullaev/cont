@@ -54,7 +54,7 @@
                         "seat_scheme": "3-3"
                     }
                 }
-            ]            
+            ]
         }
     ],
     "price_info": {
@@ -96,7 +96,7 @@
             "email_address": "test@mail.uz",
             "firstname": "Jaloliddin",
             "lastname": "Murodullayev",
-            "middlename": "Hojiakbar o'g'li",
+            "middlename": "Hojiakbar o"g"li",
             "birth_date": "2001-09-01",
             "passenger_category": "Student",
             "phone_number": "+9989992747465",
@@ -163,7 +163,7 @@
                                 "width": 236,
                                 "height": 129,
                                 "length": 112
-                            }                            
+                            }
                         },
                         "hand_baggage": {
                             "value": 1,
@@ -173,7 +173,7 @@
                                 "width": 23,
                                 "height": 29,
                                 "length": 17
-                            }                            
+                            }
                         }
                     }
                 ]
@@ -200,5 +200,60 @@
             "DOCA": {},
             "mile_card": {}
         }
-    ]    
+    ]
+}
+
+{
+    "departure": {
+        "iata": "OSL",
+        "geoObjectType": "AIRPORT",
+        "name": "Oslo Airport"
+    },
+    "destination": {
+        "iata": "HEL",
+        "geoObjectType": "AIRPORT",
+        "name": "Helsinki"
+    },
+    "departureDate": {
+        "year": 2023,
+        "month": 12,
+        "day": 19
+    },
+    "departureTimeOfDay": {
+        "hour": 11,
+        "minute": 0
+    },
+    "arrivalDate": {
+        "year": 2023,
+        "month": 12,
+        "day": 19
+    },
+    "arrivalTimeOfDay": {
+        "hour": 13,
+        "minute": 30
+    },
+    "marketingAirline": {
+        "icao": "NAX",
+        "iata": "DY",
+        "name": "Norwegian Air Shuttle"
+    },
+    "operatingAirline": {
+        "icao": "NAX",
+        "iata": "DY",
+        "name": "Norwegian Air Shuttle"
+    },
+    "flightNumber": 1190,
+    "bookingClassCode": "Q",
+    "numberOfTechnicalStops": 0,
+    "technicalStopList": [],
+    "equipmentType": {
+        "code": "73H"
+    },
+    "fareBase": "QCALF",
+    "airlineFareFamily": "LOWFARE",
+    "baggageAllowance": {
+        "unit": "PC",
+        "quantity": 0
+    },
+    "cabinClass": "ECONOMY"
 }

@@ -13,13 +13,6 @@ class BaseIntegration:
         }
         return response
 
-    async def search_request_maker(self):
-        response = {
-            "status": "error",
-            "message": "not implemented"
-        }
-        return response
-
     async def upsell(self):
         response = {
             "status": "error",
@@ -34,14 +27,35 @@ class BaseIntegration:
         }
         return response
 
-    async def seatmap(self):
+    async def verify(self):
         response = {
             "status": "error",
             "message": "not implemented"
         }
         return response
 
-    async def seatassign(self):
+    async def get_services(self):
+        response = {
+            "status": "error",
+            "message": "not implemented"
+        }
+        return response
+    
+    async def service_assign(self):
+        response = {
+            "status": "error",
+            "message": "not implemented"
+        }
+        return response
+
+    async def seat_map(self):
+        response = {
+            "status": "error",
+            "message": "not implemented"
+        }
+        return response
+
+    async def seat_assign(self):
         response = {
             "status": "error",
             "message": "not implemented"
@@ -55,7 +69,7 @@ class BaseIntegration:
         }
         return response
 
-    async def cancel(self):
+    async def cancel_booking(self):
         response = {
             "status": "error",
             "message": "not implemented"
@@ -63,6 +77,20 @@ class BaseIntegration:
         return response
 
     async def ticketing(self):
+        response = {
+            "status": "error",
+            "message": "not implemented"
+        }
+        return response
+
+    async def void(self):
+        response = {
+            "status": "error",
+            "message": "not implemented"
+        }
+        return response 
+
+    async def refund(self):
         response = {
             "status": "error",
             "message": "not implemented"

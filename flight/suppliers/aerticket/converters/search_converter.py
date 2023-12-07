@@ -1,5 +1,6 @@
 import uuid
 import copy
+from datetime import datetime
 
 from flight.additions.additions import AdditionsTicket
 from flight.microservices.static.main_api import StaticMicroservice
@@ -512,39 +513,54 @@ async def segment_maker(segments, duration_minutes):
     result_segments = []
     cnt = 0
 
-    # static_StaticMicroservice
+    static_microservice = StaticMicroservice()
+    seg_len = len(segments)
 
     for segment in segments:
+        stop_time_minutes = 0
+
+        if seg_len - cnt > 1:
+            next_seg = segments[cnt+1]
+            arrival_time = f"{segment['arrivalTimeOfDay']['hour'] if segment['arrivalTimeOfDay']['hour'] > 9 else '0' + str(segment['arrivalTimeOfDay']['hour'])}:{segment['arrivalTimeOfDay']['minute'] if segment['arrivalTimeOfDay']['minute'] > 9 else '0' + str(segment['arrivalTimeOfDay']['minute'])}:00"
+            departure_time = f"{next_seg['departureTimeOfDay']['hour'] if next_seg['departureTimeOfDay']['hour'] > 9 else '0' + str(next_seg['departureTimeOfDay']['hour'])}:{next_seg['departureTimeOfDay']['minute'] if next_seg['departureTimeOfDay']['minute'] > 9 else '0' + str(next_seg['departureTimeOfDay']['minute'])}:00"
+            format_str = "%H:%M:%S"
+            time1_obj = datetime.strptime(arrival_time, format_str)
+            time2_obj = datetime.strptime(departure_time, format_str)
+            time_difference = time2_obj - time1_obj
+            stop_time_minutes = int(time_difference.total_seconds() // 60)
+        
         cnt += 1
+        departure_data = await static_microservice.get_airport_data(airport_iata=segment['departure']['iata'])
+        arrival_data = await static_microservice.get_airport_data(airport_iata=segment['destination']['iata'])
         segment_tmp = {
             "segment_index": cnt,
             "leg": f"{segment['departure']['iata']}-{segment['destination']['iata']}",
-            "flight_number": "",
-            "departure_country": segment['departure']['iata'],
-            "departure_country_code": segment['departure']['iata'],
-            "departure_city": segment['departure']['iata'],
+            "flight_number": segment['flightNumber'],
+            "departure_country": departure_data['country_eng'],
+            "departure_country_code": departure_data['iso_code'],
+            "departure_city": departure_data['city_eng'],
             "departure_city_code": segment['departure']['iata'],
-            "departure_airport": segment['departure']['iata'],
+            "departure_airport": departure_data['name_eng'],
             "departure_airport_code": segment['departure']['iata'],
             "departure_terminal": "",
             "departure_date": f"{segment['departureDate']['year']}-{segment['departureDate']['month']}-{segment['departureDate']['day']}",
             "departure_time": f"{segment['departureTimeOfDay']['hour'] if segment['departureTimeOfDay']['hour'] > 9 else '0' + str(segment['departureTimeOfDay']['hour'])}:{segment['departureTimeOfDay']['minute'] if segment['departureTimeOfDay']['minute'] > 9 else '0' + str(segment['departureTimeOfDay']['minute'])}:00",
-            "departure_timezone": "",
-            "arrival_country": segment['destination']['iata'],
-            "arrival_country_code": segment['destination']['iata'],
-            "arrival_city": segment['destination']['iata'],
+            "departure_timezone": f"UTC+{departure_data['gmt_offset']}" if int(departure_data['gmt_offset']) >= 0 else f"UTC{departure_data['gmt_offset']}",
+            "arrival_country": arrival_data['country_eng'],
+            "arrival_country_code": arrival_data['iso_code'],
+            "arrival_city": arrival_data['city_eng'],
             "arrival_city_code": segment['destination']['iata'],
-            "arrival_airport": segment['destination']['iata'],
+            "arrival_airport": arrival_data['name_eng'],
             "arrival_airport_code": segment['destination']['iata'],
             "arrival_terminal": "",
             "arrival_date": f"{segment['arrivalDate']['year']}-{segment['arrivalDate']['month']}-{segment['arrivalDate']['day']}",
             "arrival_time": f"{segment['arrivalTimeOfDay']['hour'] if segment['arrivalTimeOfDay']['hour'] > 9 else '0' + str(segment['arrivalTimeOfDay']['hour'])}:{segment['arrivalTimeOfDay']['minute'] if segment['arrivalTimeOfDay']['minute'] > 9 else '0' + str(segment['arrivalTimeOfDay']['minute'])}:00",
-            "arrival_timezone": "",
+            "arrival_timezone": f"UTC+{arrival_data['gmt_offset']}" if int(arrival_data['gmt_offset']) >= 0 else f"UTC{arrival_data['gmt_offset']}",
             # "carrier_code": segment['operatingAirline']['iata'],
             # "carrier_name": segment['operatingAirline']['name'],
             # "carrier_logo": f"https://b2b.easybooking.uz/images/airline/{segment['operatingAirline']['iata']}.svg",
             "duration_minutes": duration_minutes,
-            "stop_time_minutes": "",
+            "stop_time_minutes": stop_time_minutes,
             "marketing_airline": segment['marketingAirline']['name'],
             "marketing_airline_code": segment['marketingAirline']['iata'],
             "marketing_airline_logo": f"https://b2b.easybooking.uz/images/airline/{segment['marketingAirline']['iata']}.svg",

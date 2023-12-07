@@ -400,6 +400,24 @@ class AerticketIntegration(BaseIntegration):
 
         return body
     
+###################################### SSR #########################################
+
+    async def get_services(self, system_id, provider_id, provider_name, order):
+        return super().get_services()
+
+    async def service_assign(self, system_id, provider_id, provider_name, order):
+        return super().service_assign()
+    
+##################################### SEAT MAP #####################################
+
+    async def seat_map(self, system_id, provider_id, provider_name, order):
+        return super().seat_map()
+
+################################### SEAT ASSIGN ####################################
+
+    async def seat_assign(self, system_id, provider_id, provider_name, order):
+        return super().seat_assign()
+
 ################################## CANCEL BOOKING ##################################
 
     async def cancel_booking(self, system_id, provider_id, provider_name, request_data, order_pnr):
@@ -459,6 +477,9 @@ class AerticketIntegration(BaseIntegration):
             }
 
         return response
+    
+    async def ticket_number_gather(self):
+        pass
 
 ###################################### VOID ########################################
 
@@ -489,13 +510,47 @@ class AerticketIntegration(BaseIntegration):
 
         return response
 
-#################################### REFUND ########################################
+###################################### REFUND ######################################
 
-    async def refund(self):
-        response = {
-            'status': 'error',
-            'code'  : -100 
+    async def refund(self, system_id, provider_id, provider_name, request_data, order):
+        body = {
+            'bookingData': {
+                'locator': order['gds_pnr']
+            }
         }
+
+        context = json.dumps(body)
+
+        self.loginkey = APIKEY
+        self.passwordkey = PASSKEY 
+
+        res = await asyncio.create_task(self.__request("/api/v1/refund-information", context))
+
+        if res['status'] == 'success' and res['data']['success'] == True:
+            body_refund = {
+                "refundId": res['data']['refund']['refundId']
+            }
+
+            context = json.dumps(body_refund)
+
+            res_refund = await asyncio.create_task(self.__request("/api/v1/refund-process", context))
+
+            if res_refund['status'] == 'success' and res_refund['data']['success'] == True:
+                response = {
+                    'status': 'success',
+                    'code'  : 100
+                }
+            else:
+                response = {
+                    'status': 'error',
+                    'code'  : -100 
+                }
+
+        else:
+            response = {
+                'status': 'error',
+                'code'  : -100 
+            }
 
         return response
 

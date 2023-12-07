@@ -2,8 +2,6 @@ import os
 import redis
 import json
 
-from flight.additions.additions import filter_tickets
-
 HOST = os.environ.get('CACHE_HOST')
 PORT = os.environ.get('CACHE_PORT')
 
